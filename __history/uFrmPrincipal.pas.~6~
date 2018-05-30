@@ -1,0 +1,44 @@
+unit uFrmPrincipal;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Buttons;
+
+type
+  TfrmPrincipal = class(TForm)
+    btnLiberador: TSpeedButton;
+    procedure btnLiberadorClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmPrincipal: TfrmPrincipal;
+
+implementation
+
+uses uFrmLiberador, uDM;
+
+{$R *.dfm}
+
+procedure TfrmPrincipal.btnLiberadorClick(Sender: TObject);
+begin
+  try
+    frmLiberador := TfrmLiberador.Create(Application);
+    frmLiberador.ShowModal;
+  finally
+  FreeAndNil(frmLiberador);
+  end;
+end;
+
+procedure TfrmPrincipal.FormShow(Sender: TObject);
+begin
+//ShowMessage(dm.con.HostName+' - '+dm.con.Database);
+end;
+
+end.

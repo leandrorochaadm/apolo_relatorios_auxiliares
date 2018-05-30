@@ -1,0 +1,18 @@
+program Liberador;
+
+uses
+  Forms,
+  uFrmPrincipal in 'uFrmPrincipal.pas' {frmPrincipal},
+  uDM in 'uDM.pas' {DataModule2: TDataModule},
+  uFrmLiberador in 'uFrmLiberador.pas' {frmLiberador};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.CreateForm(TDataModule2, DataModule2);
+  Application.CreateForm(TfrmLiberador, frmLiberador);
+  Application.Run;
+end.

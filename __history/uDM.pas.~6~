@@ -1,0 +1,46 @@
+unit uDM;
+
+interface
+
+uses
+  SysUtils, Classes, ZAbstractConnection, ZConnection, DB, ZAbstractRODataset,
+  ZAbstractDataset, ZDataset;
+
+type
+  Tdm = class(TDataModule)
+    con: TZConnection;
+    qrFilial: TZQuery;
+    procedure DataModuleCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  dm: Tdm;
+
+implementation
+  uses
+    inifiles;
+
+{$R *.dfm}
+
+procedure Tdm.DataModuleCreate(Sender: TObject);
+var
+  arquivo_ini: TIniFile;
+//  sDir_Sistema: string;
+
+begin
+// sDir_Sistema:= ExtractFilePath(ParamStr(0));
+con.Connected :=false;
+ Arquivo_ini := TIniFile.Create('C:\APOLO\Server\com.ini');
+ con.HostName := Arquivo_ini.ReadString('999-002', '999-002', '');
+ con.Database := arquivo_ini.ReadString('999-001', '999-001', '');
+ con.Connected :=true;
+
+
+
+end;
+
+end.
