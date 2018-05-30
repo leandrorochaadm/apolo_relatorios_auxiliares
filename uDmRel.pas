@@ -16,6 +16,7 @@ type
     dsVendaCartaoSnfce: TDataSource;
     frxDBVendaCartaoSnfce: TfrxDBDataset;
     frxRepVendaCartaoSnfce: TfrxReport;
+    procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -30,5 +31,11 @@ implementation
 uses uDM;
 
 {$R *.dfm}
+
+procedure TdmRel.DataModuleCreate(Sender: TObject);
+begin
+qrRelProdCusto.Active:=true;
+qrVendaCartaoSnfce.Active:=true;
+end;
 
 end.

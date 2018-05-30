@@ -1,5 +1,6 @@
 object dmRel: TdmRel
   OldCreateOrder = False
+  OnCreate = DataModuleCreate
   Height = 598
   Width = 496
   object frxRepProdCusto: TfrxReport
@@ -11,7 +12,7 @@ object dmRel: TdmRel
     PrintOptions.Printer = 'Padr'#227'o'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 43250.638496331000000000
-    ReportOptions.LastChange = 43250.658918252320000000
+    ReportOptions.LastChange = 43250.694307523100000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -55,7 +56,7 @@ object dmRel: TdmRel
           DataSet = frDBprodCusto
           DataSetName = 'dsRelProdCusto'
           Memo.UTF8W = (
-            '[frxDBDataset1."CODIGO"]')
+            '[dsRelProdCusto."CODIGO"]')
         end
         object frxDBDataset1NOME_FORN: TfrxMemoView
           Left = 56.692950000000000000
@@ -65,7 +66,7 @@ object dmRel: TdmRel
           DataSet = frDBprodCusto
           DataSetName = 'dsRelProdCusto'
           Memo.UTF8W = (
-            '[frxDBDataset1."NOME_FORN"]')
+            '[dsRelProdCusto."NOME_FORN"]')
         end
         object frxDBDataset1DESCRICAO: TfrxMemoView
           Left = 249.448980000000000000
@@ -75,7 +76,7 @@ object dmRel: TdmRel
           DataSet = frDBprodCusto
           DataSetName = 'dsRelProdCusto'
           Memo.UTF8W = (
-            '[frxDBDataset1."DESCRICAO"]')
+            '[dsRelProdCusto."DESCRICAO"]')
         end
         object frxDBDataset1LOCALICAZAO: TfrxMemoView
           Left = 668.976810000000000000
@@ -86,32 +87,14 @@ object dmRel: TdmRel
           DataSet = frDBprodCusto
           DataSetName = 'dsRelProdCusto'
           Memo.UTF8W = (
-            '[frxDBDataset1."LOCALICAZAO"]')
-        end
-        object frxDBDataset1PRECO_COMPRA: TfrxMemoView
-          Left = 737.008350000000000000
-          Top = 3.779530000000000000
-          Width = 79.370130000000000000
-          Height = 18.897650000000000000
-          DataSet = frDBprodCusto
-          DataSetName = 'dsRelProdCusto'
-          DisplayFormat.FormatStr = '%2.2f'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[frxDBDataset1."PRECO_COMPRA"]')
-          ParentFont = False
+            '[dsRelProdCusto."LOCALICAZAO"]')
         end
         object frxDBDataset1PRECO_CUSTO: TfrxMemoView
           Left = 827.717070000000000000
           Top = 3.779530000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
+          DataField = 'PRECO_CUSTO'
           DataSet = frDBprodCusto
           DataSetName = 'dsRelProdCusto'
           DisplayFormat.FormatStr = '%2.2f'
@@ -123,7 +106,7 @@ object dmRel: TdmRel
           Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxDBDataset1."PRECO_CUSTO"]')
+            '[dsRelProdCusto."PRECO_CUSTO"]')
           ParentFont = False
         end
         object frxDBDataset1LUCRO_LIQ: TfrxMemoView
@@ -131,6 +114,7 @@ object dmRel: TdmRel
           Top = 3.779530000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
+          DataField = 'LUCRO_LIQ'
           DataSet = frDBprodCusto
           DataSetName = 'dsRelProdCusto'
           DisplayFormat.FormatStr = '%2.2f'
@@ -142,7 +126,7 @@ object dmRel: TdmRel
           Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxDBDataset1."LUCRO_LIQ"]')
+            '[dsRelProdCusto."LUCRO_LIQ"]')
           ParentFont = False
         end
         object frxDBDataset1PRECOVENDA: TfrxMemoView
@@ -150,6 +134,7 @@ object dmRel: TdmRel
           Top = 3.779530000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
+          DataField = 'PRECOVENDA'
           DataSet = frDBprodCusto
           DataSetName = 'dsRelProdCusto'
           DisplayFormat.FormatStr = '%2.2n'
@@ -161,8 +146,19 @@ object dmRel: TdmRel
           Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxDBDataset1."PRECOVENDA"]')
+            '[dsRelProdCusto."PRECOVENDA"]')
           ParentFont = False
+        end
+        object dsRelProdCustoPRECO_COMPRA: TfrxMemoView
+          Left = 740.787880000000000000
+          Top = 3.779530000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          DataField = 'PRECO_COMPRA'
+          DataSet = frDBprodCusto
+          DataSetName = 'dsRelProdCusto'
+          Memo.UTF8W = (
+            '[dsRelProdCusto."PRECO_COMPRA"]')
         end
       end
       object PageHeader1: TfrxPageHeader
@@ -324,7 +320,7 @@ object dmRel: TdmRel
     PrintOptions.Printer = 'Padr'#227'o'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 43250.638496331000000000
-    ReportOptions.LastChange = 43250.667687615740000000
+    ReportOptions.LastChange = 43250.667687615700000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'

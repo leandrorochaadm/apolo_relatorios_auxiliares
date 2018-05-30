@@ -17,7 +17,6 @@ object dm: Tdm
   end
   object qrFilial: TZQuery
     Connection = con
-    Active = True
     SQL.Strings = (
       'select filial, cnpj from c000004')
     Params = <>

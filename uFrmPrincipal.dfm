@@ -22,9 +22,6 @@ object frmPrincipal: TfrmPrincipal
     Height = 41
     Align = alTop
     TabOrder = 0
-    ExplicitLeft = 216
-    ExplicitTop = 112
-    ExplicitWidth = 185
     object BtnLiberador: TSpeedButton
       Left = 8
       Top = -8
@@ -57,10 +54,6 @@ object frmPrincipal: TfrmPrincipal
     Height = 326
     Align = alClient
     TabOrder = 1
-    ExplicitLeft = 336
-    ExplicitTop = 248
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object pcAtendimento: TPageControl
       Left = 1
       Top = 1
@@ -81,9 +74,6 @@ object frmPrincipal: TfrmPrincipal
           TabOrder = 0
           object tabProdCusto: TTabSheet
             Caption = 'tabProdCusto'
-            ExplicitLeft = -28
-            ExplicitWidth = 281
-            ExplicitHeight = 165
             object Button1: TButton
               Left = 3
               Top = 16
@@ -98,8 +88,8 @@ object frmPrincipal: TfrmPrincipal
             Caption = 'Vendas Cart'#227'o s/ Cupom'
             ImageIndex = 1
             object Imprimir: TButton
-              Left = 128
-              Top = 104
+              Left = 16
+              Top = 16
               Width = 75
               Height = 25
               Caption = 'Imprimir'

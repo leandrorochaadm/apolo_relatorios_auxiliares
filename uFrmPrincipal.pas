@@ -54,9 +54,10 @@ end;
 
 procedure TfrmPrincipal.Button1Click(Sender: TObject);
 begin
+
 with uDmRel.DmRel.frxRepProdCusto do
 begin
-LoadFromFile(ExtractFilePath(ParamStr(0))+'\rel\VendaCartaoSnfce.fr3');
+LoadFromFile(ExtractFilePath(ParamStr(0))+'rel\PrecCusto.fr3');
 PrepareReport(True);
 ShowReport;
 end;
@@ -73,7 +74,7 @@ procedure TfrmPrincipal.ImprimirClick(Sender: TObject);
 begin
 with uDmRel.dmRel.frxRepVendaCartaoSnfce do
 begin
-LoadFromFile(ExtractFilePath(ParamStr(0))+'\rel\VendaCartaoSnfce.fr3');
+LoadFromFile(ExtractFilePath(ParamStr(0))+'rel\VendaCartaoSnfce.fr3');
 PrepareReport(True);
 ShowReport;
 end;
@@ -81,7 +82,8 @@ end;
 
 procedure TfrmPrincipal.SpeedButton1Click(Sender: TObject);
 begin
-//pcAtendimento;
+pcAtendimento.ActivePage := tabRel;
+
 end;
 
 end.
