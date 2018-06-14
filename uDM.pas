@@ -66,7 +66,7 @@ con.Connected :=false;
  con.Connected :=true;
  qrFilial.Active:=true;
 
- web.Connected :=true;
+// web.Connected :=true;
 
 
 

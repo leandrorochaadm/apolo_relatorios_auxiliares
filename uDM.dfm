@@ -1,8 +1,8 @@
 object dm: Tdm
   OldCreateOrder = False
   OnCreate = DataModuleCreate
-  Height = 198
-  Width = 307
+  Height = 362
+  Width = 668
   object con: TZConnection
     ControlsCodePage = cCP_UTF16
     Connected = True
@@ -17,6 +17,7 @@ object dm: Tdm
   end
   object qrFilial: TZQuery
     Connection = con
+    Active = True
     SQL.Strings = (
       'select filial, cnpj from c000004')
     Params = <>
@@ -29,11 +30,10 @@ object dm: Tdm
       'SELECT * FROM `liberacao`')
     Params = <>
     Left = 152
-    Top = 120
+    Top = 224
   end
   object web: TZConnection
     ControlsCodePage = cCP_UTF16
-    Connected = True
     HostName = '192.185.223.44'
     Port = 3306
     Database = 'atoms053_web'
@@ -41,7 +41,7 @@ object dm: Tdm
     Password = 'atom2017'
     Protocol = 'mysql-5'
     Left = 88
-    Top = 120
+    Top = 224
   end
   object qrConAux: TZQuery
     Connection = con

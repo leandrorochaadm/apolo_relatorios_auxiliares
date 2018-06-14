@@ -20,10 +20,10 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
-			<DCC_ExeOutput>C:\liberador\</DCC_ExeOutput>
+			<DCC_ExeOutput>.\bin</DCC_ExeOutput>
 			<DCC_UsePackage>vclx;vcl;vclimg;dbrtl;Rave77VCL;bdertl;rtl;vclactnband;vcldb;vcldbx;vcltouch;xmlrtl;dsnap;dsnapcon;TeeUI;TeeDB;Tee;vclib;ibxpress;adortl;IndyCore;IndySystem;IndyProtocols;inet;intrawebdb_100_140;Intraweb_100_140;VclSmp;vclie;websnap;webdsnap;inetdb;inetdbbde;inetdbxpress;soaprtl;vclribbon;dbexpress;DbxCommonDriver;DataSnapIndy10ServerTransport;DataSnapProviderClient;DbxClientDriver;DataSnapServer;DBXInterBaseDriver;DBXMySQLDriver;dbxcds;DBXFirebirdDriver;DBXSybaseASEDriver;DBXSybaseASADriver;DBXOracleDriver;DBXMSSQLDriver;DBXInformixDriver;DBXDb2Driver;rxctl;rxdb;rxbde;ZComponent;ZDbc;ZPlain;ZCore;ZParseSql;NxCommonRun;NxCommonDsgn;NxGridRun;NxGridDsgn;NxDBGridRun;NxDBGridDsgn;NxInspectorRun;NxInspectorDsgn;NxCollectionRun;NxCollectionDsgn;NxSheetRun;NxAddonsRun;NxThirdpartyRun;fcstudiowin;CheckCPFD2010;CPortLib12;ext;ipstudiowindataset;ipstudiowin;ipstudiowinclient;ipstudiowinword2000;dclOffice2k;matrixpk;mxProtector_d10;VDOPrint;TWebCam;dxCoreRS14;dxServerModeRS14;cxDataRS14;cxLibraryRS14;dxGDIPlusRS14;dxThemeRS14;dxADOServerModeRS14;dxDBXServerModeRS14;cxEditorsRS14;dxmdsRS14;dxBarRS14;dxComnRS14;dxBarDBNavRS14;dxBarExtDBItemsRS14;dxBarExtItemsRS14;dxRibbonRS14;cxBarEditItemRS14;dxdbtrRS14;dxtrmdRS14;cxPageControlRS14;dxDockingRS14;dxFlowChartRS14;cxPageControldxBarPopupMenuRS14;dxTabbedMDIRS14;dxLayoutControlRS14;dxNavBarRS14;dxorgcRS14;dxdborRS14;cxGridRS14;cxExportRS14;cxPivotGridRS14;cxPivotGridChartRS14;cxPivotGridOLAPRS14;cxTreeListRS14;cxTreeListdxBarPopupMenuRS14;cxSchedulerRS14;cxSchedulerGridRS14;dcldxSkinsCoreRS14;dxSkinsCoreRS14;dxSkinscxPCPainterRS14;dxSkinscxSchedulerPainterRS14;dxSkinsdxDLPainterRS14;dxSkinsdxBarPainterRS14;dxSkinsdxNavBarPainterRS14;dxSpellCheckerRS14;cxSpreadSheetRS14;cxVerticalGridRS14;dxPSCoreRS14;dxPSLnksRS14;dxPScxCommonRS14;dxPScxExtCommonRS14;dxPScxGridLnkRS14;dxPSdxLCLnkRS14;dxPScxPivotGridLnkRS14;dxPScxSchedulerLnkRS14;dxPScxSSLnkRS14;dxPScxTLLnkRS14;dxPScxVGridLnkRS14;dxPSTeeChartRS14;dxPSDBTeeChartRS14;dxPSdxOCLnkRS14;dxPSdxDBOCLnkRS14;dxPSdxDBTVLnkRS14;dxPSdxFCLnkRS14;dxPScxPCProdRS14;dxPsPrVwAdvRS14;dxPSPrVwRibbonRS14;dxSkinsdxRibbonPainterRS14;dxTileControlRS14;dacvcl140;dac140;crcontrols140;ibdacvcl140;ibdac140;lmdrtl11rt_140;lmdplugin11rt_140;lmdrtlx11rt_140;lmdcore11rt_140;QR5RunD2010;RaizeComponentsVcl;RaizeComponentsVclDb;tmsd2010;tmsexd2010;tmswizd2010;tmsxlsd2010;FlatStyle_D2010;frce;ACBr_Comum;ACBr_synapse;ACBr_OpenSSL;ACBr_Diversos;ACBr_Serial;ACBr_Convenio115;ACBr_TXTComum;ACBr_LFD;ACBr_PAF;ACBr_SEF2;ACBr_PCNComum;ACBr_Sintegra;ACBr_SPED;ACBr_SPEDImportar;ACBR_DeSTDA;ACBr_Ponto;ACBr_TCP;ACBr_Boleto;ACBr_MTER;ACBr_Integrador;ACBr_NFCeECFVirtual;ACBr_NFe;ACBr_DFeComum;ACBr_NFeDanfeESCPOS;ACBr_CTe;ACBr_NFSe;ACBr_MDFe;ACBr_GNRE;ACBre_Social;ACBr_Reinf;ACBr_SAT;ACBr_SATECFVirtual;ACBr_SATExtratoESCPOS;ACBr_SATWS;ACBr_BlocoX;ACBr_BPe;ACBr_ANe;ACBr_TEFD;ACBr_NFeDanfeFR;frxDB14;frxe14;frx14;fs14;ACBr_CTeDacteFR;ACBr_NFSeDanfseFR;ACBr_BoletoFR;ACBr_MDFeDamdfeFR;ACBr_NFeDanfeRL;ACBr_NFSeDanfseRL;ACBr_CTeDacteRL;ACBr_BoletoRL;ACBr_MDFeDamdfeRL;ACBr_SATExtratoRL;frxADO14;frxBDE14;frxcs14;frxDBX14;frxIBX14;frxTee14;fsADO14;fsBDE14;fsDB14;fsIBX14;fsTee14;acnt2010_R</DCC_UsePackage>
 			<DCC_DcpOutput>.\dcu</DCC_DcpOutput>
-			<DCC_DependencyCheckOutputName>C:\liberador\Atendimento.exe</DCC_DependencyCheckOutputName>
+			<DCC_DependencyCheckOutputName>bin\Atendimento.exe</DCC_DependencyCheckOutputName>
 			<DCC_ImageBase>00400000</DCC_ImageBase>
 			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
 			<DCC_Platform>x86</DCC_Platform>
@@ -90,9 +90,9 @@
 						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
 						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
 						<VersionInfo Name="MajorVer">1</VersionInfo>
-						<VersionInfo Name="MinorVer">1</VersionInfo>
-						<VersionInfo Name="Release">1</VersionInfo>
-						<VersionInfo Name="Build">0</VersionInfo>
+						<VersionInfo Name="MinorVer">3</VersionInfo>
+						<VersionInfo Name="Release">2</VersionInfo>
+						<VersionInfo Name="Build">1</VersionInfo>
 						<VersionInfo Name="Debug">False</VersionInfo>
 						<VersionInfo Name="PreRelease">False</VersionInfo>
 						<VersionInfo Name="Special">False</VersionInfo>
@@ -104,7 +104,7 @@
 					<VersionInfoKeys>
 						<VersionInfoKeys Name="CompanyName"/>
 						<VersionInfoKeys Name="FileDescription"/>
-						<VersionInfoKeys Name="FileVersion">1.1.1.0</VersionInfoKeys>
+						<VersionInfoKeys Name="FileVersion">1.3.2.1</VersionInfoKeys>
 						<VersionInfoKeys Name="InternalName"/>
 						<VersionInfoKeys Name="LegalCopyright"/>
 						<VersionInfoKeys Name="LegalTrademarks"/>

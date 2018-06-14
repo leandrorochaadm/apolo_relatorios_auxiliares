@@ -16,6 +16,7 @@ type
     dsVendaCartaoSnfce: TDataSource;
     frxDBVendaCartaoSnfce: TfrxDBDataset;
     frxRepVendaCartaoSnfce: TfrxReport;
+    frxDBFilial: TfrxDBDataset;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

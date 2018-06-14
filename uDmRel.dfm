@@ -1,8 +1,8 @@
 object dmRel: TdmRel
   OldCreateOrder = False
   OnCreate = DataModuleCreate
-  Height = 598
-  Width = 496
+  Height = 313
+  Width = 327
   object frxRepProdCusto: TfrxReport
     Version = '5.1.9'
     DotMatrixReport = False
@@ -12,18 +12,22 @@ object dmRel: TdmRel
     PrintOptions.Printer = 'Padr'#227'o'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 43250.638496331000000000
-    ReportOptions.LastChange = 43250.694307523100000000
+    ReportOptions.LastChange = 43258.712848576400000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
       ''
       'end.')
-    Left = 16
+    Left = 24
     Top = 216
     Datasets = <
       item
         DataSet = frDBprodCusto
         DataSetName = 'dsRelProdCusto'
+      end
+      item
+        DataSet = frxDBFilial
+        DataSetName = 'frxDBFilial'
       end>
     Variables = <>
     Style = <>
@@ -40,10 +44,11 @@ object dmRel: TdmRel
       RightMargin = 5.000000000000000000
       TopMargin = 5.000000000000000000
       BottomMargin = 5.000000000000000000
+      Frame.Style = fsDot
       object MasterData1: TfrxMasterData
         FillType = ftBrush
-        Height = 30.236240000000000000
-        Top = 102.047310000000000000
+        Height = 22.677180000000000000
+        Top = 154.960730000000000000
         Width = 1084.725110000000000000
         DataSet = frDBprodCusto
         DataSetName = 'dsRelProdCusto'
@@ -79,19 +84,25 @@ object dmRel: TdmRel
             '[dsRelProdCusto."DESCRICAO"]')
         end
         object frxDBDataset1LOCALICAZAO: TfrxMemoView
-          Left = 668.976810000000000000
-          Top = 3.779530000000000000
-          Width = 64.252010000000000000
+          Left = 521.575140000000000000
+          Width = 211.653680000000000000
           Height = 18.897650000000000000
-          DataField = 'LOCALICAZAO'
           DataSet = frDBprodCusto
           DataSetName = 'dsRelProdCusto'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
           Memo.UTF8W = (
             '[dsRelProdCusto."LOCALICAZAO"]')
+          ParentFont = False
         end
         object frxDBDataset1PRECO_CUSTO: TfrxMemoView
           Left = 827.717070000000000000
-          Top = 3.779530000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
           DataField = 'PRECO_CUSTO'
@@ -111,7 +122,6 @@ object dmRel: TdmRel
         end
         object frxDBDataset1LUCRO_LIQ: TfrxMemoView
           Left = 910.866730000000000000
-          Top = 3.779530000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
           DataField = 'LUCRO_LIQ'
@@ -130,8 +140,7 @@ object dmRel: TdmRel
           ParentFont = False
         end
         object frxDBDataset1PRECOVENDA: TfrxMemoView
-          Left = 1001.575450000000000000
-          Top = 3.779530000000000000
+          Left = 994.016390000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
           DataField = 'PRECOVENDA'
@@ -151,14 +160,21 @@ object dmRel: TdmRel
         end
         object dsRelProdCustoPRECO_COMPRA: TfrxMemoView
           Left = 740.787880000000000000
-          Top = 3.779530000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
-          DataField = 'PRECO_COMPRA'
           DataSet = frDBprodCusto
           DataSetName = 'dsRelProdCusto'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
           Memo.UTF8W = (
             '[dsRelProdCusto."PRECO_COMPRA"]')
+          ParentFont = False
         end
       end
       object PageHeader1: TfrxPageHeader
@@ -170,7 +186,7 @@ object dmRel: TdmRel
         Font.Style = [fsBold]
         Height = 22.677180000000000000
         ParentFont = False
-        Top = 18.897650000000000000
+        Top = 71.811070000000000000
         Width = 1084.725110000000000000
         object Memo1: TfrxMemoView
           Left = 3.779530000000000000
@@ -225,34 +241,172 @@ object dmRel: TdmRel
         object Memo5: TfrxMemoView
           Left = 740.787880000000000000
           Top = 3.779530000000000000
-          Width = 64.252010000000000000
+          Width = 79.370130000000000000
           Height = 16.377963330000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          HAlign = haRight
           Memo.UTF8W = (
-            'Localiz'#227'o')
+            'P.Compra')
+          ParentFont = False
+          WordBreak = True
         end
         object Memo6: TfrxMemoView
           Left = 827.717070000000000000
           Top = 3.779530000000000000
-          Width = 64.252010000000000000
+          Width = 79.370130000000000000
           Height = 16.377963330000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          HAlign = haRight
           Memo.UTF8W = (
-            'Localiz'#227'o')
+            'P. Custo')
+          ParentFont = False
         end
         object Memo7: TfrxMemoView
           Left = 910.866730000000000000
           Top = 3.779530000000000000
-          Width = 64.252010000000000000
+          Width = 79.370130000000000000
           Height = 16.377963330000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          HAlign = haRight
           Memo.UTF8W = (
-            'Localiz'#227'o')
+            'Lucro l'#237'quido')
+          ParentFont = False
         end
         object Memo8: TfrxMemoView
-          Left = 1001.575450000000000000
+          Left = 994.016390000000000000
           Top = 3.779530000000000000
-          Width = 64.252010000000000000
+          Width = 79.370130000000000000
           Height = 16.377963330000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          HAlign = haRight
           Memo.UTF8W = (
-            'Localiz'#227'o')
+            'P.Venda')
+          ParentFont = False
+        end
+        object Line2: TfrxLineView
+          Top = 22.677180000000000000
+          Width = 1133.858267720000000000
+          Color = clBlack
+          Frame.Style = fsDot
+          Frame.Typ = [ftTop]
+        end
+      end
+      object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
+        Height = 30.236240000000000000
+        Top = 18.897650000000000000
+        Width = 1084.725110000000000000
+        object Memo9: TfrxMemoView
+          Left = 3.779530000000000000
+          Width = 1077.166050000000000000
+          Height = 22.677180000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -19
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Relat'#243'rio de produtos com pre'#231'o custo')
+          ParentFont = False
+        end
+        object Memo11: TfrxMemoView
+          Left = 922.625267780000000000
+          Top = 2.519686670000000000
+          Width = 149.921356670000000000
+          Height = 14.698172220000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Style = fsDot
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Data: [Date]')
+          ParentFont = False
+        end
+      end
+      object PageFooter1: TfrxPageFooter
+        FillType = ftBrush
+        Height = 22.677180000000000000
+        Top = 238.110390000000000000
+        Width = 1084.725110000000000000
+        object frxDBFilialCNPJ: TfrxMemoView
+          Left = 427.086890000000000000
+          Width = 200.315090000000000000
+          Height = 18.897650000000000000
+          DataField = 'CNPJ'
+          DataSet = frxDBFilial
+          DataSetName = 'frxDBFilial'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            '[frxDBFilial."CNPJ"]')
+          ParentFont = False
+        end
+        object Memo10: TfrxMemoView
+          Left = 873.071430000000000000
+          Width = 207.874150000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Style = fsDot
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Pag: [<Page>] de [TotalPages#]')
+          ParentFont = False
+          WordWrap = False
+          Formats = <
+            item
+            end
+            item
+            end>
+        end
+        object frxDBFilialFILIAL: TfrxMemoView
+          Left = 11.338590000000000000
+          Width = 400.630180000000000000
+          Height = 18.897650000000000000
+          DataField = 'FILIAL'
+          DataSet = frxDBFilial
+          DataSetName = 'frxDBFilial'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            '[frxDBFilial."FILIAL"]')
+          ParentFont = False
+        end
+        object Line1: TfrxLineView
+          Top = 22.677180000000000000
+          Width = 1133.858267720000000000
+          Color = clBlack
+          Frame.Style = fsDot
+          Frame.Typ = [ftTop]
         end
       end
     end
@@ -262,7 +416,7 @@ object dmRel: TdmRel
     CloseDataSource = False
     DataSource = dsRelProdCusto
     BCDToCurrency = False
-    Left = 24
+    Left = 32
     Top = 144
   end
   object qrRelProdCusto: TZQuery
@@ -278,29 +432,28 @@ object dmRel: TdmRel
       ' LEFT JOIN C000009 J ON (F.codfornecedor=J.codigo)'
       ' left join c000026 c on (c.codproduto =f.codigo)')
     Params = <>
-    Left = 24
+    Left = 32
     Top = 16
   end
   object dsRelProdCusto: TDataSource
     DataSet = qrRelProdCusto
-    Left = 24
+    Left = 32
     Top = 80
   end
   object qrVendaCartaoSnfce: TZQuery
     Connection = dm.con
-    Active = True
     SQL.Strings = (
       'select codigo, c000048.data, total from c000048'
       
         'where (c000048.meio_cartaocred >0 or c000048.meio_cartaodeb>0) a' +
         'nd c000048.nfce is null')
     Params = <>
-    Left = 120
+    Left = 128
     Top = 16
   end
   object dsVendaCartaoSnfce: TDataSource
     DataSet = qrVendaCartaoSnfce
-    Left = 120
+    Left = 128
     Top = 80
   end
   object frxDBVendaCartaoSnfce: TfrxDBDataset
@@ -308,7 +461,7 @@ object dmRel: TdmRel
     CloseDataSource = False
     DataSource = dsVendaCartaoSnfce
     BCDToCurrency = False
-    Left = 120
+    Left = 128
     Top = 144
   end
   object frxRepVendaCartaoSnfce: TfrxReport
@@ -326,7 +479,7 @@ object dmRel: TdmRel
       'begin'
       ''
       'end.')
-    Left = 120
+    Left = 128
     Top = 216
     Datasets = <
       item
@@ -451,5 +604,13 @@ object dmRel: TdmRel
         end
       end
     end
+  end
+  object frxDBFilial: TfrxDBDataset
+    UserName = 'frxDBFilial'
+    CloseDataSource = False
+    DataSet = dm.qrFilial
+    BCDToCurrency = False
+    Left = 216
+    Top = 144
   end
 end
