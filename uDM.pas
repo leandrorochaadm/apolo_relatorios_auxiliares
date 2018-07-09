@@ -13,6 +13,11 @@ type
     qrClienteWeb: TZQuery;
     web: TZConnection;
     qrConAux: TZQuery;
+    qrPlanoConta: TZQuery;
+    dsPlanoConta: TDataSource;
+    wdstrngfldPlanoContaCODIGO: TWideStringField;
+    wdstrngfldPlanoContaCONTA: TWideStringField;
+    wdstrngfldPlanoContaCLASSIFICACAO: TWideStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -65,6 +70,7 @@ con.Connected :=false;
 
  con.Connected :=true;
  qrFilial.Active:=true;
+ qrPlanoConta.Active:=true;
 
 // web.Connected :=true;
 

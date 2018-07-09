@@ -17,6 +17,17 @@ type
     frxDBVendaCartaoSnfce: TfrxDBDataset;
     frxRepVendaCartaoSnfce: TfrxReport;
     frxDBFilial: TfrxDBDataset;
+    qrDreDet: TZQuery;
+    dsDreDet: TDataSource;
+    frxDBdre: TfrxDBDataset;
+    frxDreDet: TfrxReport;
+    qrDreRes: TZQuery;
+    dsDreRes: TDataSource;
+    frxDBdreRes: TfrxDBDataset;
+    frxDreRes: TfrxReport;
+    QrRelatorio: TZQuery;
+    frxDBRelatorio: TfrxDBDataset;
+    DsRelatorio: TDataSource;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -37,6 +48,8 @@ procedure TdmRel.DataModuleCreate(Sender: TObject);
 begin
 qrRelProdCusto.Active:=true;
 qrVendaCartaoSnfce.Active:=true;
+qrDreDet.Active:=true;
+qrDreRes.Active:=true;
 end;
 
 end.

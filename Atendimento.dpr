@@ -12,6 +12,7 @@ uses
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
+  Application.Title := 'Atendimento';
   Application.CreateForm(Tdm, dm);
   Application.CreateForm(TdmRel, dmRel);
   Application.CreateForm(TfrmPrincipal, frmPrincipal);

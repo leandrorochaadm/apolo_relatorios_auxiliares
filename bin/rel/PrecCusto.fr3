@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<TfrxReport Version="5.1.9" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="Padrão" PrintOptions.PrintOnSheet="0" ReportOptions.CreateDate="43250,638496331" ReportOptions.Description.Text="" ReportOptions.LastChange="43258,7128485764" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end.">
+  <Datasets>
+    <item DataSet="frDBprodCusto" DataSetName="dsRelProdCusto"/>
+    <item DataSet="frxDBFilial" DataSetName="frxDBFilial"/>
+  </Datasets>
+  <TfrxDataPage Name="Data" Height="1000" Left="0" Top="0" Width="1000"/>
+  <TfrxReportPage Name="Page1" Orientation="poLandscape" PaperWidth="297" PaperHeight="210" PaperSize="256" LeftMargin="5" RightMargin="5" TopMargin="5" BottomMargin="5" ColumnWidth="0" ColumnPositions.Text="" Frame.Style="fsDot" HGuides.Text="" VGuides.Text="">
+    <TfrxMasterData Name="MasterData1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="22,67718" Left="0" Top="154,96073" Width="1084,72511" ColumnWidth="0" ColumnGap="0" DataSet="frDBprodCusto" DataSetName="dsRelProdCusto" RowCount="0">
+      <TfrxMemoView Name="frxDBDataset1CODIGO" Left="3,77953" Top="0" Width="49,13389" Height="18,89765" DataField="CODIGO" DataSet="frDBprodCusto" DataSetName="dsRelProdCusto" Text="[dsRelProdCusto.&#34;CODIGO&#34;]"/>
+      <TfrxMemoView Name="frxDBDataset1NOME_FORN" Left="56,69295" Top="0" Width="188,9765" Height="18,89765" DataField="NOME_FORN" DataSet="frDBprodCusto" DataSetName="dsRelProdCusto" Text="[dsRelProdCusto.&#34;NOME_FORN&#34;]"/>
+      <TfrxMemoView Name="frxDBDataset1DESCRICAO" Left="249,44898" Top="0" Width="415,7483" Height="18,89765" DataField="DESCRICAO" DataSet="frDBprodCusto" DataSetName="dsRelProdCusto" Text="[dsRelProdCusto.&#34;DESCRICAO&#34;]"/>
+      <TfrxMemoView Name="frxDBDataset1LOCALICAZAO" Left="521,57514" Top="0" Width="211,65368" Height="18,89765" DataSet="frDBprodCusto" DataSetName="dsRelProdCusto" DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[dsRelProdCusto.&#34;LOCALICAZAO&#34;]"/>
+      <TfrxMemoView Name="frxDBDataset1PRECO_CUSTO" Left="827,71707" Top="0" Width="79,37013" Height="18,89765" DataField="PRECO_CUSTO" DataSet="frDBprodCusto" DataSetName="dsRelProdCusto" DisplayFormat.FormatStr="%2.2f" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[dsRelProdCusto.&#34;PRECO_CUSTO&#34;]"/>
+      <TfrxMemoView Name="frxDBDataset1LUCRO_LIQ" Left="910,86673" Top="0" Width="79,37013" Height="18,89765" DataField="LUCRO_LIQ" DataSet="frDBprodCusto" DataSetName="dsRelProdCusto" DisplayFormat.FormatStr="%2.2f" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[dsRelProdCusto.&#34;LUCRO_LIQ&#34;]"/>
+      <TfrxMemoView Name="frxDBDataset1PRECOVENDA" Left="994,01639" Top="0" Width="79,37013" Height="18,89765" DataField="PRECOVENDA" DataSet="frDBprodCusto" DataSetName="dsRelProdCusto" DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[dsRelProdCusto.&#34;PRECOVENDA&#34;]"/>
+      <TfrxMemoView Name="dsRelProdCustoPRECO_COMPRA" Left="740,78788" Top="0" Width="79,37013" Height="18,89765" DataSet="frDBprodCusto" DataSetName="dsRelProdCusto" DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[dsRelProdCusto.&#34;PRECO_COMPRA&#34;]"/>
+    </TfrxMasterData>
+    <TfrxPageHeader Name="PageHeader1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Height="22,67718" Left="0" ParentFont="False" Top="71,81107" Width="1084,72511">
+      <TfrxMemoView Name="Memo1" Left="3,77953" Top="2,51968667" Width="49,13389" Height="16,37796333" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" ParentFont="False" Text="Código"/>
+      <TfrxMemoView Name="Memo3" Left="249,44898" Top="3,77953" Width="415,7483" Height="16,37796333" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" ParentFont="False" Text="Descrição Produto"/>
+      <TfrxMemoView Name="Memo4" Left="668,97681" Top="3,77953" Width="64,25201" Height="16,37796333" Text="Localizão"/>
+      <TfrxMemoView Name="Memo2" Left="56,69295" Top="3,77953" Width="188,9765" Height="16,37796333" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" ParentFont="False" Text="Fornecedor"/>
+      <TfrxMemoView Name="Memo5" Left="740,78788" Top="3,77953" Width="79,37013" Height="16,37796333" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" HAlign="haRight" ParentFont="False" WordBreak="True" Text="P.Compra"/>
+      <TfrxMemoView Name="Memo6" Left="827,71707" Top="3,77953" Width="79,37013" Height="16,37796333" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" HAlign="haRight" ParentFont="False" Text="P. Custo"/>
+      <TfrxMemoView Name="Memo7" Left="910,86673" Top="3,77953" Width="79,37013" Height="16,37796333" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" HAlign="haRight" ParentFont="False" Text="Lucro líquido"/>
+      <TfrxMemoView Name="Memo8" Left="994,01639" Top="3,77953" Width="79,37013" Height="16,37796333" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" HAlign="haRight" ParentFont="False" Text="P.Venda"/>
+      <TfrxLineView Name="Line2" Left="0" Top="22,67718" Width="1133,85826772" Height="0" Color="0" Frame.Style="fsDot" Frame.Typ="4"/>
+    </TfrxPageHeader>
+    <TfrxReportTitle Name="ReportTitle1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="30,23624" Left="0" Top="18,89765" Width="1084,72511">
+      <TfrxMemoView Name="Memo9" Left="3,77953" Top="0" Width="1077,16605" Height="22,67718" Font.Charset="1" Font.Color="0" Font.Height="-19" Font.Name="Arial" Font.Style="1" HAlign="haCenter" ParentFont="False" Text="Relatório de produtos com preço custo"/>
+      <TfrxMemoView Name="Memo11" Left="922,62526778" Top="2,51968667" Width="149,92135667" Height="14,69817222" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Style="fsDot" HAlign="haRight" ParentFont="False" Text="Data: [Date]"/>
+    </TfrxReportTitle>
+    <TfrxPageFooter Name="PageFooter1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="22,67718" Left="0" Top="238,11039" Width="1084,72511">
+      <TfrxMemoView Name="frxDBFilialCNPJ" Left="427,08689" Top="0" Width="200,31509" Height="18,89765" DataField="CNPJ" DataSet="frxDBFilial" DataSetName="frxDBFilial" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" ParentFont="False" Text="[frxDBFilial.&#34;CNPJ&#34;]"/>
+      <TfrxMemoView Name="Memo10" Left="873,07143" Top="0" Width="207,87415" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Style="fsDot" HAlign="haRight" ParentFont="False" WordWrap="False" Text="Pag: [&#60;Page&#62;] de [TotalPages#]">
+        <Formats>
+          <item/>
+          <item/>
+        </Formats>
+      </TfrxMemoView>
+      <TfrxMemoView Name="frxDBFilialFILIAL" Left="11,33859" Top="0" Width="400,63018" Height="18,89765" DataField="FILIAL" DataSet="frxDBFilial" DataSetName="frxDBFilial" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" ParentFont="False" Text="[frxDBFilial.&#34;FILIAL&#34;]"/>
+      <TfrxLineView Name="Line1" Left="0" Top="22,67718" Width="1133,85826772" Height="0" Color="0" Frame.Style="fsDot" Frame.Typ="4"/>
+    </TfrxPageFooter>
+  </TfrxReportPage>
+</TfrxReport>

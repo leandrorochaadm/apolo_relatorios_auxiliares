@@ -3,7 +3,7 @@ object frmPrincipal: TfrmPrincipal
   Top = 0
   Caption = 'Apolo Atendimento'
   ClientHeight = 367
-  ClientWidth = 659
+  ClientWidth = 350
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,12 +18,10 @@ object frmPrincipal: TfrmPrincipal
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 659
+    Width = 350
     Height = 50
     Align = alTop
     TabOrder = 0
-    ExplicitLeft = 8
-    ExplicitTop = -5
     object BtnLiberador: TSpeedButton
       Left = 111
       Top = 1
@@ -53,73 +51,130 @@ object frmPrincipal: TfrmPrincipal
   object Panel2: TPanel
     Left = 0
     Top = 50
-    Width = 659
+    Width = 350
     Height = 317
     Align = alClient
     TabOrder = 1
-    ExplicitTop = 41
-    ExplicitHeight = 326
     object pcAtendimento: TPageControl
       Left = 1
       Top = 1
-      Width = 657
+      Width = 348
       Height = 315
       ActivePage = tabRel
       Align = alClient
       TabOrder = 0
       Visible = False
-      ExplicitHeight = 324
       object tabRel: TTabSheet
         Caption = 'Relat'#243'rios'
-        ExplicitHeight = 296
-        object pcRel: TPageControl
-          Left = 0
-          Top = 0
-          Width = 649
-          Height = 287
-          ActivePage = tabProdCusto
-          Align = alClient
+        object lblDataI: TLabel
+          Left = 15
+          Top = 24
+          Width = 53
+          Height = 13
+          Caption = 'Data Inicial'
+        end
+        object lblDataF: TLabel
+          Left = 15
+          Top = 53
+          Width = 48
+          Height = 13
+          Caption = 'Data Final'
+        end
+        object lblPlanoConta: TLabel
+          Left = 15
+          Top = 80
+          Width = 58
+          Height = 13
+          Caption = 'Plano Conta'
+        end
+        object btnDreDet: TButton
+          Left = 80
+          Top = 192
+          Width = 200
+          Height = 25
+          Caption = 'Dre Detelhado'
+          TabOrder = 1
+          OnClick = btnDreDetClick
+        end
+        object Imprimir: TButton
+          Left = 80
+          Top = 130
+          Width = 200
+          Height = 25
+          Caption = 'Vendas Cart'#227'o s/ Cupom'
+          TabOrder = 4
+          OnClick = ImprimirClick
+        end
+        object Button1: TButton
+          Left = 80
+          Top = 99
+          Width = 200
+          Height = 25
+          Caption = 'Produto Pre'#231'o Custo'
+          TabOrder = 5
+          OnClick = Button1Click
+        end
+        object dataI: TDateTimePicker
+          Left = 80
+          Top = 18
+          Width = 200
+          Height = 21
+          Date = 43265.711674386580000000
+          Time = 43265.711674386580000000
           TabOrder = 0
-          object tabProdCusto: TTabSheet
-            Caption = 'Produto Pre'#231'o Custo'
-            ExplicitHeight = 268
-            object Button1: TButton
-              Left = 3
-              Top = 16
-              Width = 75
-              Height = 25
-              Caption = 'Imprimir'
-              TabOrder = 0
-              OnClick = Button1Click
-            end
-          end
-          object tabVendaCartaoSnfce: TTabSheet
-            Caption = 'Vendas Cart'#227'o s/ Cupom'
-            ImageIndex = 1
-            ExplicitHeight = 268
-            object Imprimir: TButton
-              Left = 3
-              Top = 16
-              Width = 75
-              Height = 25
-              Caption = 'Imprimir'
-              TabOrder = 0
-              OnClick = ImprimirClick
-            end
-          end
+        end
+        object dataF: TDateTimePicker
+          Left = 80
+          Top = 45
+          Width = 200
+          Height = 21
+          Date = 43265.711714571760000000
+          Time = 43265.711714571760000000
+          TabOrder = 2
+        end
+        object btnDreRes: TButton
+          Left = 80
+          Top = 161
+          Width = 200
+          Height = 25
+          Caption = 'Dre Resumido'
+          TabOrder = 6
+          OnClick = btnDreResClick
+        end
+        object dblkcbbPlanoConta: TDBLookupComboBox
+          Left = 80
+          Top = 72
+          Width = 200
+          Height = 21
+          KeyField = 'CODIGO'
+          ListField = 'CONTA;CLASSIFICACAO'
+          ListSource = dm.dsPlanoConta
+          TabOrder = 3
+        end
+        object btnLimparFiltro: TButton
+          Left = 262
+          Top = 259
+          Width = 75
+          Height = 25
+          Caption = 'Limpar Filtro'
+          TabOrder = 7
+          OnClick = btnLimparFiltroClick
         end
       end
       object tabBoleto: TTabSheet
         Caption = 'tabBoleto'
         ImageIndex = 1
-        ExplicitHeight = 296
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
       end
     end
   end
   object ExeInfo1: TExeInfo
     Version = '1.2.2.0'
-    Left = 448
-    Top = 192
+    Left = 72
+    Top = 304
   end
   object IdHTTP: TIdHTTP
     AllowCookies = True
@@ -130,7 +185,7 @@ object frmPrincipal: TfrmPrincipal
     Request.BasicAuthentication = False
     Request.UserAgent = 'Mozilla/3.0 (compatible; Indy Library)'
     HTTPOptions = [hoForceEncodeParams]
-    Left = 320
-    Top = 192
+    Left = 24
+    Top = 304
   end
 end

@@ -49,4 +49,31 @@ object dm: Tdm
     Left = 192
     Top = 56
   end
+  object qrPlanoConta: TZQuery
+    Connection = con
+    SQL.Strings = (
+      
+        'select pc.codigo, pc.conta, pc.classificacao from c000035 pc whe' +
+        're pc.conta is not null and pc.conta <>'#39#39' order by pc.conta')
+    Params = <>
+    Left = 256
+    Top = 56
+    object wdstrngfldPlanoContaCODIGO: TWideStringField
+      FieldName = 'CODIGO'
+      Required = True
+      Size = 6
+    end
+    object wdstrngfldPlanoContaCONTA: TWideStringField
+      FieldName = 'CONTA'
+    end
+    object wdstrngfldPlanoContaCLASSIFICACAO: TWideStringField
+      FieldName = 'CLASSIFICACAO'
+      Size = 6
+    end
+  end
+  object dsPlanoConta: TDataSource
+    DataSet = qrPlanoConta
+    Left = 256
+    Top = 112
+  end
 end
