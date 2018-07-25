@@ -7,7 +7,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{FB01362A-6EB7-42FD-871B-C6A90EEC74EB}
 AppName=Auxiliar
-AppVersion=1.6
+AppVersion=1.7
 ;AppVerName=Auxiliar 1.6
 DefaultDirName=C:\apolo\SERVER
 DisableProgramGroupPage=yes

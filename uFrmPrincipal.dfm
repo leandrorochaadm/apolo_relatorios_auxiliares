@@ -30,13 +30,13 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'Controle Licen'#231'a'
       OnClick = BtnLiberadorClick
     end
-    object SpeedButton1: TSpeedButton
+    object btnRelatorio: TSpeedButton
       Left = 0
       Top = 0
       Width = 105
       Height = 49
       Caption = 'Relatorios Extras'
-      OnClick = SpeedButton1Click
+      OnClick = btnRelatorioClick
     end
     object SpeedButton2: TSpeedButton
       Left = 222
@@ -146,6 +146,7 @@ object frmPrincipal: TfrmPrincipal
           Top = 72
           Width = 200
           Height = 21
+          DropDownRows = 15
           KeyField = 'CODIGO'
           ListField = 'CONTA;CLASSIFICACAO'
           ListSource = dm.dsPlanoConta
@@ -164,10 +165,6 @@ object frmPrincipal: TfrmPrincipal
       object tabBoleto: TTabSheet
         Caption = 'tabBoleto'
         ImageIndex = 1
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
       end
     end
   end
@@ -187,5 +184,19 @@ object frmPrincipal: TfrmPrincipal
     HTTPOptions = [hoForceEncodeParams]
     Left = 24
     Top = 304
+  end
+  object IdFTP1: TIdFTP
+    OnWork = IdFTP1Work
+    IPVersion = Id_IPv4
+    AutoLogin = True
+    Host = 'ftp.atomsistem.com.br'
+    Passive = True
+    Password = 'atom2017'
+    TransferType = ftBinary
+    Username = 'atoms053'
+    ProxySettings.ProxyType = fpcmNone
+    ProxySettings.Port = 0
+    Left = 112
+    Top = 312
   end
 end

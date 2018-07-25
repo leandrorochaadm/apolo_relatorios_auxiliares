@@ -12,7 +12,7 @@ object dmRel: TdmRel
     PrintOptions.Printer = 'Padr'#227'o'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 43250.638496331000000000
-    ReportOptions.LastChange = 43258.712848576400000000
+    ReportOptions.LastChange = 43292.676422685200000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -28,6 +28,10 @@ object dmRel: TdmRel
       item
         DataSet = frxDBFilial
         DataSetName = 'frxDBFilial'
+      end
+      item
+        DataSet = frxDBRelatorio
+        DataSetName = 'frxDBRelatorio'
       end>
     Variables = <>
     Style = <>
@@ -48,7 +52,7 @@ object dmRel: TdmRel
       object MasterData1: TfrxMasterData
         FillType = ftBrush
         Height = 22.677180000000000000
-        Top = 154.960730000000000000
+        Top = 166.299320000000000000
         Width = 1084.725110000000000000
         DataSet = frDBprodCusto
         DataSetName = 'dsRelProdCusto'
@@ -186,7 +190,7 @@ object dmRel: TdmRel
         Font.Style = [fsBold]
         Height = 22.677180000000000000
         ParentFont = False
-        Top = 71.811070000000000000
+        Top = 83.149660000000000000
         Width = 1084.725110000000000000
         object Memo1: TfrxMemoView
           Left = 3.779530000000000000
@@ -309,7 +313,7 @@ object dmRel: TdmRel
       end
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
-        Height = 30.236240000000000000
+        Height = 41.574830000000000000
         Top = 18.897650000000000000
         Width = 1084.725110000000000000
         object Memo9: TfrxMemoView
@@ -327,26 +331,62 @@ object dmRel: TdmRel
           ParentFont = False
         end
         object Memo11: TfrxMemoView
-          Left = 922.625267780000000000
+          Left = 918.845737780000000000
           Top = 2.519686670000000000
-          Width = 149.921356670000000000
+          Width = 157.480416670000000000
           Height = 14.698172220000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Style = fsDot
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Emiss'#227'o: [Date]')
+          ParentFont = False
+        end
+        object frxDBRelatorioLINHA2: TfrxMemoView
+          Left = 340.157700000000000000
+          Top = 18.897650000000000000
+          Width = 400.630180000000000000
+          Height = 18.897650000000000000
+          DataField = 'LINHA2'
+          DataSet = frxDBRelatorio
+          DataSetName = 'frxDBRelatorio'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
           Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Frame.Style = fsDot
+          Font.Style = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxDBRelatorio."LINHA2"]')
+          ParentFont = False
+        end
+        object frxDBRelatorioLINHA3: TfrxMemoView
+          Left = 925.984850000000000000
+          Top = 18.897650000000000000
+          Width = 151.181200000000000000
+          Height = 18.897650000000000000
+          DataField = 'LINHA3'
+          DataSet = frxDBRelatorio
+          DataSetName = 'frxDBRelatorio'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
-            'Data: [Date]')
+            '[frxDBRelatorio."LINHA3"]')
           ParentFont = False
         end
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
         Height = 22.677180000000000000
-        Top = 238.110390000000000000
+        Top = 249.448980000000000000
         Width = 1084.725110000000000000
         object frxDBFilialCNPJ: TfrxMemoView
           Left = 427.086890000000000000
@@ -430,10 +470,33 @@ object dmRel: TdmRel
         'ro_liq, f.precovenda'
       ' FROM C000025 F'
       ' LEFT JOIN C000009 J ON (F.codfornecedor=J.codigo)'
-      ' left join c000026 c on (c.codproduto =f.codigo)')
-    Params = <>
+      ' left join c000026 c on (c.codproduto =f.codigo)'
+      ''
+      'WHERE F.data_ultimacompra between :dataI and :dataF')
+    Params = <
+      item
+        DataType = ftUnknown
+        Name = 'dataI'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'dataF'
+        ParamType = ptUnknown
+      end>
     Left = 96
     Top = 16
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'dataI'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'dataF'
+        ParamType = ptUnknown
+      end>
   end
   object dsRelProdCusto: TDataSource
     DataSet = qrRelProdCusto
@@ -776,7 +839,7 @@ object dmRel: TdmRel
     PrintOptions.Printer = 'Padr'#227'o'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 43265.621622812500000000
-    ReportOptions.LastChange = 43287.696858020830000000
+    ReportOptions.LastChange = 43306.431513518500000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -959,6 +1022,16 @@ object dmRel: TdmRel
           DataSetName = 'frxDBdre'
           Memo.UTF8W = (
             '[frxDBdre."HISTORICO"]')
+        end
+        object frxDBdreDATA: TfrxMemoView
+          Left = 11.338590000000000000
+          Width = 143.622140000000000000
+          Height = 18.897650000000000000
+          DataField = 'DATA'
+          DataSet = frxDBdre
+          DataSetName = 'frxDBdre'
+          Memo.UTF8W = (
+            '[frxDBdre."DATA"]')
         end
       end
       object GroupFooter1: TfrxGroupFooter
