@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2018/07/09 17:23:06.231.pas,C:\Users\Leandro\Documents\RAD Studio\Projects\Unit1.pas=C:\Users\Leandro\Documents\Delphi\projetos\atendimento\Auxiliar_atualizar.pas</Transaction>
+    <Transaction>2018/07/09 17:23:06.231.dfm,C:\Users\Leandro\Documents\RAD Studio\Projects\Unit1.dfm=C:\Users\Leandro\Documents\Delphi\projetos\atendimento\Auxiliar_atualizar.dfm</Transaction>
+    <Transaction>2018/07/09 17:23:47.871.dproj,C:\Users\Leandro\Documents\RAD Studio\Projects\Project1.dproj=C:\Users\Leandro\Documents\Delphi\projetos\atendimento\Auxiliar_atualizacao.dproj</Transaction>
+    <Transaction>2018/07/09 17:25:24.693.pas,C:\Users\Leandro\Documents\Delphi\projetos\atendimento\Auxiliar_atualizar.pas=C:\Users\Leandro\Documents\Delphi\projetos\atendimento\atualizar_uFrmPrincipal.pas</Transaction>
+    <Transaction>2018/07/09 17:25:24.693.dfm,C:\Users\Leandro\Documents\Delphi\projetos\atendimento\Auxiliar_atualizar.dfm=C:\Users\Leandro\Documents\Delphi\projetos\atendimento\atualizar_uFrmPrincipal.dfm</Transaction>
+    <Transaction>2018/07/09 17:25:35.865.dproj,C:\Users\Leandro\Documents\Delphi\projetos\atendimento\Auxiliar_atualizacao.dproj=C:\Users\Leandro\Documents\Delphi\projetos\atendimento\Auxiliar_atualizar.dproj</Transaction>
+    <Transaction>2018/07/09 17:26:18.975.dproj,C:\Users\Leandro\Documents\Delphi\projetos\atendimento\Auxiliar_atualizar.dproj=C:\Users\Leandro\Documents\Delphi\projetos\atendimento\atualizar_Auxiliar.dproj</Transaction>
+  </Transactions>
+</BorlandProject>

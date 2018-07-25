@@ -1,0 +1,48 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{2B14F141-A94E-46D0-AEDC-ED1DA11CA64D}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="Auxiliar.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="atualizar_Auxiliar.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="Auxiliar">
+			<MSBuild Projects="Auxiliar.dproj"/>
+		</Target>
+		<Target Name="Auxiliar:Clean">
+			<MSBuild Targets="Clean" Projects="Auxiliar.dproj"/>
+		</Target>
+		<Target Name="Auxiliar:Make">
+			<MSBuild Targets="Make" Projects="Auxiliar.dproj"/>
+		</Target>
+		<Target Name="atualizar_Auxiliar">
+			<MSBuild Projects="atualizar_Auxiliar.dproj"/>
+		</Target>
+		<Target Name="atualizar_Auxiliar:Clean">
+			<MSBuild Targets="Clean" Projects="atualizar_Auxiliar.dproj"/>
+		</Target>
+		<Target Name="atualizar_Auxiliar:Make">
+			<MSBuild Targets="Make" Projects="atualizar_Auxiliar.dproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="Auxiliar;atualizar_Auxiliar"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="Auxiliar:Clean;atualizar_Auxiliar:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="Auxiliar:Make;atualizar_Auxiliar:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>

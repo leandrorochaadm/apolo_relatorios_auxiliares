@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2018/05/29 11:53:34.137.pas,C:\Users\Leandro\Documents\RAD Studio\Projects\Unit2.pas=C:\pessoal\Documents\Delphi\projetos\liberador\uDM.pas</Transaction>
+    <Transaction>2018/05/29 11:53:34.137.dfm,C:\Users\Leandro\Documents\RAD Studio\Projects\Unit2.dfm=C:\pessoal\Documents\Delphi\projetos\liberador\uDM.dfm</Transaction>
+    <Transaction>2018/05/29 11:53:58.060.pas,C:\Users\Leandro\Documents\RAD Studio\Projects\Unit1.pas=C:\pessoal\Documents\Delphi\projetos\liberador\uFrmPrincipal.pas</Transaction>
+    <Transaction>2018/05/29 11:53:58.060.dfm,C:\Users\Leandro\Documents\RAD Studio\Projects\Unit1.dfm=C:\pessoal\Documents\Delphi\projetos\liberador\uFrmPrincipal.dfm</Transaction>
+    <Transaction>2018/05/29 11:54:03.389.dproj,C:\Users\Leandro\Documents\RAD Studio\Projects\Project1.dproj=C:\pessoal\Documents\Delphi\projetos\liberador\Liberador.dproj</Transaction>
+    <Transaction>2018/05/29 12:01:19.968.pas,C:\pessoal\Documents\Delphi\projetos\liberador\Unit1.pas=C:\pessoal\Documents\Delphi\projetos\liberador\uFrmLiberador.pas</Transaction>
+    <Transaction>2018/05/29 12:01:19.968.dfm,C:\pessoal\Documents\Delphi\projetos\liberador\Unit1.dfm=C:\pessoal\Documents\Delphi\projetos\liberador\uFrmLiberador.dfm</Transaction>
+    <Transaction>2018/05/30 15:57:10.920.pas,C:\pessoal\Documents\Delphi\projetos\liberador\Unit1.pas=C:\pessoal\Documents\Delphi\projetos\liberador\uDmRel.pas</Transaction>
+    <Transaction>2018/05/30 15:57:10.920.dfm,C:\pessoal\Documents\Delphi\projetos\liberador\Unit1.dfm=C:\pessoal\Documents\Delphi\projetos\liberador\uDmRel.dfm</Transaction>
+    <Transaction>2018/05/30 16:09:03.405.dproj,C:\pessoal\Documents\Delphi\projetos\liberador\Liberador.dproj=C:\pessoal\Documents\Delphi\projetos\liberador\Atendimento.dproj</Transaction>
+    <Transaction>2018/07/09 15:51:42.470.dproj,C:\Users\Leandro\Documents\Delphi\projetos\atendimento\Atendimento.dproj=C:\Users\Leandro\Documents\Delphi\projetos\atendimento\Auxiliar.dproj</Transaction>
+  </Transactions>
+</BorlandProject>
