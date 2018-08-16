@@ -839,7 +839,7 @@ object dmRel: TdmRel
     PrintOptions.Printer = 'Padr'#227'o'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 43265.621622812500000000
-    ReportOptions.LastChange = 43306.431513518500000000
+    ReportOptions.LastChange = 43306.684248055560000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -932,7 +932,7 @@ object dmRel: TdmRel
         Top = 347.716760000000000000
         Width = 718.110700000000000000
         object Memo1: TfrxMemoView
-          Left = 226.771800000000000000
+          Left = 11.338590000000000000
           Width = 75.590600000000000000
           Height = 18.897650000000000000
           HAlign = haRight
@@ -943,6 +943,34 @@ object dmRel: TdmRel
             end
             item
             end>
+        end
+        object Memo9: TfrxMemoView
+          Left = 257.008040000000000000
+          Top = 3.779530000000000000
+          Width = 294.803340000000000000
+          Height = 18.897650000000000000
+          DataField = 'LINHA2'
+          DataSet = frxDBRelatorio
+          DataSetName = 'frxDBRelatorio'
+          Memo.UTF8W = (
+            '[frxDBRelatorio."LINHA2"]')
+        end
+        object Memo10: TfrxMemoView
+          Left = 574.488560000000000000
+          Top = 3.779530000000000000
+          Width = 166.299320000000000000
+          Height = 18.897650000000000000
+          DataField = 'LINHA3'
+          DataSet = frxDBRelatorio
+          DataSetName = 'frxDBRelatorio'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -9
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            '[frxDBRelatorio."LINHA3"]')
+          ParentFont = False
         end
       end
       object GroupHeader1: TfrxGroupHeader
@@ -1243,7 +1271,7 @@ object dmRel: TdmRel
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 39181.615094942100000000
-    ReportOptions.LastChange = 43287.669126585650000000
+    ReportOptions.LastChange = 43306.683294548610000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -1470,7 +1498,7 @@ object dmRel: TdmRel
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
-        Height = 22.677180000000000000
+        Height = 26.456710000000000000
         Top = 347.716760000000000000
         Width = 740.409927000000000000
         object Line3: TfrxLineView
@@ -1478,6 +1506,42 @@ object dmRel: TdmRel
           Width = 740.787880000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
+        end
+        object Memo4: TfrxMemoView
+          Left = 3.779530000000000000
+          Top = 7.559060000000000000
+          Width = 302.362400000000000000
+          Height = 18.897650000000000000
+          DataField = 'LINHA2'
+          DataSet = frxDBRelatorio
+          DataSetName = 'frxDBRelatorio'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxDBRelatorio."LINHA2"]')
+          ParentFont = False
+        end
+        object Memo7: TfrxMemoView
+          Left = 483.779840000000000000
+          Top = 7.559060000000000000
+          Width = 113.385900000000000000
+          Height = 18.897650000000000000
+          DataField = 'LINHA3'
+          DataSet = frxDBRelatorio
+          DataSetName = 'frxDBRelatorio'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -9
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[frxDBRelatorio."LINHA3"]')
+          ParentFont = False
         end
       end
       object GroupHeader1: TfrxGroupHeader

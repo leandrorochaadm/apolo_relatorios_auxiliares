@@ -76,4 +76,13 @@ object dm: Tdm
     Left = 256
     Top = 112
   end
+  object qrCommon: TZQuery
+    Connection = con
+    Active = True
+    SQL.Strings = (
+      'select * from l000003')
+    Params = <>
+    Left = 272
+    Top = 240
+  end
 end

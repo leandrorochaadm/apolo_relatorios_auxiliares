@@ -56,6 +56,7 @@ type
     procedure AtualizarVersao;
     procedure ReiniciarAplicacao;
     function testarInternet:Boolean;
+    procedure verificarBaixarCartao;
 
   private
     { Private declarations }
@@ -609,6 +610,8 @@ begin
   tabRel.TabVisible := True;
   tabBoleto.TabVisible := False;
 
+  verificarBaixarCartao;
+
  if testarInternet = True then AtualizarVersao;
 
 end;
@@ -640,6 +643,16 @@ begin
     Result:=False;
     ShowMessage('Não tem internet, não será possivel acessar o controle de licença');
   end;
+end;
+
+procedure TfrmPrincipal.verificarBaixarCartao;
+begin
+///
+    dm.qrCommon.Close;
+    dm.qrCommon.SQL.Clear;
+    dm.qrCommon.SQL.Text := 'UPDATE c000042 C set C.codconta=''000013'' where c.codconta is null and ((c.historico like ''%BAIXA DE CARTAO%'')  or ( c.historico like ''DEPOSITO EM CHEQUE''))';
+
+    dm.qrCommon.ExecSQL;
 end;
 
 procedure TfrmPrincipal.versaoRelatorio;

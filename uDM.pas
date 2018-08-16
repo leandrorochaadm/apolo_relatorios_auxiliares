@@ -18,6 +18,7 @@ type
     wdstrngfldPlanoContaCODIGO: TWideStringField;
     wdstrngfldPlanoContaCONTA: TWideStringField;
     wdstrngfldPlanoContaCLASSIFICACAO: TWideStringField;
+    qrCommon: TZQuery;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
