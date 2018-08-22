@@ -57,6 +57,8 @@ type
     procedure ReiniciarAplicacao;
     function testarInternet:Boolean;
     procedure verificarBaixarCartao;
+    procedure atualizarContasCaixa(movimento, conta:Integer);
+    function zerarcodigo(codigo:string;qtde:integer):string;
 
   private
     { Private declarations }
@@ -86,6 +88,7 @@ end;
 procedure TfrmPrincipal.btnLimparFiltroClick(Sender: TObject);
 begin
   LimparFiltros;
+//  atualizarContasCaixa(3,7);
 end;
 
 procedure TfrmPrincipal.Button1Click(Sender: TObject);
@@ -122,6 +125,8 @@ begin
     PrepareReport(True);
     ShowReport;
   end;
+
+
 
 end;
 
@@ -254,6 +259,31 @@ begin
     PrepareReport(True);
     ShowReport;
   end;
+end;
+
+
+
+procedure TfrmPrincipal.atualizarContasCaixa(movimento, conta: Integer);
+var
+planoConta:string;
+begin
+planoConta:='';
+
+    planoConta := zerarcodigo(IntToStr(conta),6);
+//    ShowMessage(planoConta);
+
+    dm.qrCommon.Close;
+    dm.qrCommon.SQL.Clear;
+    dm.qrCommon.SQL.Add('UPDATE c000044 C set C.codconta=');
+    dm.qrCommon.SQL.Add(QuotedStr(planoConta));
+    dm.qrCommon.SQL.Add('where c.movimento is not null and c.movimento= ');
+    dm.qrCommon.SQL.Add(IntToStr(movimento));
+    dm.qrCommon.SQL.Add(' and c.codconta <> ');
+    dm.qrCommon.SQL.Add(QuotedStr(planoConta));
+
+//    ShowMessage(dm.qrCommon.SQL.Text);
+
+    dm.qrCommon.ExecSQL;
 end;
 
 procedure TfrmPrincipal.AtualizarNumeroVersao;
@@ -477,6 +507,9 @@ begin
   if dm.qrClienteWeb.FieldByName('Bloqueado').Value = 'NAO' then
     BtnLiberador.Visible := True;
 
+
+
+
 end;
 
 procedure TfrmPrincipal.IdFTP1Work(ASender: TObject; AWorkMode: TWorkMode;
@@ -614,6 +647,15 @@ begin
 
  if testarInternet = True then AtualizarVersao;
 
+  atualizarContasCaixa(3,7);
+  atualizarContasCaixa(4,8);
+  atualizarContasCaixa(5,7);
+  atualizarContasCaixa(6,8);
+  atualizarContasCaixa(7,8);
+  atualizarContasCaixa(8,7);
+  atualizarContasCaixa(11,13);
+//  atualizarContasCaixa();
+
 end;
 
 procedure TfrmPrincipal.SpeedButton2Click(Sender: TObject);
@@ -661,6 +703,12 @@ begin
   DmRel.qrrelatorio.Edit;
   DmRel.qrrelatorio.FieldByName('LINHA3').AsString :=
     'Versão: ' + ExeInfo1.FileVersion;
+end;
+
+function TfrmPrincipal.zerarcodigo(codigo: string; qtde: integer): string;
+begin
+  while length(codigo) < qtde do codigo := '0'+codigo;
+  result := codigo;
 end;
 
 end.
