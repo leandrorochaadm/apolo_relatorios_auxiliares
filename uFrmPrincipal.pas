@@ -59,6 +59,8 @@ type
     procedure verificarBaixarCartao;
     procedure atualizarContasCaixa(movimento, conta:Integer);
     function zerarcodigo(codigo:string;qtde:integer):string;
+    procedure novoPlanoConta;
+    procedure qrcommonExec(sqlComand: string);
 
   private
     { Private declarations }
@@ -555,6 +557,43 @@ begin
   dataF.Date := Date; // StrToDate('31/05/2018');
 end;
 
+procedure TfrmPrincipal.novoPlanoConta;
+begin
+qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000100'',''IMPLANTAÇÃO DE SALDO'',1,''1.01.101'',''000006'', 3); ');
+qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000101'',''LANCTO. ENTRADA'',1,''1.01.102'',''000006'', 3); ');
+qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000102'',''LANCTO. SAÍDA'',1,''1.01.103'',''000006'', 3); ');
+qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000103'',''VENDA DINHEIRO'',1,''1.01.104'',''000006'', 3); ');
+qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000104'',''VENDA CREDIÁRIO'',1,''1.01.105'',''000006'', 3); ');
+qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000105'',''VENDA CHEQUE À VISTA'',1,''1.01.106'',''000006'', 3); ');
+qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000106'',''VENDA CHEQUE À PRAZO'',1,''1.01.107'',''000006'', 3); ');
+qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000107'',''VENDA CARTÃO CRÉDITO'',1,''1.01.108'',''000006'', 3); ');
+qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000108'',''VENDA CARTÃO DÉBITO'',1,''1.01.109'',''000006'', 3); ');
+qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000109'',''RECEBTO. DINHEIRO'',1,''1.02.101'',''000006'', 3); ');
+qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000110'',''RECEBTO. CHEQUE A.V.'',1,''1.02.102'',''000006'', 3); ');
+qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000111'',''RECEBTO. CHEQUE A.P.'',1,''1.02.103'',''000006'', 3); ');
+qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000112'',''RECEBTO. CARTAO'',1,''1.02.104'',''000006'', 3); ');
+qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000113'',''RECEBTO. JUROS'',1,''1.02.105'',''000006'', 3); ');
+qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000114'',''DESCONTO NO RECEBTO'',1,''1.02.106'',''000006'', 3); ');
+qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000115'',''RECEBTO. BOLETO'',1,''1.02.107'',''000006'', 3); ');
+qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000116'',''OUTRAS ENTRADAS'',1,''1.02.108'',''000006'', 3); ');
+qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000117'',''OUTRAS SAÍDAS'',1,''1.02.109'',''000006'', 3); ');
+qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000118'',''O.S. DINHEIRO'',1,''1.03.101'',''000006'', 3); ');
+qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000119'',''O.S. CREDIÁRIO'',1,''1.03.102'',''000006'', 3); ');
+qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000120'',''O.S. CHEQUE À VISTA'',1,''1.03.103'',''000006'', 3); ');
+qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000121'',''O.S. CHEQUE À PRAZO'',1,''1.03.104'',''000006'', 3); ');
+qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000122'',''O.S. CARTÃO CRÉDITO'',1,''1.03.105'',''000006'', 3); ');
+qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000123'',''O.S. CARTÃO DÉBITO'',1,''1.03.106'',''000006'', 3); ');
+qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000125'',''PAGTO - CAIXA'',2,''2.01.101'',''000006'', 3); ');
+qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000126'',''PAGTO - BANCO'',2,''2.01.102'',''000006'', 3); ');
+qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000127'',''PAGTO - CHEQUE TERC.'',2,''2.01.103'',''000006'', 3); ');
+qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000140'',''VENDA CONVÊNIO'',1,''1.01.110'',''000006'', 3); ');
+qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000141'',''VENDA CONVÊNIO VIDALINK'',1,''1.01.111'',''000006'', 3); ');
+qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000142'',''VENDA FINANCEIRA'',1,''1.01.112'',''000006'', 3); ');
+
+
+end;
+
+
 function TfrmPrincipal.ObterDiretorioDoExecutavel: string;
 begin
   result := ExtractFilePath(Application.ExeName);
@@ -628,6 +667,24 @@ begin
 
 end;
 
+
+
+procedure TfrmPrincipal.qrcommonExec(sqlComand: string);
+begin
+with dm.qrCommon do
+begin
+Close;
+SQL.Clear;
+
+SQL.Text := sqlComand ;
+
+//Prepare;
+ExecSQL;
+//CommitUpdates;
+//ShowMessage(SQL.Text);
+end;
+end;
+
 procedure TfrmPrincipal.ReiniciarAplicacao;
 begin
   ShowMessage
@@ -647,13 +704,40 @@ begin
 
  if testarInternet = True then AtualizarVersao;
 
-  atualizarContasCaixa(3,7);
-  atualizarContasCaixa(4,8);
-  atualizarContasCaixa(5,7);
-  atualizarContasCaixa(6,8);
-  atualizarContasCaixa(7,8);
-  atualizarContasCaixa(8,7);
-  atualizarContasCaixa(11,13);
+ //add na versao 1.7.5
+ //novo plano de contas com
+  novoPlanoConta;
+atualizarContasCaixa(0,100);
+atualizarContasCaixa(1,101);
+atualizarContasCaixa(2,102);
+atualizarContasCaixa(3,103);
+atualizarContasCaixa(4,104);
+atualizarContasCaixa(5,105);
+atualizarContasCaixa(6,106);
+atualizarContasCaixa(7,107);
+atualizarContasCaixa(8,108);
+atualizarContasCaixa(9,109);
+atualizarContasCaixa(10,110);
+atualizarContasCaixa(11,111);
+atualizarContasCaixa(12,112);
+atualizarContasCaixa(13,113);
+atualizarContasCaixa(14,114);
+atualizarContasCaixa(15,115);
+atualizarContasCaixa(16,116);
+atualizarContasCaixa(17,117);
+atualizarContasCaixa(18,118);
+atualizarContasCaixa(19,119);
+atualizarContasCaixa(20,120);
+atualizarContasCaixa(21,121);
+atualizarContasCaixa(22,122);
+atualizarContasCaixa(23,123);
+atualizarContasCaixa(25,125);
+atualizarContasCaixa(26,126);
+atualizarContasCaixa(27,127);
+atualizarContasCaixa(40,140);
+atualizarContasCaixa(41,141);
+atualizarContasCaixa(42,142);
+
 //  atualizarContasCaixa();
 
 end;
