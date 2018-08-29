@@ -1,7 +1,7 @@
 object frmPrincipal: TfrmPrincipal
   Left = 0
   Top = 0
-  Caption = 'Apolo Atendimento'
+  Caption = 'Auxiliar Apolo'
   ClientHeight = 367
   ClientWidth = 350
   Color = clBtnFace
