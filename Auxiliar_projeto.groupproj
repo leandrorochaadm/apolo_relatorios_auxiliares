@@ -9,6 +9,9 @@
 			<Projects Include="atualizar_Auxiliar.dproj">
 				<Dependencies/>
 			</Projects>
+			<Projects Include="update_auxliar.dproj">
+				<Dependencies/>
+			</Projects>
 		</ItemGroup>
 		<ProjectExtensions>
 			<Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -35,14 +38,23 @@
 		<Target Name="atualizar_Auxiliar:Make">
 			<MSBuild Targets="Make" Projects="atualizar_Auxiliar.dproj"/>
 		</Target>
+		<Target Name="update_auxliar">
+			<MSBuild Projects="update_auxliar.dproj"/>
+		</Target>
+		<Target Name="update_auxliar:Clean">
+			<MSBuild Targets="Clean" Projects="update_auxliar.dproj"/>
+		</Target>
+		<Target Name="update_auxliar:Make">
+			<MSBuild Targets="Make" Projects="update_auxliar.dproj"/>
+		</Target>
 		<Target Name="Build">
-			<CallTarget Targets="Auxiliar;atualizar_Auxiliar"/>
+			<CallTarget Targets="Auxiliar;atualizar_Auxiliar;update_auxliar"/>
 		</Target>
 		<Target Name="Clean">
-			<CallTarget Targets="Auxiliar:Clean;atualizar_Auxiliar:Clean"/>
+			<CallTarget Targets="Auxiliar:Clean;atualizar_Auxiliar:Clean;update_auxliar:Clean"/>
 		</Target>
 		<Target Name="Make">
-			<CallTarget Targets="Auxiliar:Make;atualizar_Auxiliar:Make"/>
+			<CallTarget Targets="Auxiliar:Make;atualizar_Auxiliar:Make;update_auxliar:Make"/>
 		</Target>
 		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 	</Project>

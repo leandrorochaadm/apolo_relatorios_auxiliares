@@ -5,7 +5,6 @@ object dm: Tdm
   Width = 668
   object con: TZConnection
     ControlsCodePage = cCP_UTF16
-    Connected = True
     HostName = 'localhost'
     Port = 3050
     Database = 'C:\APOLO\BD\base.FDB'
@@ -17,7 +16,6 @@ object dm: Tdm
   end
   object qrFilial: TZQuery
     Connection = con
-    Active = True
     SQL.Strings = (
       'select filial, cnpj from c000004')
     Params = <>
@@ -78,7 +76,6 @@ object dm: Tdm
   end
   object qrCommon: TZQuery
     Connection = con
-    Active = True
     SQL.Strings = (
       'select * from l000003')
     Params = <>

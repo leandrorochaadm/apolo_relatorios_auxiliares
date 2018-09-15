@@ -61,7 +61,7 @@ type
     function zerarcodigo(codigo:string;qtde:integer):string;
     procedure novoPlanoConta;
     procedure qrcommonExec(sqlComand: string);
-
+    procedure converterPlanoConta;
   private
     { Private declarations }
     FnTamanhoTotal: integer;
@@ -147,6 +147,43 @@ begin
       result := False;
     end;
   end;
+end;
+
+procedure TfrmPrincipal.converterPlanoConta;
+begin
+  novoPlanoConta;
+atualizarContasCaixa(0,100);
+atualizarContasCaixa(1,101);
+atualizarContasCaixa(2,102);
+atualizarContasCaixa(3,103);
+atualizarContasCaixa(4,104);
+atualizarContasCaixa(5,105);
+atualizarContasCaixa(6,106);
+atualizarContasCaixa(7,107);
+atualizarContasCaixa(8,108);
+atualizarContasCaixa(9,109);
+atualizarContasCaixa(10,110);
+atualizarContasCaixa(11,111);
+atualizarContasCaixa(12,112);
+atualizarContasCaixa(13,113);
+atualizarContasCaixa(14,114);
+atualizarContasCaixa(15,115);
+atualizarContasCaixa(16,116);
+atualizarContasCaixa(17,117);
+atualizarContasCaixa(18,118);
+atualizarContasCaixa(19,119);
+atualizarContasCaixa(20,120);
+atualizarContasCaixa(21,121);
+atualizarContasCaixa(22,122);
+atualizarContasCaixa(23,123);
+//atualizarContasCaixa(25,125);
+//atualizarContasCaixa(26,126);
+//atualizarContasCaixa(27,127);
+atualizarContasCaixa(40,140);
+atualizarContasCaixa(41,141);
+atualizarContasCaixa(42,142);
+
+//  atualizarContasCaixa();
 end;
 
 procedure TfrmPrincipal.DescompactarAtualizacao;
@@ -706,39 +743,7 @@ begin
 
  //add na versao 1.7.5
  //novo plano de contas com
-  novoPlanoConta;
-atualizarContasCaixa(0,100);
-atualizarContasCaixa(1,101);
-atualizarContasCaixa(2,102);
-atualizarContasCaixa(3,103);
-atualizarContasCaixa(4,104);
-atualizarContasCaixa(5,105);
-atualizarContasCaixa(6,106);
-atualizarContasCaixa(7,107);
-atualizarContasCaixa(8,108);
-atualizarContasCaixa(9,109);
-atualizarContasCaixa(10,110);
-atualizarContasCaixa(11,111);
-atualizarContasCaixa(12,112);
-atualizarContasCaixa(13,113);
-atualizarContasCaixa(14,114);
-atualizarContasCaixa(15,115);
-atualizarContasCaixa(16,116);
-atualizarContasCaixa(17,117);
-atualizarContasCaixa(18,118);
-atualizarContasCaixa(19,119);
-atualizarContasCaixa(20,120);
-atualizarContasCaixa(21,121);
-atualizarContasCaixa(22,122);
-atualizarContasCaixa(23,123);
-//atualizarContasCaixa(25,125);
-//atualizarContasCaixa(26,126);
-//atualizarContasCaixa(27,127);
-atualizarContasCaixa(40,140);
-atualizarContasCaixa(41,141);
-atualizarContasCaixa(42,142);
-
-//  atualizarContasCaixa();
+ converterPlanoConta;
 
 end;
 

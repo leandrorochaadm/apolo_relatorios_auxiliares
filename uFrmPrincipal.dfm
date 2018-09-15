@@ -28,11 +28,12 @@ object frmPrincipal: TfrmPrincipal
       Width = 105
       Height = 49
       Caption = 'Controle Licen'#231'a'
+      Transparent = False
       OnClick = BtnLiberadorClick
     end
     object btnRelatorio: TSpeedButton
       Left = 0
-      Top = 0
+      Top = -4
       Width = 105
       Height = 49
       Caption = 'Relatorios Extras'
