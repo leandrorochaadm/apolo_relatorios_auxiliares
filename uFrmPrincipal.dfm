@@ -33,7 +33,7 @@ object frmPrincipal: TfrmPrincipal
     end
     object btnRelatorio: TSpeedButton
       Left = 0
-      Top = -4
+      Top = 1
       Width = 105
       Height = 49
       Caption = 'Relatorios Extras'

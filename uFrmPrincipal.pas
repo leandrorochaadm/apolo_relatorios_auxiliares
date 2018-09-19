@@ -537,7 +537,7 @@ begin
       ('FILIAL').AsString;
     dm.qrClienteWeb.ParamByName('cpf_cnpj').AsString := dm.qrFilial.FieldByName
       ('cnpj').AsString;
-    dm.qrClienteWeb.ParamByName('Bloqueado').AsString := 'SIM';
+    dm.qrClienteWeb.ParamByName('Bloqueado').AsString := 'NAO';
 
     dm.qrClienteWeb.ExecSQL;
 
