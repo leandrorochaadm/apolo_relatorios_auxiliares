@@ -7,11 +7,11 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{FB01362A-6EB7-42FD-871B-C6A90EEC74EB}
 AppName=Auxiliar
-AppVersion=1.7
-;AppVerName=Auxiliar 1.6
+AppVersion=1.7.7
+AppVerName=Auxiliar 1.7.7
 DefaultDirName=C:\apolo\SERVER
 DisableProgramGroupPage=yes
-OutputDir=C:\Users\Leandro\Documents\Delphi\projetos\atendimento\setup\
+OutputDir=D:\Delphi\projetos\atendimento\setup\
 OutputBaseFilename=lib
 Compression=lzma
 SolidCompression=yes
@@ -24,7 +24,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 Source: "C:\apolo\SERVER\auxiliar.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Leandro\Documents\Delphi\projetos\atendimento\bin\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "D:\Delphi\projetos\atendimento\bin\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

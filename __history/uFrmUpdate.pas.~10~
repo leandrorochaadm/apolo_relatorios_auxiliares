@@ -43,7 +43,7 @@ begin
 
   // armazena o nome do arquivo de atualização em uma variável
   sNomeArquivoCompactado := ObterDiretorioDoExecutavel + 'setup/lib.7z';
-  sDiretorioCompactar := ObterDiretorioDoExecutavel + 'bin\*';
+  sDiretorioCompactar := ObterDiretorioDoExecutavel + 'bin';
 
   mmo1.Lines.Add(TimeToStr(Now) +
       ' - Inicio da compactação do arquivo de atualização');
@@ -56,10 +56,10 @@ begin
       PWideChar(' a -r ' + sNomeArquivoCompactado + ' ' + sDiretorioCompactar),' ', SW_SHOW);
 //      pause
   finally
-//    mmo1.Lines.Add(TimeToStr(Now) +
-//        ' - Fim da compactação do arquivo de atualização');
-//
-//     mmo1.Lines.Add(TimeToStr(Now)+' - arquivo:' + sNomeArquivoCompactado);
+    mmo1.Lines.Add(TimeToStr(Now) +
+        ' - Fim da compactação do arquivo de atualização');
+
+     mmo1.Lines.Add(TimeToStr(Now)+' - arquivo:' + sNomeArquivoCompactado);
   end;
 
 end;
