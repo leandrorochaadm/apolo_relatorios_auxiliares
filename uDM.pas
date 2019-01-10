@@ -4,7 +4,10 @@ interface
 
 uses
   SysUtils, Classes, ZAbstractConnection, ZConnection, DB, ZAbstractRODataset,
-  ZAbstractDataset, ZDataset;
+  ZAbstractDataset, ZDataset, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.FB,
+  FireDAC.Phys.FBDef, FireDAC.VCLUI.Wait, FireDAC.Comp.Client;
 
 type
   Tdm = class(TDataModule)
@@ -19,6 +22,7 @@ type
     wdstrngfldPlanoContaCONTA: TWideStringField;
     wdstrngfldPlanoContaCLASSIFICACAO: TWideStringField;
     qrCommon: TZQuery;
+    conn: TFDConnection;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

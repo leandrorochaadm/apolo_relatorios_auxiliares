@@ -4,7 +4,10 @@ interface
 
 uses
   SysUtils, Classes, DB, ZAbstractRODataset, ZAbstractDataset, ZDataset,
-  frxClass, frxDBSet;
+  frxClass, frxDBSet, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client;
 
 type
   TdmRel = class(TDataModule)
@@ -28,6 +31,9 @@ type
     QrRelatorio: TZQuery;
     frxDBRelatorio: TfrxDBDataset;
     DsRelatorio: TDataSource;
+    qrVendaMensal: TFDQuery;
+    frxDBVendaMensal: TfrxDBDataset;
+    frxVendaMensal: TfrxReport;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

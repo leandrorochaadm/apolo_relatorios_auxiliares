@@ -5,6 +5,8 @@ object dm: Tdm
   Width = 668
   object con: TZConnection
     ControlsCodePage = cCP_UTF16
+    Catalog = ''
+    Connected = True
     HostName = 'localhost'
     Port = 3050
     Database = 'C:\APOLO\BD\base.FDB'
@@ -32,6 +34,7 @@ object dm: Tdm
   end
   object web: TZConnection
     ControlsCodePage = cCP_UTF16
+    Catalog = ''
     HostName = '192.185.223.44'
     Port = 3306
     Database = 'atoms053_web'
@@ -81,5 +84,12 @@ object dm: Tdm
     Params = <>
     Left = 272
     Top = 240
+  end
+  object conn: TFDConnection
+    Params.Strings = (
+      'ConnectionDef=apolo')
+    LoginPrompt = False
+    Left = 470
+    Top = 40
   end
 end

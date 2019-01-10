@@ -66,16 +66,6 @@ object frmLiberador: TfrmLiberador
     TabStop = False
     TabOrder = 3
   end
-  object RzDateBase: TRzDateTimeEdit
-    Left = 104
-    Top = 88
-    Width = 121
-    Height = 21
-    TabStop = False
-    EditType = etDate
-    TabOrder = 4
-    Visible = False
-  end
   object EditNumControle: TEdit
     Left = 104
     Top = 128
@@ -89,7 +79,7 @@ object frmLiberador: TfrmLiberador
     Width = 75
     Height = 25
     Caption = 'Gerar S'#233'rie'
-    TabOrder = 5
+    TabOrder = 4
     OnClick = btnGerarResetClick
   end
   object EditReset: TEdit

@@ -4,13 +4,12 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Mask, RzEdit, StdCtrls;
+  Dialogs, Mask, {RzEdit,} StdCtrls;
 
 type
   TfrmLiberador = class(TForm)
     DBEditRazao: TEdit;
     DBEditCNPJ: TEdit;
-    RzDateBase: TRzDateTimeEdit;
     EditNumControle: TEdit;
     btnGerarReset: TButton;
     EditReset: TEdit;
@@ -57,7 +56,7 @@ begin
        Exit;
     end;
 
-  data:= FormatDateTime('ddmmyyyy',RzDateBase.date+strtoint(EditNumControle.Text));
+  data:= FormatDateTime('ddmmyyyy',now+strtoint(EditNumControle.Text));
 
   datan:='';
   datan1:='';
@@ -159,7 +158,7 @@ begin
 //dm.qrFilial.Close;
 DBEditCNPJ.Text  :=      dm.qrFilial.FieldByName('CNPJ').AsString ;
 DBEditRazao.Text :=  dm.qrFilial.FieldByName('FILIAL').AsString ;
-  RzDateBase.date := date;
+  now ;
 //ShowMessage(dm.qrFilial.FieldByName('FILIAL').AsString) ;
 end;
 

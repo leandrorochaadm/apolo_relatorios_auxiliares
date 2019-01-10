@@ -11,7 +11,7 @@ object frmPrincipal: TfrmPrincipal
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  Position = poDesktopCenter
+  Position = poScreenCenter
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -162,6 +162,15 @@ object frmPrincipal: TfrmPrincipal
           TabOrder = 7
           OnClick = btnLimparFiltroClick
         end
+        object Button2: TButton
+          Left = 80
+          Top = 223
+          Width = 200
+          Height = 25
+          Caption = 'Vendas Mensais'
+          TabOrder = 8
+          OnClick = Button2Click
+        end
       end
       object tabBoleto: TTabSheet
         Caption = 'tabBoleto'
@@ -169,35 +178,38 @@ object frmPrincipal: TfrmPrincipal
       end
     end
   end
-  object ExeInfo1: TExeInfo
-    Version = '1.2.2.0'
-    Left = 72
-    Top = 304
-  end
   object IdHTTP: TIdHTTP
     AllowCookies = True
     ProxyParams.BasicAuthentication = False
     ProxyParams.ProxyPort = 0
     Request.ContentLength = -1
+    Request.ContentRangeEnd = -1
+    Request.ContentRangeStart = -1
+    Request.ContentRangeInstanceLength = -1
     Request.Accept = 'text/html, */*'
     Request.BasicAuthentication = False
     Request.UserAgent = 'Mozilla/3.0 (compatible; Indy Library)'
+    Request.Ranges.Units = 'bytes'
+    Request.Ranges = <>
     HTTPOptions = [hoForceEncodeParams]
-    Left = 24
-    Top = 304
+    Left = 16
+    Top = 224
   end
   object IdFTP1: TIdFTP
     OnWork = IdFTP1Work
     IPVersion = Id_IPv4
-    AutoLogin = True
     Host = 'ftp.atomsistem.com.br'
     Passive = True
+    ConnectTimeout = 0
     Password = 'atom2017'
     TransferType = ftBinary
     Username = 'atoms053'
+    NATKeepAlive.UseKeepAlive = False
+    NATKeepAlive.IdleTimeMS = 0
+    NATKeepAlive.IntervalMS = 0
     ProxySettings.ProxyType = fpcmNone
     ProxySettings.Port = 0
-    Left = 112
-    Top = 312
+    Left = 16
+    Top = 288
   end
 end

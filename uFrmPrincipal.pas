@@ -4,14 +4,14 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Buttons, ExeInfo, ComCtrls, ExtCtrls, StdCtrls, Grids, DBGrids,
+  Dialogs, Buttons, {ExeInfo,} ComCtrls, ExtCtrls, StdCtrls, Grids, DBGrids,
   IdBaseComponent, IdComponent, IdTCPConnection, IdTCPClient, IdHTTP, CheckLst,
-  DBCtrls, IdExplicitTLSClientServerBase, IdFTP;
+  DBCtrls, IdExplicitTLSClientServerBase, IdFTP, frxClass;
 
 type
   TfrmPrincipal = class(TForm)
     BtnLiberador: TSpeedButton;
-    ExeInfo1: TExeInfo;
+//    ExeInfo1: TExeInfo;
     SpeedButton2: TSpeedButton;
     btnRelatorio: TSpeedButton;
     Panel1: TPanel;
@@ -32,6 +32,7 @@ type
     dblkcbbPlanoConta: TDBLookupComboBox;
     btnLimparFiltro: TButton;
     tabBoleto: TTabSheet;
+    Button2: TButton;
     procedure BtnLiberadorClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -62,6 +63,8 @@ type
     procedure novoPlanoConta;
     procedure qrcommonExec(sqlComand: string);
     procedure converterPlanoConta;
+    procedure Button2Click(Sender: TObject);
+    procedure CarregarRelatorio(const pReport: TfrxReport);
   private
     { Private declarations }
     FnTamanhoTotal: integer;
@@ -71,6 +74,7 @@ type
 
 var
   frmPrincipal: TfrmPrincipal;
+  versao: String;
 
 implementation
 
@@ -130,6 +134,36 @@ begin
 
 
 
+end;
+
+procedure TfrmPrincipal.Button2Click(Sender: TObject);
+begin
+//  with DmRel.qrRelProdCusto , SQL do
+//  begin
+//    Close;
+//    Params.ParamByName('dataI').AsDate := dataI.Date;
+//    Params.ParamByName('dataF').AsDate := dataF.Date;
+//    Open;
+//  end;
+
+
+//  with uDmRel.DmRel.frxRepProdCusto do
+//  begin
+//    LoadFromFile(ExtractFilePath(ParamStr(0)) + 'rel\VendaMes.fr3');
+//    PrepareReport(True);
+//    ShowReport;
+//  end;
+
+  CarregarRelatorio(dmRel.frxVendaMensal);
+end;
+
+procedure TfrmPrincipal.CarregarRelatorio(const pReport: TfrxReport);
+begin
+versaoRelatorio;
+Periodo;
+ pReport.PrepareReport;
+// pReport.LoadFromFile()
+ pReport.ShowPreparedReport;
 end;
 
 function TfrmPrincipal.ConectarAoServidorFTP: boolean;
@@ -501,52 +535,62 @@ end;
 
 procedure TfrmPrincipal.FormShow(Sender: TObject);
 begin
+  versao := '2.00';
+//  ShowMessage(versao);
 
   LimparFiltros; // limpar filtros
 
   // desabilita qrweb
   dm.web.Connected := False;
 
-  // testa internet
-  if testarInternet = True then dm.web.Connected := True;
-
+  //desabilar o botao conrole licença
   BtnLiberador.Visible := False;
-  // ShowMessage(dm.con.HostName+' - '+dm.con.Database);
-  frmPrincipal.caption := caption + ' Versão: ' + ExeInfo1.FileVersion;
 
-  with dm.qrClienteWeb, SQL do
-  begin
-    Close;
-    Clear;
-    Text := 'select * from cliente where cpf_cnpj = :cnpj';
-    ParamByName('cnpj').Value := dm.qrFilial.FieldByName('cnpj').Value;
-    Open;
+  //exibe a versão no titulo
+  frmPrincipal.caption := caption + ' Versão: ' + versao;
+
+  // testa internet
+  if {testarInternet = True} False then
+    begin
+    dm.web.Connected := True;
+
+    BtnLiberador.Visible := True ;
+    // ShowMessage(dm.con.HostName+' - '+dm.con.Database);
+
+
+    with dm.qrClienteWeb, SQL do
+    begin
+      Close;
+      Clear;
+      Text := 'select * from cliente where cpf_cnpj = :cnpj';
+      ParamByName('cnpj').Value := dm.qrFilial.FieldByName('cnpj').Value;
+      Open;
+    end;
+
+    // ShowMessage(inttostr(dm.qrClienteWeb.RecordCount));
+    if dm.qrClienteWeb.RecordCount = 0 then
+    begin
+      dm.qrClienteWeb.Close;
+      dm.qrClienteWeb.SQL.Clear;
+      dm.qrClienteWeb.SQL.Text := 'INSERT INTO `atoms053_web`.`cliente` ' +
+        '(`cod`, `razao`, `cpf_cnpj`, bloqueado) ' +
+        ' VALUES (:cod, :razao, :cpf_cnpj, :bloqueado)';
+
+      dm.qrClienteWeb.ParamByName('cod').AsInteger := 1000;
+      dm.qrClienteWeb.ParamByName('razao').AsString := dm.qrFilial.FieldByName
+        ('FILIAL').AsString;
+      dm.qrClienteWeb.ParamByName('cpf_cnpj').AsString := dm.qrFilial.FieldByName
+        ('cnpj').AsString;
+      dm.qrClienteWeb.ParamByName('Bloqueado').AsString := 'NAO';
+
+      dm.qrClienteWeb.ExecSQL;
+
+    end;
+
+    if dm.qrClienteWeb.FieldByName('Bloqueado').Value = 'NAO' then
+      BtnLiberador.Visible := True;
+
   end;
-
-  // ShowMessage(inttostr(dm.qrClienteWeb.RecordCount));
-  if dm.qrClienteWeb.RecordCount = 0 then
-  begin
-    dm.qrClienteWeb.Close;
-    dm.qrClienteWeb.SQL.Clear;
-    dm.qrClienteWeb.SQL.Text := 'INSERT INTO `atoms053_web`.`cliente` ' +
-      '(`cod`, `razao`, `cpf_cnpj`, bloqueado) ' +
-      ' VALUES (:cod, :razao, :cpf_cnpj, :bloqueado)';
-
-    dm.qrClienteWeb.ParamByName('cod').AsInteger := 1000;
-    dm.qrClienteWeb.ParamByName('razao').AsString := dm.qrFilial.FieldByName
-      ('FILIAL').AsString;
-    dm.qrClienteWeb.ParamByName('cpf_cnpj').AsString := dm.qrFilial.FieldByName
-      ('cnpj').AsString;
-    dm.qrClienteWeb.ParamByName('Bloqueado').AsString := 'NAO';
-
-    dm.qrClienteWeb.ExecSQL;
-
-  end;
-
-  if dm.qrClienteWeb.FieldByName('Bloqueado').Value = 'NAO' then
-    BtnLiberador.Visible := True;
-
-
 
 
 end;
@@ -791,7 +835,7 @@ begin
   DmRel.qrrelatorio.Open;
   DmRel.qrrelatorio.Edit;
   DmRel.qrrelatorio.FieldByName('LINHA3').AsString :=
-    'Versão: ' + ExeInfo1.FileVersion;
+    'Versão: ' + versao;
 end;
 
 function TfrmPrincipal.zerarcodigo(codigo: string; qtde: integer): string;
