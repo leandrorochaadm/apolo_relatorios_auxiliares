@@ -9,7 +9,7 @@ uses
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.FB,
   FireDAC.Phys.FBDef, FireDAC.VCLUI.Wait, FireDAC.Comp.Client,
   FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
-  FireDAC.Comp.DataSet;
+  FireDAC.Comp.DataSet, Dialogs;
 
 type
   Tdm = class(TDataModule)
@@ -46,14 +46,15 @@ var
   ArquivoINI: TIniFile;
   entrada, path : string;
   txt : textfile;
-//  sDir_Sistema: string;
 
-//     227108553                                         227
+  server, database:string;
+
 begin
 
 // sDir_Sistema:= ExtractFilePath(ParamStr(0));
 con.Connected :=false;
-path := ParamStr(0);
+//path := ParamStr(0);
+path := 'C:\Apolo\SERVER\';
 // Arquivo_ini := TIniFile.Create('C:\APOLO\Server\com.ini');
 // showmenssa
 
@@ -71,16 +72,42 @@ path := ParamStr(0);
         end;
       end
 
-
     else
+
       begin
         ArquivoINI := TIniFile.Create(path+'Configuracao.ini');
-        con.HostName := ArquivoINI.ReadString('Banco de Dados', '999-002','localhost');
-        con.Database := ArquivoINI.ReadString('Banco de Dados', '999-001','C:\APOLO\bd\BASE.FDB');
-//        ArquivoINI.Free;
+
+        server := ArquivoINI.ReadString('Banco de Dados', '999-002','localhost');
+        database := ArquivoINI.ReadString('Banco de Dados', '999-001','C:\APOLO\bd\BASE.FDB');
+
+        ShowMessage('server: '+ server+' - base:'+database);
+             ShowMessage(conn.Params.Text);
+
+        con.HostName := server;
+        con.Database := database;
+        CON.Port:=3050;
+        CON.User:='SYSDBA';
+        CON.Password:='masterkey';
+        con.Protocol:='firebirdd-2.5';
+
+      with conn do begin
+      Close;
+      with Params do begin
+        Clear;
+        Add('port=3050');
+        Add('DriverID=FB');
+        Add('Server='+ server);
+        Add('Database='+ database);
+        Add('User_Name=SYSDBA');
+        Add('Password=masterkey');
+      end;
+      Open;
+
+    end;
+        ArquivoINI.Free;
       end;
 
-
+     ShowMessage(conn.Params.Text);
 //  caminho:= 'C:\APOLO\Server\com.ini';
 
 

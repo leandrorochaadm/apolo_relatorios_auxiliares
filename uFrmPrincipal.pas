@@ -140,23 +140,9 @@ end;
 
 procedure TfrmPrincipal.Button2Click(Sender: TObject);
 begin
-//  with DmRel.qrRelProdCusto , SQL do
-//  begin
-//    Close;
-//    Params.ParamByName('dataI').AsDate := dataI.Date;
-//    Params.ParamByName('dataF').AsDate := dataF.Date;
-//    Open;
-//  end;
 
-
-//  with uDmRel.DmRel.frxRepProdCusto do
-//  begin
-//    LoadFromFile(ExtractFilePath(ParamStr(0)) + 'rel\VendaMes.fr3');
-//    PrepareReport(True);
-//    ShowReport;
-//  end;
-
-//  CarregarRelatorio(dmRel.frxVendaMensal);
+  uRelatorio.VendaMensal(dataI.Date, dataF.Date);
+  CarregarRelatorio(dmRel.frxVendaMensal);
 end;
 
 procedure TfrmPrincipal.CarregarRelatorio(const pReport: TfrxReport);
@@ -357,7 +343,7 @@ end;
 procedure TfrmPrincipal.btnDreDetClick(Sender: TObject);
 begin
 uRelatorio.DreDet(dataI.Date, dataF.Date);
-CarregarRelatorio(dmRel.frx);
+CarregarRelatorio(dmRel.frxDreDet);
 end;
 
 procedure TfrmPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);

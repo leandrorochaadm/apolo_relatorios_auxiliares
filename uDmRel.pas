@@ -21,12 +21,14 @@ type
     dsDreRes: TDataSource;
     QrRelatorio: TZQuery;
     DsRelatorio: TDataSource;
-    qrVendaMensal: TFDQuery;
     frxDreRes: TfrxReport;
     frxDBdreRes: TfrxDBDataset;
     frxDBRelatorio: TfrxDBDataset;
     frxDreDet: TfrxReport;
     frxDBdre: TfrxDBDataset;
+    frxVendaMensal: TfrxReport;
+    frxDBVendaMes: TfrxDBDataset;
+    frxDBFilial: TfrxDBDataset;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

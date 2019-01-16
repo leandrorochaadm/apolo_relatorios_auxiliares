@@ -97,7 +97,6 @@ object frmPrincipal: TfrmPrincipal
           Height = 25
           Caption = 'Dre Detelhado'
           TabOrder = 1
-          Visible = False
           OnClick = btnDreDetClick
         end
         object Imprimir: TButton
@@ -175,7 +174,6 @@ object frmPrincipal: TfrmPrincipal
           Height = 25
           Caption = 'Vendas Mensais'
           TabOrder = 8
-          Visible = False
           OnClick = Button2Click
         end
       end

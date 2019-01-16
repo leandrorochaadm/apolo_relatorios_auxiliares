@@ -7,6 +7,7 @@ uses
 
   procedure DreRes(DataI, DataF: TDate);
   procedure DreDet(DataI, DataF: TDate);
+  procedure VendaMensal(DataI, DataF: TDate);
 
 
 implementation
@@ -82,5 +83,22 @@ begin
   end;
 end;
 
+procedure VendaMensal(DataI, DataF: TDate);
+begin
+ with dm.qrCommon do
+  begin
+  close;
+  sql.Clear;
+  sql.Text :=
+
+'select  (LPad(extract(year from v.data),4,''0'')||''.''||LPad(extract(month from v.data),2,''0'')) as dataMes , '+
+'sum(v.meio_dinheiro) as dinhero, (sum(v.meio_chequeav)+sum(v.meio_chequeap)) as cheque, (sum(v.meio_cartaocred) + sum(v.meio_cartaodeb)) as cartao, sum(v.meio_crediario) as crediario, sum(v.total) as total from c000048 v '+
+'where v.situacao=1  and v.data between  :dataI and :dataF group by dataMes ';
+
+  Params.ParamByName('dataI').AsDate := DataI;
+  Params.ParamByName('dataF').AsDate := DataF;
+  Open;
+  end;
+end;
 
 end.

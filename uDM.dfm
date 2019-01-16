@@ -1,15 +1,17 @@
 object dm: Tdm
   OldCreateOrder = False
-  OnCreate = DataModuleCreate
   Height = 362
   Width = 668
   object con: TZConnection
     ControlsCodePage = cCP_UTF16
     Catalog = ''
+    Properties.Strings = (
+      'AutoEncodeStrings=ON'
+      'controls_cp=CP_UTF16')
     Connected = True
     HostName = 'localhost'
     Port = 3050
-    Database = 'C:\APOLO\BD\base.FDB'
+    Database = 'C:\Apolo\BD\BASE.FDB'
     User = 'SYSDBA'
     Password = 'masterkey'
     Protocol = 'firebirdd-2.5'
@@ -18,6 +20,7 @@ object dm: Tdm
   end
   object qrFilial: TZQuery
     Connection = con
+    Active = True
     SQL.Strings = (
       'select filial, cnpj from c000004')
     Params = <>
@@ -79,51 +82,32 @@ object dm: Tdm
   end
   object conn: TFDConnection
     Params.Strings = (
-      'Database=C:\Apolo\BD\base.FDB'
       'DriverID=FB'
-      'Password=masterkey'
       'Port=3050'
-      'Server=localhost'
-      'User_Name=sysdba')
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'Database=C:\Apolo\BD\BASE.FDB'
+      'Server=localhost')
     Connected = True
     LoginPrompt = False
-    Left = 582
+    Left = 590
     Top = 8
   end
   object qrCommon: TFDQuery
     Active = True
     Connection = conn
     SQL.Strings = (
-      ''
       
-        'Select Classificacao, max(tipo) as tipo, max(Nome_Conta) as Nome' +
-        '_conta, sum(Total) as Total from'
+        'select  (LPad(extract(year from v.data),4,'#39'0'#39')||'#39'.'#39'||LPad(extrac' +
+        't(month from v.data),2,'#39'0'#39')) as dataMes ,'
       
-        '( Select c000035.classificacao as Classificacao, c000035.tipo as' +
-        ' tipo, c000035.conta as Nome_Conta, sum(c000042.Valor) as Total'
+        'sum(v.meio_dinheiro) as dinhero, (sum(v.meio_chequeav)+sum(v.mei' +
+        'o_chequeap)) as cheque, (sum(v.meio_cartaocred) + sum(v.meio_car' +
+        'taodeb)) as cartao, sum(v.meio_crediario) as crediario, sum(v.to' +
+        'tal) as total from c000048 v'
       
-        'from c000042 INNER JOIN C000035 ON(C000042.codconta = c000035.CO' +
-        'DIGO)'
-      'where c000042.DATA between '#39'01/12/2018'#39' and '#39'01/02/2019'#39
-      'group by Classificacao, tipo, Nome_Conta UNION ALL'
-      
-        'Select c000035.classificacao as Classificacao, c000035.tipo as t' +
-        'ipo, c000035.conta as Nome_Conta,'
-      
-        'sum((coalesce(c000044.entrada,0) - coalesce(c000044.saida,0))) a' +
-        's Total'
-      
-        'from c000044 INNER JOIN C000035 ON(C000044.codconta = c000035.co' +
-        'digo)'
-      'where 1=1 and c000044.DATA between '#39'01/12/2018'#39' and '#39'01/02/2019'#39
-      
-        'and (coalesce(c000044.entrada,0) - coalesce(c000044.saida,0)) <>' +
-        '0'
-      'and  historico <> '#39'S A L D O   A N T E R I O R'#39
-      'and historico <> '#39'Acerto do Saldo Anterior'#39
-      
-        'group by Classificacao, tipo, Nome_Conta) as tmp group by classi' +
-        'ficacao')
+        'where v.situacao=1  and v.data between  '#39'01/12/2018'#39' and '#39'01/02/' +
+        '2019'#39' group by dataMes')
     Left = 584
     Top = 88
   end
