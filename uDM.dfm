@@ -86,8 +86,6 @@ object dm: Tdm
     Top = 240
   end
   object conn: TFDConnection
-    Params.Strings = (
-      'ConnectionDef=apolo')
     LoginPrompt = False
     Left = 470
     Top = 40

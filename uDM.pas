@@ -48,6 +48,7 @@ var
 
 //     227108553                                         227
 begin
+
 // sDir_Sistema:= ExtractFilePath(ParamStr(0));
 con.Connected :=false;
 path := ParamStr(0);
@@ -74,7 +75,7 @@ path := ParamStr(0);
         ArquivoINI := TIniFile.Create(path+'Configuracao.ini');
         con.HostName := ArquivoINI.ReadString('Banco de Dados', '999-002','localhost');
         con.Database := ArquivoINI.ReadString('Banco de Dados', '999-001','C:\APOLO\bd\BASE.FDB');
-        ArquivoINI.Free;
+//        ArquivoINI.Free;
       end;
 
 
@@ -86,9 +87,26 @@ path := ParamStr(0);
 // con.HostName := Arquivo_ini.ReadString('999-002', '999-002', '');
 // con.Database := arquivo_ini.ReadString('999-001', '999-001', '');
 
+    with conn do begin
+  Close;
+  // create temporary connection definition
+  with Params do begin
+    Clear;
+    Add('DriverID=FB');
+    Add('Server='+ ArquivoINI.ReadString('Banco de Dados', '999-002','localhost'));
+    Add('Database='+ ArquivoINI.ReadString('Banco de Dados', '999-001','C:\APOLO\bd\BASE.FDB'));
+    Add('User_Name=sysdba');
+    Add('Password=masterkey');
+  end;
+  Open;
+end;
+
+
+
 
 
  con.Connected :=true;
+ conn.Connected := True;
  qrFilial.Active:=true;
  qrPlanoConta.Active:=true;
 

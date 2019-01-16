@@ -65,6 +65,8 @@ type
     procedure converterPlanoConta;
     procedure Button2Click(Sender: TObject);
     procedure CarregarRelatorio(const pReport: TfrxReport);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure VericarDuplicatasPagar;
   private
     { Private declarations }
     FnTamanhoTotal: integer;
@@ -125,12 +127,12 @@ begin
   Periodo;
   versaoRelatorio;
 
-  with uDmRel.DmRel.frxRepProdCusto do
-  begin
-    LoadFromFile(ExtractFilePath(ParamStr(0)) + 'rel\PrecCusto.fr3');
-    PrepareReport(True);
-    ShowReport;
-  end;
+//  with uDmRel.DmRel.frxRepProdCusto do
+//  begin
+//    LoadFromFile(ExtractFilePath(ParamStr(0)) + 'rel\PrecCusto.fr3');
+//    PrepareReport(True);
+//    ShowReport;
+//  end;
 
 
 
@@ -154,7 +156,7 @@ begin
 //    ShowReport;
 //  end;
 
-  CarregarRelatorio(dmRel.frxVendaMensal);
+//  CarregarRelatorio(dmRel.frxVendaMensal);
 end;
 
 procedure TfrmPrincipal.CarregarRelatorio(const pReport: TfrxReport);
@@ -210,7 +212,7 @@ atualizarContasCaixa(20,120);
 atualizarContasCaixa(21,121);
 atualizarContasCaixa(22,122);
 atualizarContasCaixa(23,123);
-//atualizarContasCaixa(25,125);
+//atualizarContasCaixa(25,21);
 //atualizarContasCaixa(26,126);
 //atualizarContasCaixa(27,127);
 atualizarContasCaixa(40,140);
@@ -326,12 +328,12 @@ begin
   Periodo;
   versaoRelatorio;
 
-  with uDmRel.DmRel.frxRepProdCusto do
-  begin
-    LoadFromFile(ExtractFilePath(ParamStr(0)) + 'rel\DreRes.fr3');
-    PrepareReport(True);
-    ShowReport;
-  end;
+//  with uDmRel.DmRel.frxRepProdCusto do
+//  begin
+//    LoadFromFile(ExtractFilePath(ParamStr(0)) + 'rel\DreRes.fr3');
+//    PrepareReport(True);
+//    ShowReport;
+//  end;
 end;
 
 
@@ -440,97 +442,146 @@ end;
 
 procedure TfrmPrincipal.btnDreDetClick(Sender: TObject);
 begin
-{$REGION 'sql Det'}
-  DmRel.qrDreDet.Close;
-  DmRel.qrDreDet.SQL.Clear;
-  DmRel.qrDreDet.SQL.Add(' Select ');
-  DmRel.qrDreDet.SQL.Add(' Classificacao, ');
-  DmRel.qrDreDet.SQL.Add(' tipo, ');
-  DmRel.qrDreDet.SQL.Add(' Nome_Conta, ');
-  DmRel.qrDreDet.SQL.Add(' historico, ');
-  DmRel.qrDreDet.SQL.Add(' origem, ');
-  DmRel.qrDreDet.SQL.Add(' data, ');
-  DmRel.qrDreDet.SQL.Add(' Total ');
-  DmRel.qrDreDet.SQL.Add(' from ');
+//
+//{$REGION 'sql Det'}
+//  DmRel.qrDreDet.Close;
+//  DmRel.qrDreDet.SQL.Clear;
+//  DmRel.qrDreDet.SQL.Add(' Select ');
+//  DmRel.qrDreDet.SQL.Add(' Classificacao, ');
+//  DmRel.qrDreDet.SQL.Add(' tipo, ');
+//  DmRel.qrDreDet.SQL.Add(' Nome_Conta, ');
+//  DmRel.qrDreDet.SQL.Add(' historico, ');
+//  DmRel.qrDreDet.SQL.Add(' origem, ');
+//  DmRel.qrDreDet.SQL.Add(' data, ');
+//  DmRel.qrDreDet.SQL.Add(' Total ');
+//  DmRel.qrDreDet.SQL.Add(' from ');
+//
+//  DmRel.qrDreDet.SQL.Add(' ( Select ');
+//  DmRel.qrDreDet.SQL.Add(' c000035.classificacao as Classificacao, ');
+//  DmRel.qrDreDet.SQL.Add(' c000035.tipo as tipo, ');
+//  DmRel.qrDreDet.SQL.Add(' c000035.conta as Nome_Conta, ');
+//  DmRel.qrDreDet.SQL.Add(' c000044.data, ');
+//  DmRel.qrDreDet.SQL.Add(' c000044.historico, ');
+//  DmRel.qrDreDet.SQL.Add(' c000044.codconta as origem, ');
+//  DmRel.qrDreDet.SQL.Add(
+//    ' (coalesce(c000044.entrada,0) - coalesce(c000044.saida,0)) as Total ');
+//  DmRel.qrDreDet.SQL.Add(' from ');
+//  DmRel.qrDreDet.SQL.Add(' c000044 ');
+//  DmRel.qrDreDet.SQL.Add(
+//    ' INNER JOIN C000035 ON(C000044.codconta = c000035.codigo) ');
+//  DmRel.qrDreDet.SQL.Add(' where ');
+//
+//  DmRel.qrDreDet.SQL.Add(' c000044.DATA  between :dataI and :dataF ');
+//
+//  DmRel.qrDreDet.SQL.Add(
+//    ' and (coalesce(c000044.entrada,0) - coalesce(c000044.saida,0)) <>0 ');
+//  DmRel.qrDreDet.SQL.Add(' and  historico <> ''S A L D O   A N T E R I O R'' ');
+//  DmRel.qrDreDet.SQL.Add(' and historico <> ''Acerto do Saldo Anterior'' ');
+//
+//  if Trim(dblkcbbPlanoConta.Text) <> '' then
+//  begin
+//    DmRel.qrDreDet.SQL.Add(' and C000044.codconta=' + inttostr
+//        (dblkcbbPlanoConta.KeyValue));
+//  end;
+//
+//  DmRel.qrDreDet.SQL.Add(' union all ');
+//
+//  DmRel.qrDreDet.SQL.Add(' Select ');
+//  DmRel.qrDreDet.SQL.Add(' c000035.classificacao as Classificacao, ');
+//  DmRel.qrDreDet.SQL.Add(' c000035.tipo as tipo, ');
+//  DmRel.qrDreDet.SQL.Add(' c000035.conta as Nome_Conta, ');
+//  DmRel.qrDreDet.SQL.Add(' c000042.data, ');
+//  DmRel.qrDreDet.SQL.Add(' c000042.historico, ');
+//  DmRel.qrDreDet.SQL.Add(' c000042.codconta as origem, ');
+//  DmRel.qrDreDet.SQL.Add(' (c000042.Valor) as Total ');
+//  DmRel.qrDreDet.SQL.Add(' from ');
+//
+//  DmRel.qrDreDet.SQL.Add(' c000042 ');
+//  DmRel.qrDreDet.SQL.Add(
+//    ' INNER JOIN C000035 ON(C000042.codconta = c000035.CODIGO) ');
+//  DmRel.qrDreDet.SQL.Add(' where ');
+//  DmRel.qrDreDet.SQL.Add(' c000042.DATA  between :dataI and :dataF ');
+//
+//  if Trim(dblkcbbPlanoConta.Text) <> '' then
+//  begin
+//    DmRel.qrDreDet.SQL.Add(' and C000042.codconta=' + inttostr
+//        (dblkcbbPlanoConta.KeyValue));
+//  end;
+//
+//  DmRel.qrDreDet.SQL.Add(' )  as tmp ');
+//  DmRel.qrDreDet.SQL.Add(' order by ');
+//  DmRel.qrDreDet.SQL.Add(' Classificacao, ');
+//  DmRel.qrDreDet.SQL.Add(' data, ');
+//  DmRel.qrDreDet.SQL.Add(' historico, ');
+//  DmRel.qrDreDet.SQL.Add(' Total ');
+//
+//  DmRel.qrDreDet.Open;
+//{$ENDREGION}
 
-  DmRel.qrDreDet.SQL.Add(' ( Select ');
-  DmRel.qrDreDet.SQL.Add(' c000035.classificacao as Classificacao, ');
-  DmRel.qrDreDet.SQL.Add(' c000035.tipo as tipo, ');
-  DmRel.qrDreDet.SQL.Add(' c000035.conta as Nome_Conta, ');
-  DmRel.qrDreDet.SQL.Add(' c000044.data, ');
-  DmRel.qrDreDet.SQL.Add(' c000044.historico, ');
-  DmRel.qrDreDet.SQL.Add(' c000044.codconta as origem, ');
-  DmRel.qrDreDet.SQL.Add(
-    ' (coalesce(c000044.entrada,0) - coalesce(c000044.saida,0)) as Total ');
-  DmRel.qrDreDet.SQL.Add(' from ');
-  DmRel.qrDreDet.SQL.Add(' c000044 ');
-  DmRel.qrDreDet.SQL.Add(
-    ' INNER JOIN C000035 ON(C000044.codconta = c000035.codigo) ');
-  DmRel.qrDreDet.SQL.Add(' where ');
+with dm.qrCommon do
+begin
+  close;
+  sql.Clear;
+  sql.Text:=
 
-  DmRel.qrDreDet.SQL.Add(' c000044.DATA  between :dataI and :dataF ');
+'Select Classificacao, tipo, Nome_Conta, historico, origem, data, Total from '+
+'( Select '+
+'c000035.classificacao as Classificacao, '+
+'c000035.tipo as tipo, '+
+'c000035.conta as Nome_Conta, '+
+'c000044.data, '+
+'c000044.historico, '+
+'c000044.codconta as origem, '+
+'(coalesce(c000044.entrada,0) - coalesce(c000044.saida,0)) as Total from c000044 '+
+'INNER JOIN C000035 ON(C000044.codconta = c000035.codigo) where '+
+'c000044.DATA  between :dataI and :dataF '+
+'and (coalesce(c000044.entrada,0) - coalesce(c000044.saida,0)) <>0 '+
+'and  historico <> ''S A L D O   A N T E R I O R'' '+
+'and historico <> ''Acerto do Saldo Anterior'' union all '+
+'Select '+
+'c000035.classificacao as Classificacao, '+
+'c000035.tipo as tipo, '+
+'c000035.conta as Nome_Conta, '+
+'c000042.data, '+
+'c000042.historico, '+
+'c000042.codconta as origem, '+
+'(c000042.Valor) as Total '+
+'from c000042 '+
+'INNER JOIN C000035 ON(C000042.codconta = c000035.CODIGO) '+
+'where c000042.DATA  between :dataI and :dataF '+
+')  as tmp '+
+'order by Classificacao, data, historico, Total ';
 
-  DmRel.qrDreDet.SQL.Add(
-    ' and (coalesce(c000044.entrada,0) - coalesce(c000044.saida,0)) <>0 ');
-  DmRel.qrDreDet.SQL.Add(' and  historico <> ''S A L D O   A N T E R I O R'' ');
-  DmRel.qrDreDet.SQL.Add(' and historico <> ''Acerto do Saldo Anterior'' ');
-
-  if Trim(dblkcbbPlanoConta.Text) <> '' then
-  begin
-    DmRel.qrDreDet.SQL.Add(' and C000044.codconta=' + inttostr
-        (dblkcbbPlanoConta.KeyValue));
-  end;
-
-  DmRel.qrDreDet.SQL.Add(' union all ');
-
-  DmRel.qrDreDet.SQL.Add(' Select ');
-  DmRel.qrDreDet.SQL.Add(' c000035.classificacao as Classificacao, ');
-  DmRel.qrDreDet.SQL.Add(' c000035.tipo as tipo, ');
-  DmRel.qrDreDet.SQL.Add(' c000035.conta as Nome_Conta, ');
-  DmRel.qrDreDet.SQL.Add(' c000042.data, ');
-  DmRel.qrDreDet.SQL.Add(' c000042.historico, ');
-  DmRel.qrDreDet.SQL.Add(' c000042.codconta as origem, ');
-  DmRel.qrDreDet.SQL.Add(' (c000042.Valor) as Total ');
-  DmRel.qrDreDet.SQL.Add(' from ');
-
-  DmRel.qrDreDet.SQL.Add(' c000042 ');
-  DmRel.qrDreDet.SQL.Add(
-    ' INNER JOIN C000035 ON(C000042.codconta = c000035.CODIGO) ');
-  DmRel.qrDreDet.SQL.Add(' where ');
-  DmRel.qrDreDet.SQL.Add(' c000042.DATA  between :dataI and :dataF ');
-
-  if Trim(dblkcbbPlanoConta.Text) <> '' then
-  begin
-    DmRel.qrDreDet.SQL.Add(' and C000042.codconta=' + inttostr
-        (dblkcbbPlanoConta.KeyValue));
-  end;
-
-  DmRel.qrDreDet.SQL.Add(' )  as tmp ');
-  DmRel.qrDreDet.SQL.Add(' order by ');
-  DmRel.qrDreDet.SQL.Add(' Classificacao, ');
-  DmRel.qrDreDet.SQL.Add(' data, ');
-  DmRel.qrDreDet.SQL.Add(' historico, ');
-  DmRel.qrDreDet.SQL.Add(' Total ');
-
-  DmRel.qrDreDet.Open;
-{$ENDREGION}
-  with DmRel.qrDreDet, SQL do
-  begin
-    Close;
     Params.ParamByName('DataI').AsDate := dataI.Date;
     Params.ParamByName('DataF').AsDate := dataF.Date;
-    Open;
-  end;
+    open;
 
-  Periodo;
-  versaoRelatorio;
+end;
+//
+//  with DmRel.qrDreDet, SQL do
+//  begin
+//    Close;
+//    Params.ParamByName('DataI').AsDate := dataI.Date;
+//    Params.ParamByName('DataF').AsDate := dataF.Date;
+//    Open;
+//  end;
 
-  with uDmRel.DmRel.frxRepProdCusto do
-  begin
-    LoadFromFile(ExtractFilePath(ParamStr(0)) + 'rel\DreDet.fr3');
-    PrepareReport(True);
-    ShowReport;
-  end;
+//  Periodo;
+//  versaoRelatorio;
+
+//  with uDmRel.DmRel.frxRepProdCusto do
+//  begin
+//    LoadFromFile(ExtractFilePath(ParamStr(0)) + 'rel\DreDet.fr3');
+//    PrepareReport(True);
+//    ShowReport;
+//  end;
+CarregarRelatorio(dmRel.frxDreDet);
+
+end;
+
+procedure TfrmPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+Application.Terminate;
 end;
 
 procedure TfrmPrincipal.FormShow(Sender: TObject);
@@ -622,12 +673,12 @@ begin
 
   Periodo;
 
-  with uDmRel.DmRel.frxRepVendaCartaoSnfce do
-  begin
-    LoadFromFile(ExtractFilePath(ParamStr(0)) + 'rel\VendaCartaoSnfce.fr3');
-    PrepareReport(True);
-    ShowReport;
-  end;
+//  with uDmRel.DmRel.frxRepVendaCartaoSnfce do
+//  begin
+//    LoadFromFile(ExtractFilePath(ParamStr(0)) + 'rel\VendaCartaoSnfce.fr3');
+//    PrepareReport(True);
+//    ShowReport;
+//  end;
 end;
 
 procedure TfrmPrincipal.LimparFiltros;
@@ -783,7 +834,11 @@ begin
 
   verificarBaixarCartao;
 
- if testarInternet = True then AtualizarVersao;
+  //correção pra Sotelli v2.00 15/01/19
+  VericarDuplicatasPagar;
+
+ //nao esta desativado pq trocou de servido
+// if testarInternet = True then AtualizarVersao;
 
  //add na versao 1.7.5
  //novo plano de contas com
@@ -818,6 +873,23 @@ begin
     Result:=False;
     ShowMessage('Não tem internet, não será possivel acessar o controle de licença');
   end;
+end;
+
+procedure TfrmPrincipal.VericarDuplicatasPagar;
+begin
+    dm.qrCommon.Close;
+    dm.qrCommon.SQL.Clear;
+    dm.qrCommon.SQL.Text := 'update c000044 cx set cx.codconta=''000021'' where cx.historico like ''%Duplicata a Pagar%'' and cx.codconta<>''000021'' ';
+    dm.qrCommon.ExecSQL;
+    dm.qrCommon.open;
+
+    dm.qrCommon.Close;
+    dm.qrCommon.SQL.Clear;
+    dm.qrCommon.SQL.Text := 'update c000042 cx set cx.codconta=''000021'' where cx.codconta=''000008'' AND cx.tipo=''D'' ';
+    dm.qrCommon.ExecSQL;
+    dm.qrCommon.open;
+
+
 end;
 
 procedure TfrmPrincipal.verificarBaixarCartao;

@@ -34,6 +34,7 @@ type
     qrVendaMensal: TFDQuery;
     frxDBVendaMensal: TfrxDBDataset;
     frxVendaMensal: TfrxReport;
+    qrCommon: TFDQuery;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -56,6 +57,8 @@ qrRelProdCusto.Active:=true;
 qrVendaCartaoSnfce.Active:=true;
 qrDreDet.Active:=true;
 qrDreRes.Active:=true;
+
+qrCommon.Active:=true;
 end;
 
 end.

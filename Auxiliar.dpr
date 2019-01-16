@@ -13,7 +13,7 @@ uses
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  TStyleManager.TrySetStyle('Charcoal Dark Slate');
+  TStyleManager.TrySetStyle('Lavender Classico');
   Application.Title := 'Auxiliar Apolo';
   Application.CreateForm(Tdm, dm);
   Application.CreateForm(TdmRel, dmRel);

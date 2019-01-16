@@ -12,6 +12,7 @@ object frmPrincipal: TfrmPrincipal
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -33,7 +34,7 @@ object frmPrincipal: TfrmPrincipal
     end
     object btnRelatorio: TSpeedButton
       Left = 0
-      Top = 1
+      Top = -5
       Width = 105
       Height = 49
       Caption = 'Relatorios Extras'
@@ -82,11 +83,12 @@ object frmPrincipal: TfrmPrincipal
           Caption = 'Data Final'
         end
         object lblPlanoConta: TLabel
-          Left = 15
+          Left = 16
           Top = 80
           Width = 58
           Height = 13
           Caption = 'Plano Conta'
+          Visible = False
         end
         object btnDreDet: TButton
           Left = 80
@@ -104,6 +106,7 @@ object frmPrincipal: TfrmPrincipal
           Height = 25
           Caption = 'Vendas Cart'#227'o s/ Cupom'
           TabOrder = 4
+          Visible = False
           OnClick = ImprimirClick
         end
         object Button1: TButton
@@ -113,6 +116,7 @@ object frmPrincipal: TfrmPrincipal
           Height = 25
           Caption = 'Produto Pre'#231'o Custo'
           TabOrder = 5
+          Visible = False
           OnClick = Button1Click
         end
         object dataI: TDateTimePicker
@@ -140,6 +144,7 @@ object frmPrincipal: TfrmPrincipal
           Height = 25
           Caption = 'Dre Resumido'
           TabOrder = 6
+          Visible = False
           OnClick = btnDreResClick
         end
         object dblkcbbPlanoConta: TDBLookupComboBox
@@ -152,6 +157,7 @@ object frmPrincipal: TfrmPrincipal
           ListField = 'CONTA;CLASSIFICACAO'
           ListSource = dm.dsPlanoConta
           TabOrder = 3
+          Visible = False
         end
         object btnLimparFiltro: TButton
           Left = 262
@@ -169,6 +175,7 @@ object frmPrincipal: TfrmPrincipal
           Height = 25
           Caption = 'Vendas Mensais'
           TabOrder = 8
+          Visible = False
           OnClick = Button2Click
         end
       end
