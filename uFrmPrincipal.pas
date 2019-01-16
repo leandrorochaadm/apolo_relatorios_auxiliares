@@ -80,7 +80,7 @@ var
 
 implementation
 
-uses uFrmLiberador, uDM, uDmRel, IdException, IniFiles, ShellAPI;
+uses uFrmLiberador, uDM, uDmRel, IdException, IniFiles, ShellAPI, uRelatorio;
 {$R *.dfm}
 
 procedure TfrmPrincipal.BtnLiberadorClick(Sender: TObject);
@@ -246,94 +246,8 @@ end;
 
 procedure TfrmPrincipal.btnDreResClick(Sender: TObject);
 begin
-{$REGION 'sql Res'}
-  DmRel.qrDreRes.Close;
-  DmRel.qrDreRes.SQL.Clear;
-  DmRel.qrDreRes.SQL.Add('Select ');
-  DmRel.qrDreRes.SQL.Add('Classificacao, ');
-  DmRel.qrDreRes.SQL.Add('max(tipo) as tipo, ');
-  DmRel.qrDreRes.SQL.Add('max(Nome_Conta) as Nome_conta, ');
-  DmRel.qrDreRes.SQL.Add('sum(Total) as Total ');
-
-  DmRel.qrDreRes.SQL.Add('from ');
-  DmRel.qrDreRes.SQL.Add('( Select ');
-  DmRel.qrDreRes.SQL.Add('c000035.classificacao as Classificacao, ');
-  DmRel.qrDreRes.SQL.Add('c000035.tipo as tipo, ');
-  DmRel.qrDreRes.SQL.Add('c000035.conta as Nome_Conta, ');
-  DmRel.qrDreRes.SQL.Add('sum(c000042.Valor) as Total ');
-  DmRel.qrDreRes.SQL.Add('from ');
-
-  DmRel.qrDreRes.SQL.Add('c000042 ');
-  DmRel.qrDreRes.SQL.Add(
-    'INNER JOIN C000035 ON(C000042.codconta = c000035.CODIGO) ');
-  DmRel.qrDreRes.SQL.Add('where ');
-  DmRel.qrDreRes.SQL.Add('c000042.DATA between :dataI and :dataF ');
-
-  // ShowMessage((dblkcbbPlanoConta.KeyValue));
-
-  if Trim(dblkcbbPlanoConta.Text) <> '' then
-  begin
-    DmRel.qrDreRes.SQL.Add(' and C000042.codconta=' + inttostr
-        (dblkcbbPlanoConta.KeyValue));
-  end;
-
-  DmRel.qrDreRes.SQL.Add(' group by ');
-  DmRel.qrDreRes.SQL.Add('Classificacao, ');
-  DmRel.qrDreRes.SQL.Add('tipo, ');
-  DmRel.qrDreRes.SQL.Add('Nome_Conta ');
-
-  DmRel.qrDreRes.SQL.Add('UNION ALL ');
-
-  DmRel.qrDreRes.SQL.Add('Select ');
-  DmRel.qrDreRes.SQL.Add('c000035.classificacao as Classificacao, ');
-  DmRel.qrDreRes.SQL.Add('c000035.tipo as tipo, ');
-  DmRel.qrDreRes.SQL.Add('c000035.conta as Nome_Conta, ');
-  DmRel.qrDreRes.SQL.Add(
-    'sum((coalesce(c000044.entrada,0) - coalesce(c000044.saida,0))) as Total ');
-  DmRel.qrDreRes.SQL.Add('from ');
-  DmRel.qrDreRes.SQL.Add('c000044 ');
-  DmRel.qrDreRes.SQL.Add(
-    'INNER JOIN C000035 ON(C000044.codconta = c000035.codigo) ');
-  DmRel.qrDreRes.SQL.Add('where 1=1 ');
-
-  if Trim(dblkcbbPlanoConta.Text) <> '' then
-  begin
-    DmRel.qrDreRes.SQL.Add(' and C000044.codconta=' + inttostr
-        (dblkcbbPlanoConta.KeyValue));
-  end;
-
-  DmRel.qrDreRes.SQL.Add(' and c000044.DATA between   :dataI and :dataF ');
-  DmRel.qrDreRes.SQL.Add(
-    'and (coalesce(c000044.entrada,0) - coalesce(c000044.saida,0)) <>0 ');
-  DmRel.qrDreRes.SQL.Add('and  historico <> ''S A L D O   A N T E R I O R'' ');
-  DmRel.qrDreRes.SQL.Add('and historico <> ''Acerto do Saldo Anterior'' ');
-
-  DmRel.qrDreRes.SQL.Add('group by ');
-  DmRel.qrDreRes.SQL.Add('Classificacao, ');
-  DmRel.qrDreRes.SQL.Add('tipo, ');
-  DmRel.qrDreRes.SQL.Add('Nome_Conta ');
-  DmRel.qrDreRes.SQL.Add(')  as tmp ');
-  DmRel.qrDreRes.SQL.Add('group by classificacao ');
-
-  DmRel.qrDreRes.Open;
-{$ENDREGION}
-  with DmRel.qrDreRes, SQL do
-  begin
-    Close;
-    Params.ParamByName('DataI').AsDate := dataI.Date;
-    Params.ParamByName('DataF').AsDate := dataF.Date;
-    Open;
-  end;
-
-  Periodo;
-  versaoRelatorio;
-
-//  with uDmRel.DmRel.frxRepProdCusto do
-//  begin
-//    LoadFromFile(ExtractFilePath(ParamStr(0)) + 'rel\DreRes.fr3');
-//    PrepareReport(True);
-//    ShowReport;
-//  end;
+uRelatorio.DreRes(dataI.Date, dataF.Date);
+CarregarRelatorio(dmRel.frxDreRes);
 end;
 
 
@@ -442,141 +356,8 @@ end;
 
 procedure TfrmPrincipal.btnDreDetClick(Sender: TObject);
 begin
-//
-//{$REGION 'sql Det'}
-//  DmRel.qrDreDet.Close;
-//  DmRel.qrDreDet.SQL.Clear;
-//  DmRel.qrDreDet.SQL.Add(' Select ');
-//  DmRel.qrDreDet.SQL.Add(' Classificacao, ');
-//  DmRel.qrDreDet.SQL.Add(' tipo, ');
-//  DmRel.qrDreDet.SQL.Add(' Nome_Conta, ');
-//  DmRel.qrDreDet.SQL.Add(' historico, ');
-//  DmRel.qrDreDet.SQL.Add(' origem, ');
-//  DmRel.qrDreDet.SQL.Add(' data, ');
-//  DmRel.qrDreDet.SQL.Add(' Total ');
-//  DmRel.qrDreDet.SQL.Add(' from ');
-//
-//  DmRel.qrDreDet.SQL.Add(' ( Select ');
-//  DmRel.qrDreDet.SQL.Add(' c000035.classificacao as Classificacao, ');
-//  DmRel.qrDreDet.SQL.Add(' c000035.tipo as tipo, ');
-//  DmRel.qrDreDet.SQL.Add(' c000035.conta as Nome_Conta, ');
-//  DmRel.qrDreDet.SQL.Add(' c000044.data, ');
-//  DmRel.qrDreDet.SQL.Add(' c000044.historico, ');
-//  DmRel.qrDreDet.SQL.Add(' c000044.codconta as origem, ');
-//  DmRel.qrDreDet.SQL.Add(
-//    ' (coalesce(c000044.entrada,0) - coalesce(c000044.saida,0)) as Total ');
-//  DmRel.qrDreDet.SQL.Add(' from ');
-//  DmRel.qrDreDet.SQL.Add(' c000044 ');
-//  DmRel.qrDreDet.SQL.Add(
-//    ' INNER JOIN C000035 ON(C000044.codconta = c000035.codigo) ');
-//  DmRel.qrDreDet.SQL.Add(' where ');
-//
-//  DmRel.qrDreDet.SQL.Add(' c000044.DATA  between :dataI and :dataF ');
-//
-//  DmRel.qrDreDet.SQL.Add(
-//    ' and (coalesce(c000044.entrada,0) - coalesce(c000044.saida,0)) <>0 ');
-//  DmRel.qrDreDet.SQL.Add(' and  historico <> ''S A L D O   A N T E R I O R'' ');
-//  DmRel.qrDreDet.SQL.Add(' and historico <> ''Acerto do Saldo Anterior'' ');
-//
-//  if Trim(dblkcbbPlanoConta.Text) <> '' then
-//  begin
-//    DmRel.qrDreDet.SQL.Add(' and C000044.codconta=' + inttostr
-//        (dblkcbbPlanoConta.KeyValue));
-//  end;
-//
-//  DmRel.qrDreDet.SQL.Add(' union all ');
-//
-//  DmRel.qrDreDet.SQL.Add(' Select ');
-//  DmRel.qrDreDet.SQL.Add(' c000035.classificacao as Classificacao, ');
-//  DmRel.qrDreDet.SQL.Add(' c000035.tipo as tipo, ');
-//  DmRel.qrDreDet.SQL.Add(' c000035.conta as Nome_Conta, ');
-//  DmRel.qrDreDet.SQL.Add(' c000042.data, ');
-//  DmRel.qrDreDet.SQL.Add(' c000042.historico, ');
-//  DmRel.qrDreDet.SQL.Add(' c000042.codconta as origem, ');
-//  DmRel.qrDreDet.SQL.Add(' (c000042.Valor) as Total ');
-//  DmRel.qrDreDet.SQL.Add(' from ');
-//
-//  DmRel.qrDreDet.SQL.Add(' c000042 ');
-//  DmRel.qrDreDet.SQL.Add(
-//    ' INNER JOIN C000035 ON(C000042.codconta = c000035.CODIGO) ');
-//  DmRel.qrDreDet.SQL.Add(' where ');
-//  DmRel.qrDreDet.SQL.Add(' c000042.DATA  between :dataI and :dataF ');
-//
-//  if Trim(dblkcbbPlanoConta.Text) <> '' then
-//  begin
-//    DmRel.qrDreDet.SQL.Add(' and C000042.codconta=' + inttostr
-//        (dblkcbbPlanoConta.KeyValue));
-//  end;
-//
-//  DmRel.qrDreDet.SQL.Add(' )  as tmp ');
-//  DmRel.qrDreDet.SQL.Add(' order by ');
-//  DmRel.qrDreDet.SQL.Add(' Classificacao, ');
-//  DmRel.qrDreDet.SQL.Add(' data, ');
-//  DmRel.qrDreDet.SQL.Add(' historico, ');
-//  DmRel.qrDreDet.SQL.Add(' Total ');
-//
-//  DmRel.qrDreDet.Open;
-//{$ENDREGION}
-
-with dm.qrCommon do
-begin
-  close;
-  sql.Clear;
-  sql.Text:=
-
-'Select Classificacao, tipo, Nome_Conta, historico, origem, data, Total from '+
-'( Select '+
-'c000035.classificacao as Classificacao, '+
-'c000035.tipo as tipo, '+
-'c000035.conta as Nome_Conta, '+
-'c000044.data, '+
-'c000044.historico, '+
-'c000044.codconta as origem, '+
-'(coalesce(c000044.entrada,0) - coalesce(c000044.saida,0)) as Total from c000044 '+
-'INNER JOIN C000035 ON(C000044.codconta = c000035.codigo) where '+
-'c000044.DATA  between :dataI and :dataF '+
-'and (coalesce(c000044.entrada,0) - coalesce(c000044.saida,0)) <>0 '+
-'and  historico <> ''S A L D O   A N T E R I O R'' '+
-'and historico <> ''Acerto do Saldo Anterior'' union all '+
-'Select '+
-'c000035.classificacao as Classificacao, '+
-'c000035.tipo as tipo, '+
-'c000035.conta as Nome_Conta, '+
-'c000042.data, '+
-'c000042.historico, '+
-'c000042.codconta as origem, '+
-'(c000042.Valor) as Total '+
-'from c000042 '+
-'INNER JOIN C000035 ON(C000042.codconta = c000035.CODIGO) '+
-'where c000042.DATA  between :dataI and :dataF '+
-')  as tmp '+
-'order by Classificacao, data, historico, Total ';
-
-    Params.ParamByName('DataI').AsDate := dataI.Date;
-    Params.ParamByName('DataF').AsDate := dataF.Date;
-    open;
-
-end;
-//
-//  with DmRel.qrDreDet, SQL do
-//  begin
-//    Close;
-//    Params.ParamByName('DataI').AsDate := dataI.Date;
-//    Params.ParamByName('DataF').AsDate := dataF.Date;
-//    Open;
-//  end;
-
-//  Periodo;
-//  versaoRelatorio;
-
-//  with uDmRel.DmRel.frxRepProdCusto do
-//  begin
-//    LoadFromFile(ExtractFilePath(ParamStr(0)) + 'rel\DreDet.fr3');
-//    PrepareReport(True);
-//    ShowReport;
-//  end;
-CarregarRelatorio(dmRel.frxDreDet);
-
+uRelatorio.DreDet(dataI.Date, dataF.Date);
+CarregarRelatorio(dmRel.frx);
 end;
 
 procedure TfrmPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -703,7 +484,9 @@ qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO
 qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000109'',''RECEBTO. DINHEIRO'',1,''1.02.101'',''000006'', 3); ');
 qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000110'',''RECEBTO. CHEQUE A.V.'',1,''1.02.102'',''000006'', 3); ');
 qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000111'',''RECEBTO. CHEQUE A.P.'',1,''1.02.103'',''000006'', 3); ');
-qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000112'',''RECEBTO. CARTAO'',1,''1.02.104'',''000006'', 3); ');
+//RECEBIMENTO DE CREDIARIO => RECEBIMENTO PELO BANCO
+qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000013'',''RECEBTO. PELO BANCO'',1,''1.02.104'',''000006'', 3); ');
+
 qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000113'',''RECEBTO. JUROS'',1,''1.02.105'',''000006'', 3); ');
 qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000114'',''DESCONTO NO RECEBTO'',1,''1.02.106'',''000006'', 3); ');
 qrcommonExec(' UPDATE OR INSERT INTO C000035 (CODIGO, CONTA, TIPO, CLASSIFICACAO, CODGRUPO, NIVEL) VALUES (''000115'',''RECEBTO. BOLETO'',1,''1.02.107'',''000006'', 3); ');
@@ -835,7 +618,7 @@ begin
   verificarBaixarCartao;
 
   //correção pra Sotelli v2.00 15/01/19
-  VericarDuplicatasPagar;
+//  VericarDuplicatasPagar;
 
  //nao esta desativado pq trocou de servido
 // if testarInternet = True then AtualizarVersao;

@@ -11,30 +11,22 @@ uses
 
 type
   TdmRel = class(TDataModule)
-    frxRepProdCusto: TfrxReport;
-    frDBprodCusto: TfrxDBDataset;
     qrRelProdCusto: TZQuery;
     dsRelProdCusto: TDataSource;
     qrVendaCartaoSnfce: TZQuery;
     dsVendaCartaoSnfce: TDataSource;
-    frxDBVendaCartaoSnfce: TfrxDBDataset;
-    frxRepVendaCartaoSnfce: TfrxReport;
-    frxDBFilial: TfrxDBDataset;
     qrDreDet: TZQuery;
     dsDreDet: TDataSource;
-    frxDBdre: TfrxDBDataset;
-    frxDreDet: TfrxReport;
     qrDreRes: TZQuery;
     dsDreRes: TDataSource;
-    frxDBdreRes: TfrxDBDataset;
-    frxDreRes: TfrxReport;
     QrRelatorio: TZQuery;
-    frxDBRelatorio: TfrxDBDataset;
     DsRelatorio: TDataSource;
     qrVendaMensal: TFDQuery;
-    frxDBVendaMensal: TfrxDBDataset;
-    frxVendaMensal: TfrxReport;
-    qrCommon: TFDQuery;
+    frxDreRes: TfrxReport;
+    frxDBdreRes: TfrxDBDataset;
+    frxDBRelatorio: TfrxDBDataset;
+    frxDreDet: TfrxReport;
+    frxDBdre: TfrxDBDataset;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -58,7 +50,7 @@ qrVendaCartaoSnfce.Active:=true;
 qrDreDet.Active:=true;
 qrDreRes.Active:=true;
 
-qrCommon.Active:=true;
+
 end;
 
 end.

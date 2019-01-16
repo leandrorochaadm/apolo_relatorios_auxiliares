@@ -7,7 +7,9 @@ uses
   ZAbstractDataset, ZDataset, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.FB,
-  FireDAC.Phys.FBDef, FireDAC.VCLUI.Wait, FireDAC.Comp.Client;
+  FireDAC.Phys.FBDef, FireDAC.VCLUI.Wait, FireDAC.Comp.Client,
+  FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
+  FireDAC.Comp.DataSet;
 
 type
   Tdm = class(TDataModule)
@@ -21,8 +23,8 @@ type
     wdstrngfldPlanoContaCODIGO: TWideStringField;
     wdstrngfldPlanoContaCONTA: TWideStringField;
     wdstrngfldPlanoContaCLASSIFICACAO: TWideStringField;
-    qrCommon: TZQuery;
     conn: TFDConnection;
+    qrCommon: TFDQuery;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -87,9 +89,8 @@ path := ParamStr(0);
 // con.HostName := Arquivo_ini.ReadString('999-002', '999-002', '');
 // con.Database := arquivo_ini.ReadString('999-001', '999-001', '');
 
-   { with conn do begin
+    with conn do begin
   Close;
-//  ConnectionName:='';
   // create temporary connection definition
   with Params do begin
     Clear;
@@ -101,7 +102,7 @@ path := ParamStr(0);
   end;
   Open;
 end;
-           }
+
 
 
 
@@ -110,6 +111,8 @@ end;
  conn.Connected := True;
  qrFilial.Active:=true;
  qrPlanoConta.Active:=true;
+
+ qrCommon.Active:=true;
 
 // web.Connected :=true;
 

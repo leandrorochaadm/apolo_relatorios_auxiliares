@@ -6,7 +6,8 @@ uses
   uDM in 'uDM.pas' {dm: TDataModule},
   uDmRel in 'uDmRel.pas' {dmRel: TDataModule},
   Vcl.Themes,
-  Vcl.Styles;
+  Vcl.Styles,
+  uRelatorio in 'uRelatorio.pas';
 
 {$R *.res}
 

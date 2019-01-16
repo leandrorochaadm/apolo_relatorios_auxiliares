@@ -144,7 +144,6 @@ object frmPrincipal: TfrmPrincipal
           Height = 25
           Caption = 'Dre Resumido'
           TabOrder = 6
-          Visible = False
           OnClick = btnDreResClick
         end
         object dblkcbbPlanoConta: TDBLookupComboBox

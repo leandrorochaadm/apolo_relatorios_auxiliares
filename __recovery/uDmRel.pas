@@ -17,17 +17,16 @@ type
     dsVendaCartaoSnfce: TDataSource;
     qrDreDet: TZQuery;
     dsDreDet: TDataSource;
-
     qrDreRes: TZQuery;
     dsDreRes: TDataSource;
     QrRelatorio: TZQuery;
-
     DsRelatorio: TDataSource;
     qrVendaMensal: TFDQuery;
-    qrCommon: TFDQuery;
+    frxDreRes: TfrxReport;
+    frxDBdreRes: TfrxDBDataset;
+    frxDBRelatorio: TfrxDBDataset;
     frxDreDet: TfrxReport;
     frxDBdre: TfrxDBDataset;
-    frxDBRelatorio: TfrxDBDataset;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -51,7 +50,7 @@ qrVendaCartaoSnfce.Active:=true;
 qrDreDet.Active:=true;
 qrDreRes.Active:=true;
 
-qrCommon.Active:=true;
+
 end;
 
 end.

@@ -13,24 +13,24 @@ object dm: Tdm
     User = 'SYSDBA'
     Password = 'masterkey'
     Protocol = 'firebirdd-2.5'
-    Left = 88
-    Top = 56
+    Left = 16
+    Top = 8
   end
   object qrFilial: TZQuery
     Connection = con
     SQL.Strings = (
       'select filial, cnpj from c000004')
     Params = <>
-    Left = 136
-    Top = 56
+    Left = 64
+    Top = 8
   end
   object qrClienteWeb: TZQuery
     Connection = web
     SQL.Strings = (
       'SELECT * FROM `liberacao`')
     Params = <>
-    Left = 152
-    Top = 224
+    Left = 80
+    Top = 120
   end
   object web: TZConnection
     ControlsCodePage = cCP_UTF16
@@ -41,14 +41,14 @@ object dm: Tdm
     User = 'atoms053_suporte'
     Password = 'atom2017'
     Protocol = 'mysql-5'
-    Left = 88
-    Top = 224
+    Left = 16
+    Top = 120
   end
   object qrConAux: TZQuery
     Connection = con
     Params = <>
-    Left = 192
-    Top = 56
+    Left = 120
+    Top = 8
   end
   object qrPlanoConta: TZQuery
     Connection = con
@@ -57,8 +57,8 @@ object dm: Tdm
         'select pc.codigo, pc.conta, pc.classificacao from c000035 pc whe' +
         're pc.conta is not null and pc.conta <>'#39#39' order by pc.conta')
     Params = <>
-    Left = 256
-    Top = 56
+    Left = 184
+    Top = 8
     object wdstrngfldPlanoContaCODIGO: TWideStringField
       FieldName = 'CODIGO'
       Required = True
@@ -74,28 +74,61 @@ object dm: Tdm
   end
   object dsPlanoConta: TDataSource
     DataSet = qrPlanoConta
-    Left = 256
-    Top = 112
-  end
-  object qrCommon: TZQuery
-    Connection = con
-    SQL.Strings = (
-      'select * from l000003')
-    Params = <>
-    Left = 272
-    Top = 240
+    Left = 184
+    Top = 64
   end
   object conn: TFDConnection
     Params.Strings = (
-      'DriverID=FB'
       'Database=C:\Apolo\BD\base.FDB'
+      'DriverID=FB'
       'Password=masterkey'
+      'Port=3050'
       'Server=localhost'
-      'User_Name=sysdba'
-      'Port=3050')
+      'User_Name=sysdba')
     Connected = True
     LoginPrompt = False
-    Left = 470
-    Top = 40
+    Left = 582
+    Top = 8
+  end
+  object qrCommon: TFDQuery
+    Active = True
+    Connection = conn
+    SQL.Strings = (
+      ''
+      
+        'Select Classificacao, tipo, Nome_Conta, historico, origem, data,' +
+        ' Total from'
+      '( Select'
+      'c000035.classificacao as Classificacao,'
+      'c000035.tipo as tipo,'
+      'c000035.conta as Nome_Conta,'
+      'c000044.data,'
+      'c000044.historico,'
+      'c000044.codconta as origem,'
+      
+        '(coalesce(c000044.entrada,0) - coalesce(c000044.saida,0)) as Tot' +
+        'al from c000044'
+      'INNER JOIN C000035 ON(C000044.codconta = c000035.codigo) where'
+      'c000044.DATA  between '#39'01/12/2018'#39' and '#39'01/02/2019'#39
+      
+        'and (coalesce(c000044.entrada,0) - coalesce(c000044.saida,0)) <>' +
+        '0'
+      'and  historico <> '#39'S A L D O   A N T E R I O R'#39
+      'and historico <> '#39'Acerto do Saldo Anterior'#39' union all'
+      'Select'
+      'c000035.classificacao as Classificacao,'
+      'c000035.tipo as tipo,'
+      'c000035.conta as Nome_Conta,'
+      'c000042.data,'
+      'c000042.historico,'
+      'c000042.codconta as origem,'
+      '(c000042.Valor) as Total'
+      'from c000042'
+      'INNER JOIN C000035 ON(C000042.codconta = c000035.CODIGO)'
+      'where c000042.DATA  between  '#39'01/12/2018'#39' and '#39'01/02/2019'#39
+      ')  as tmp'
+      'order by Classificacao, data, historico, Total')
+    Left = 584
+    Top = 88
   end
 end

@@ -97,6 +97,7 @@ object frmPrincipal: TfrmPrincipal
           Height = 25
           Caption = 'Dre Detelhado'
           TabOrder = 1
+          Visible = False
           OnClick = btnDreDetClick
         end
         object Imprimir: TButton
@@ -144,7 +145,6 @@ object frmPrincipal: TfrmPrincipal
           Height = 25
           Caption = 'Dre Resumido'
           TabOrder = 6
-          Visible = False
           OnClick = btnDreResClick
         end
         object dblkcbbPlanoConta: TDBLookupComboBox
