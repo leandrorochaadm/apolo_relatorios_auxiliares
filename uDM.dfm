@@ -1,5 +1,6 @@
 object dm: Tdm
   OldCreateOrder = False
+  OnCreate = DataModuleCreate
   Height = 362
   Width = 668
   object con: TZConnection
@@ -8,7 +9,6 @@ object dm: Tdm
     Properties.Strings = (
       'AutoEncodeStrings=ON'
       'controls_cp=CP_UTF16')
-    Connected = True
     HostName = 'localhost'
     Port = 3050
     Database = 'C:\Apolo\BD\BASE.FDB'
@@ -20,7 +20,6 @@ object dm: Tdm
   end
   object qrFilial: TZQuery
     Connection = con
-    Active = True
     SQL.Strings = (
       'select filial, cnpj from c000004')
     Params = <>
@@ -88,13 +87,11 @@ object dm: Tdm
       'Password=masterkey'
       'Database=C:\Apolo\BD\BASE.FDB'
       'Server=localhost')
-    Connected = True
     LoginPrompt = False
     Left = 590
     Top = 8
   end
   object qrCommon: TFDQuery
-    Active = True
     Connection = conn
     SQL.Strings = (
       
