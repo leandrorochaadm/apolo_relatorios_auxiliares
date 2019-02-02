@@ -646,16 +646,16 @@ end;
 
 procedure TfrmPrincipal.VericarDuplicatasPagar;
 begin
-//    dm.qrCommon.Close;
-//    dm.qrCommon.SQL.Clear;
-//    dm.qrCommon.SQL.Text := 'update c000044 cx set cx.codconta=''000021'' where cx.historico like ''%Duplicata a Pagar%'' and cx.codconta<>''000021'' ';
-//    dm.qrCommon.ExecSQL;
+    dm.qrCommon.Close;
+    dm.qrCommon.SQL.Clear;
+    dm.qrCommon.SQL.Text := 'update c000044 cx set cx.codconta=''000021'' where cx.historico like ''%Duplicata a Pagar%'' and cx.codconta<>''000021'' ';
+    dm.qrCommon.ExecSQL;
 //    dm.qrCommon.open;
-//
-//    dm.qrCommon.Close;
-//    dm.qrCommon.SQL.Clear;
-//    dm.qrCommon.SQL.Text := 'update c000042 cx set cx.codconta=''000021'' where cx.codconta=''000008'' AND cx.tipo=''D'' ';
-//    dm.qrCommon.ExecSQL;
+
+    dm.qrCommon.Close;
+    dm.qrCommon.SQL.Clear;
+    dm.qrCommon.SQL.Text := 'update c000042 cx set cx.codconta=''000021'' where cx.codconta=''000008'' AND cx.tipo=''D'' ';
+    dm.qrCommon.ExecSQL;
 //    dm.qrCommon.open;
 
 
