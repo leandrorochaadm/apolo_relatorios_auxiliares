@@ -1,7 +1,8 @@
 object frmPrincipal: TfrmPrincipal
   Left = 0
   Top = 0
-  Caption = 'Auxiliar Apolo'
+  BorderStyle = bsSizeToolWin
+  Caption = 'Relat'#243'rios Auxiliares'
   ClientHeight = 367
   ClientWidth = 350
   Color = clBtnFace
@@ -16,58 +17,29 @@ object frmPrincipal: TfrmPrincipal
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object Panel1: TPanel
+  object Panel2: TPanel
     Left = 0
     Top = 0
     Width = 350
-    Height = 50
-    Align = alTop
-    TabOrder = 0
-    object BtnLiberador: TSpeedButton
-      Left = 111
-      Top = 1
-      Width = 105
-      Height = 49
-      Caption = 'Controle Licen'#231'a'
-      Transparent = False
-      OnClick = BtnLiberadorClick
-    end
-    object btnRelatorio: TSpeedButton
-      Left = 0
-      Top = 1
-      Width = 105
-      Height = 49
-      Caption = 'Relatorios Extras'
-      OnClick = btnRelatorioClick
-    end
-    object SpeedButton2: TSpeedButton
-      Left = 222
-      Top = 1
-      Width = 105
-      Height = 49
-      Caption = 'Boleto'
-      Visible = False
-      OnClick = SpeedButton2Click
-    end
-  end
-  object Panel2: TPanel
-    Left = 0
-    Top = 50
-    Width = 350
-    Height = 317
+    Height = 367
     Align = alClient
-    TabOrder = 1
+    TabOrder = 0
+    ExplicitTop = 50
+    ExplicitHeight = 317
     object pcAtendimento: TPageControl
       Left = 1
       Top = 1
       Width = 348
-      Height = 315
+      Height = 365
       ActivePage = tabRel
       Align = alClient
       TabOrder = 0
-      Visible = False
       object tabRel: TTabSheet
         Caption = 'Relat'#243'rios'
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 287
         object lblDataI: TLabel
           Left = 15
           Top = 24
@@ -159,11 +131,11 @@ object frmPrincipal: TfrmPrincipal
           Visible = False
         end
         object btnLimparFiltro: TButton
-          Left = 262
-          Top = 259
-          Width = 75
+          Left = 80
+          Top = 299
+          Width = 200
           Height = 25
-          Caption = 'Limpar Filtro'
+          Caption = 'Limpar Filtros'
           TabOrder = 7
           OnClick = btnLimparFiltroClick
         end
@@ -176,10 +148,6 @@ object frmPrincipal: TfrmPrincipal
           TabOrder = 8
           OnClick = Button2Click
         end
-      end
-      object tabBoleto: TTabSheet
-        Caption = 'tabBoleto'
-        ImageIndex = 1
       end
     end
   end

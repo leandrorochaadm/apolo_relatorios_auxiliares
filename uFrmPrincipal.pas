@@ -10,11 +10,6 @@ uses
 
 type
   TfrmPrincipal = class(TForm)
-    BtnLiberador: TSpeedButton;
-//    ExeInfo1: TExeInfo;
-    SpeedButton2: TSpeedButton;
-    btnRelatorio: TSpeedButton;
-    Panel1: TPanel;
     Panel2: TPanel;
     IdHTTP: TIdHTTP;
     IdFTP1: TIdFTP;
@@ -31,7 +26,6 @@ type
     btnDreRes: TButton;
     dblkcbbPlanoConta: TDBLookupComboBox;
     btnLimparFiltro: TButton;
-    tabBoleto: TTabSheet;
     Button2: TButton;
     procedure BtnLiberadorClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -353,16 +347,28 @@ end;
 
 procedure TfrmPrincipal.FormShow(Sender: TObject);
 begin
-  versao := '2.00';
+  versao := '2.02';
 //  ShowMessage(versao);
 
   LimparFiltros; // limpar filtros
+
+  verificarBaixarCartao;
+
+  //correção pra Sotelli v2.00 15/01/19
+  VericarDuplicatasPagar;
+
+ //nao esta desativado pq trocou de servido
+// if testarInternet = True then AtualizarVersao;
+
+ //add na versao 1.7.5
+ //novo plano de contas com
+ converterPlanoConta;
 
   // desabilita qrweb
   dm.web.Connected := False;
 
   //desabilar o botao conrole licença
-  BtnLiberador.Visible := False;
+//  BtnLiberador.Visible := False;
 
   //exibe a versão no titulo
   frmPrincipal.caption := caption + ' Versão: ' + versao;
@@ -372,7 +378,7 @@ begin
     begin
     dm.web.Connected := True;
 
-    BtnLiberador.Visible := True ;
+//    BtnLiberador.Visible := True ;
     // ShowMessage(dm.con.HostName+' - '+dm.con.Database);
 
 
@@ -406,7 +412,7 @@ begin
     end;
 
     if dm.qrClienteWeb.FieldByName('Bloqueado').Value = 'NAO' then
-      BtnLiberador.Visible := True;
+//      BtnLiberador.Visible := True;
 
   end;
 
@@ -599,7 +605,7 @@ begin
   pcAtendimento.Visible := True;
   pcAtendimento.ActivePage := tabRel;
   tabRel.TabVisible := True;
-  tabBoleto.TabVisible := False;
+//  tabBoleto.TabVisible := False;
 
   verificarBaixarCartao;
 
@@ -618,9 +624,9 @@ end;
 procedure TfrmPrincipal.SpeedButton2Click(Sender: TObject);
 begin
   pcAtendimento.Visible := True;
-  pcAtendimento.ActivePage := tabBoleto;
+//  pcAtendimento.ActivePage := tabBoleto;
   tabRel.TabVisible := False;
-  tabBoleto.TabVisible := True;
+//  tabBoleto.TabVisible := True;
 end;
 
 function TfrmPrincipal.testarInternet:Boolean;
