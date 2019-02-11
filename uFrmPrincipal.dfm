@@ -148,6 +148,16 @@ object frmPrincipal: TfrmPrincipal
           TabOrder = 8
           OnClick = Button2Click
         end
+        object Button3: TButton
+          Left = 80
+          Top = 254
+          Width = 200
+          Height = 25
+          Caption = 'Controle de licen'#231'a'
+          TabOrder = 9
+          Visible = False
+          OnClick = Button3Click
+        end
       end
     end
   end

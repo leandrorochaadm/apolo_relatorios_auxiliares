@@ -27,6 +27,7 @@ type
     dblkcbbPlanoConta: TDBLookupComboBox;
     btnLimparFiltro: TButton;
     Button2: TButton;
+    Button3: TButton;
     procedure BtnLiberadorClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -61,6 +62,8 @@ type
     procedure CarregarRelatorio(const pReport: TfrxReport);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure VericarDuplicatasPagar;
+    procedure Button3Click(Sender: TObject);
+    procedure AbreForm(aClasseForm: TComponentClass; aForm: TForm);
   private
     { Private declarations }
     FnTamanhoTotal: integer;
@@ -137,6 +140,11 @@ begin
 
   uRelatorio.VendaMensal(dataI.Date, dataF.Date);
   CarregarRelatorio(dmRel.frxVendaMensal);
+end;
+
+procedure TfrmPrincipal.Button3Click(Sender: TObject);
+begin
+AbreForm(TfrmLiberador, frmLiberador);
 end;
 
 procedure TfrmPrincipal.CarregarRelatorio(const pReport: TfrxReport);
@@ -231,6 +239,16 @@ CarregarRelatorio(dmRel.frxDreRes);
 end;
 
 
+
+procedure TfrmPrincipal.AbreForm(aClasseForm: TComponentClass; aForm: TForm);
+begin
+  Application.CreateForm(aClasseForm, aForm);
+  try
+    aForm.ShowModal;
+  finally
+    FreeAndNil(aForm);
+  end;
+end;
 
 procedure TfrmPrincipal.atualizarContasCaixa(movimento, conta: Integer);
 var

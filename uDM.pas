@@ -114,9 +114,10 @@ var
             with Params do begin
               Clear;
               Add('DriverID=FB');
+              Add('port=3050');
               Add('Server='+ ArquivoINI.ReadString('Banco de Dados', '999-002','localhost'));
               Add('Database='+ ArquivoINI.ReadString('Banco de Dados', '999-001','C:\APOLO\bd\BASE.FDB'));
-              Add('User_Name=sysdba');
+              Add('User_Name=SYSDBA');
               Add('Password=masterkey');
             end;
             Connected :=true;

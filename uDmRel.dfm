@@ -1,8 +1,8 @@
 object dmRel: TdmRel
   OldCreateOrder = False
   OnCreate = DataModuleCreate
-  Height = 462
-  Width = 678
+  Height = 407
+  Width = 431
   object qrRelProdCusto: TZQuery
     Connection = dm.con
     SQL.Strings = (
@@ -623,7 +623,7 @@ object dmRel: TdmRel
     PrintOptions.Printer = 'Padr'#227'o'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 43265.621622812500000000
-    ReportOptions.LastChange = 43481.656481250000000000
+    ReportOptions.LastChange = 43507.365555763900000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -720,7 +720,7 @@ object dmRel: TdmRel
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
         Height = 22.677180000000000000
-        Top = 434.645950000000000000
+        Top = 400.630180000000000000
         Width = 718.110700000000000000
         object Memo1: TfrxMemoView
           Left = 226.771800000000000000
@@ -745,17 +745,49 @@ object dmRel: TdmRel
       object GroupHeader1: TfrxGroupHeader
         FillType = ftBrush
         Height = 22.677180000000000000
-        Top = 219.212740000000000000
+        Top = 185.196970000000000000
         Width = 718.110700000000000000
         Condition = 'frxDBdre."CLASSIFICACAO"'
         KeepChild = True
         KeepTogether = True
         OutlineText = 'frxDBdre."CLASSIFICACAO"'
+        object frxDBdreCLASSIFICACAO: TfrxMemoView
+          Left = 238.110390000000000000
+          Width = 170.078850000000000000
+          Height = 18.897650000000000000
+          DataField = 'CLASSIFICACAO'
+          DataSet = frxDBdre
+          DataSetName = 'frxDBdre'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            '[frxDBdre."CLASSIFICACAO"]')
+          ParentFont = False
+        end
+        object frxDBdreNOME_CONTA: TfrxMemoView
+          Left = 3.779530000000000000
+          Width = 219.212740000000000000
+          Height = 18.897650000000000000
+          DataField = 'NOME_CONTA'
+          DataSet = frxDBdre
+          DataSetName = 'frxDBdre'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            '[frxDBdre."NOME_CONTA"]')
+          ParentFont = False
+        end
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
         Height = 18.897650000000000000
-        Top = 264.567100000000000000
+        Top = 230.551330000000000000
         Width = 718.110700000000000000
         DataSet = frxDBdre
         DataSetName = 'frxDBdre'
@@ -814,7 +846,7 @@ object dmRel: TdmRel
       object GroupFooter1: TfrxGroupFooter
         FillType = ftBrush
         Height = 22.677180000000000000
-        Top = 306.141930000000000000
+        Top = 272.126160000000000000
         Width = 718.110700000000000000
         object Memo2: TfrxMemoView
           Left = 108.526504290000000000
@@ -856,44 +888,12 @@ object dmRel: TdmRel
       end
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
-        Height = 60.472480000000000000
+        Height = 26.456710000000000000
         Top = 98.267780000000000000
         Width = 718.110700000000000000
-        object frxDBdreCLASSIFICACAO: TfrxMemoView
-          Left = 245.669450000000000000
-          Width = 170.078850000000000000
-          Height = 18.897650000000000000
-          DataField = 'CLASSIFICACAO'
-          DataSet = frxDBdre
-          DataSetName = 'frxDBdre'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Memo.UTF8W = (
-            '[frxDBdre."CLASSIFICACAO"]')
-          ParentFont = False
-        end
-        object frxDBdreNOME_CONTA: TfrxMemoView
-          Left = 3.779530000000000000
-          Width = 219.212740000000000000
-          Height = 18.897650000000000000
-          DataField = 'NOME_CONTA'
-          DataSet = frxDBdre
-          DataSetName = 'frxDBdre'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Memo.UTF8W = (
-            '[frxDBdre."NOME_CONTA"]')
-          ParentFont = False
-        end
         object Memo6: TfrxMemoView
           Left = 7.019127140000000000
-          Top = 29.696307140000000000
+          Top = 3.239597140000001000
           Width = 88.548988570000000000
           Height = 16.197985710000000000
           Font.Charset = DEFAULT_CHARSET
@@ -907,7 +907,6 @@ object dmRel: TdmRel
         end
         object Memo7: TfrxMemoView
           Left = 238.110390000000000000
-          Top = 26.456710000000000000
           Width = 326.659378570000000000
           Height = 16.197985710000000000
           Font.Charset = DEFAULT_CHARSET
@@ -919,24 +918,9 @@ object dmRel: TdmRel
             'Hist'#243'rico')
           ParentFont = False
         end
-        object Memo8: TfrxMemoView
-          Left = 582.047620000000000000
-          Top = 26.456710000000000000
-          Width = 137.682878570000000000
-          Height = 16.197985710000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -16
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          HAlign = haRight
-          Memo.UTF8W = (
-            'Valor')
-          ParentFont = False
-        end
         object Memo3: TfrxMemoView
           Left = 109.606370000000000000
-          Top = 30.236239999999990000
+          Top = 3.779529999999994000
           Width = 88.548988570000000000
           Height = 16.197985710000000000
           Font.Charset = DEFAULT_CHARSET
@@ -952,7 +936,7 @@ object dmRel: TdmRel
       object Footer1: TfrxFooter
         FillType = ftBrush
         Height = 22.677180000000000000
-        Top = 351.496290000000000000
+        Top = 317.480520000000000000
         Width = 718.110700000000000000
         object SysMemo1: TfrxSysMemoView
           Left = 3.779530000000000000
@@ -989,10 +973,11 @@ object dmRel: TdmRel
     PreviewOptions.Zoom = 1.000000000000000000
     PrintOptions.Printer = 'Padr'#227'o'
     PrintOptions.PrintOnSheet = 0
-    ReportOptions.CreateDate = 43250.638496331000000000
-    ReportOptions.LastChange = 43481.753245752310000000
+    ReportOptions.CreateDate = 43265.621622812500000000
+    ReportOptions.LastChange = 43507.364483761570000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
+      ''
       'begin'
       ''
       'end.')
@@ -1000,16 +985,12 @@ object dmRel: TdmRel
     Top = 344
     Datasets = <
       item
-        DataSet = frxDBFilial
-        DataSetName = 'frxDBFilial'
+        DataSet = frxDBdre
+        DataSetName = 'frxDBdre'
       end
       item
         DataSet = frxDBRelatorio
         DataSetName = 'frxDBRelatorio'
-      end
-      item
-        DataSet = frxDBVendaMes
-        DataSetName = 'frxDBVendaMes'
       end>
     Variables = <>
     Style = <>
@@ -1018,172 +999,27 @@ object dmRel: TdmRel
       Width = 1000.000000000000000000
     end
     object Page1: TfrxReportPage
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -16
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
       PaperWidth = 210.000000000000000000
-      PaperHeight = 297.000000000000000000
+      PaperHeight = 300.000000000000000000
       PaperSize = 256
-      LeftMargin = 5.000000000000000000
-      RightMargin = 5.000000000000000000
-      TopMargin = 5.000000000000000000
-      BottomMargin = 5.000000000000000000
-      object MasterData1: TfrxMasterData
-        FillType = ftBrush
-        Height = 22.677180000000000000
-        Top = 204.094620000000000000
-        Width = 755.906000000000000000
-        DataSet = frxDBVendaMes
-        DataSetName = 'frxDBVendaMes'
-        RowCount = 0
-        object frxDBVendaMesDATAMES: TfrxMemoView
-          Left = 3.779530000000000000
-          Width = 56.692950000000000000
-          Height = 18.897650000000000000
-          DataField = 'DATAMES'
-          DataSet = frxDBVendaMes
-          DataSetName = 'frxDBVendaMes'
-          Memo.UTF8W = (
-            '[frxDBVendaMes."DATAMES"]')
-        end
-        object frxDBVendaMesTOTAL: TfrxMemoView
-          Left = 86.929190000000000000
-          Top = 3.779529999999994000
-          Width = 79.370130000000000000
-          Height = 18.897650000000000000
-          DataField = 'TOTAL'
-          DataSet = frxDBVendaMes
-          DataSetName = 'frxDBVendaMes'
-          DisplayFormat.FormatStr = '%2.2n'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = [ftRight]
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[frxDBVendaMes."TOTAL"]')
-          ParentFont = False
-        end
-        object frxDBVendaMesDINHERO: TfrxMemoView
-          Left = 188.976500000000000000
-          Top = 3.779529999999994000
-          Width = 79.370130000000000000
-          Height = 18.897650000000000000
-          DataField = 'DINHERO'
-          DataSet = frxDBVendaMes
-          DataSetName = 'frxDBVendaMes'
-          DisplayFormat.FormatStr = '%2.2n'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[frxDBVendaMes."DINHERO"]')
-          ParentFont = False
-        end
-        object frxDBVendaMesCHEQUE: TfrxMemoView
-          Left = 291.023810000000000000
-          Top = 3.779529999999994000
-          Width = 79.370130000000000000
-          Height = 18.897650000000000000
-          DataField = 'CHEQUE'
-          DataSet = frxDBVendaMes
-          DataSetName = 'frxDBVendaMes'
-          DisplayFormat.FormatStr = '%2.2n'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[frxDBVendaMes."CHEQUE"]')
-          ParentFont = False
-        end
-        object frxDBVendaMesCARTAO: TfrxMemoView
-          Left = 393.071120000000000000
-          Top = 3.779529999999994000
-          Width = 79.370130000000000000
-          Height = 18.897650000000000000
-          DataField = 'CARTAO'
-          DataSet = frxDBVendaMes
-          DataSetName = 'frxDBVendaMes'
-          DisplayFormat.FormatStr = '%2.2n'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[frxDBVendaMes."CARTAO"]')
-          ParentFont = False
-        end
-        object frxDBVendaMesCREDIARIO: TfrxMemoView
-          Left = 498.897960000000000000
-          Top = 3.779529999999994000
-          Width = 79.370130000000000000
-          Height = 18.897650000000000000
-          DataField = 'CREDIARIO'
-          DataSet = frxDBVendaMes
-          DataSetName = 'frxDBVendaMes'
-          DisplayFormat.FormatStr = '%2.2n'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[frxDBVendaMes."CREDIARIO"]')
-          ParentFont = False
-        end
-      end
+      LeftMargin = 10.000000000000000000
+      RightMargin = 10.000000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
-        Height = 79.574830000000000000
+        Height = 56.692950000000000000
         Top = 18.897650000000000000
-        Width = 755.906000000000000000
-        object Memo9: TfrxMemoView
-          Left = 3.779530000000000000
-          Width = 584.166050000000000000
-          Height = 22.677180000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -19
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          HAlign = haCenter
-          Memo.UTF8W = (
-            'Vendas Agrupadas Mensalmente')
-          ParentFont = False
-        end
-        object Memo11: TfrxMemoView
-          Left = 593.845737780000000000
-          Top = 2.519686669999999000
-          Width = 157.480416670000000000
-          Height = 14.698172220000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -11
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Style = fsDot
-          HAlign = haRight
-          Memo.UTF8W = (
-            'Emiss'#227'o: [Date]')
-          ParentFont = False
-        end
+        Width = 718.110700000000000000
         object frxDBRelatorioLINHA2: TfrxMemoView
-          Left = 6.157700000000000000
-          Top = 24.897650000000000000
-          Width = 567.630180000000000000
+          Left = 3.779530000000000000
+          Top = 34.015770000000010000
+          Width = 400.630180000000000000
           Height = 18.897650000000000000
           DataField = 'LINHA2'
           DataSet = frxDBRelatorio
@@ -1193,100 +1029,63 @@ object dmRel: TdmRel
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
-          HAlign = haCenter
           Memo.UTF8W = (
             '[frxDBRelatorio."LINHA2"]')
           ParentFont = False
         end
         object frxDBRelatorioLINHA3: TfrxMemoView
-          Left = 595.984850000000000000
+          Left = 548.031850000000000000
           Top = 18.897650000000000000
-          Width = 156.181200000000000000
+          Width = 166.299320000000000000
           Height = 18.897650000000000000
           DataField = 'LINHA3'
           DataSet = frxDBRelatorio
           DataSetName = 'frxDBRelatorio'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -11
+          Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
-          HAlign = haRight
           Memo.UTF8W = (
             '[frxDBRelatorio."LINHA3"]')
           ParentFont = False
         end
-        object frxDBFilialCNPJ: TfrxMemoView
-          Left = 332.086890000000000000
-          Top = 55.346630000000010000
-          Width = 200.315090000000000000
-          Height = 18.897650000000000000
-          DataField = 'CNPJ'
-          DataSet = frxDBFilial
-          DataSetName = 'frxDBFilial'
+        object Memo5: TfrxMemoView
+          Left = 450.843935710000000000
+          Top = 37.255367140000000000
+          Width = 261.867435710000000000
+          Height = 19.437582860000000000
+          DisplayFormat.FormatStr = 'dd mmm yyyy'
+          DisplayFormat.Kind = fkDateTime
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -13
+          Font.Height = -9
           Font.Name = 'Arial'
-          Font.Style = [fsBold]
+          Font.Style = []
+          HAlign = haCenter
           Memo.UTF8W = (
-            '[frxDBFilial."CNPJ"]')
+            'Emiss'#227'o: [Date]')
           ParentFont = False
-        end
-        object frxDBFilialFILIAL: TfrxMemoView
-          Left = 4.338590000000000000
-          Top = 55.228510000000000000
-          Width = 324.630180000000000000
-          Height = 18.897650000000000000
-          DataField = 'FILIAL'
-          DataSet = frxDBFilial
-          DataSetName = 'frxDBFilial'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Memo.UTF8W = (
-            '[frxDBFilial."FILIAL"]')
-          ParentFont = False
-        end
-        object Line3: TfrxLineView
-          Left = 2.000000000000000000
-          Top = 50.102350000000000000
-          Width = 1133.858267720000000000
-          Color = clBlack
-          Frame.Style = fsDot
-          Frame.Typ = [ftTop]
-        end
-        object Line4: TfrxLineView
-          Left = 3.000000000000000000
-          Top = 76.102350000000000000
-          Width = 1133.858267720000000000
-          Color = clBlack
-          Frame.Style = fsDot
-          Frame.Typ = [ftTop]
         end
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
-        Height = 22.897650000000000000
-        Top = 332.598640000000000000
-        Width = 755.906000000000000000
-        object Memo10: TfrxMemoView
-          Left = 547.071430000000000000
-          Width = 207.874150000000000000
+        Height = 22.677180000000000000
+        Top = 396.850650000000000000
+        Width = 718.110700000000000000
+        object Memo1: TfrxMemoView
+          Left = 226.771800000000000000
+          Width = 177.637910000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
           Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Frame.Style = fsDot
+          Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
-            'Pag: [<Page>] de [TotalPages#]')
+            '[Page#] de [TotalPages#]')
           ParentFont = False
-          WordWrap = False
           Formats = <
             item
             end
@@ -1296,232 +1095,217 @@ object dmRel: TdmRel
       end
       object GroupHeader1: TfrxGroupHeader
         FillType = ftBrush
-        Height = 20.677180000000000000
-        Top = 158.740260000000000000
-        Width = 755.906000000000000000
-        Condition = 'frxDBFilial."FILIAL"'
-        object Memo1: TfrxMemoView
-          Left = 5.543290000000000000
-          Top = 0.590496669999993200
-          Width = 74.133890000000000000
-          Height = 16.377963330000000000
+        Height = 22.677180000000000000
+        Top = 181.417440000000000000
+        Width = 718.110700000000000000
+        Condition = 'frxDBdre."CLASSIFICACAO"'
+        KeepChild = True
+        KeepTogether = True
+        OutlineText = 'frxDBdre."CLASSIFICACAO"'
+        object frxDBdreCLASSIFICACAO: TfrxMemoView
+          Left = 234.330860000000000000
+          Width = 170.078850000000000000
+          Height = 18.897650000000000000
+          DataField = 'CLASSIFICACAO'
+          DataSet = frxDBdre
+          DataSetName = 'frxDBdre'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
-          HAlign = haRight
           Memo.UTF8W = (
-            'ANO/M'#202'S')
+            '[frxDBdre."CLASSIFICACAO"]')
           ParentFont = False
         end
-        object Memo2: TfrxMemoView
-          Left = 86.897650000000000000
-          Top = 0.850339999999988600
-          Width = 79.181200000000000000
-          Height = 16.377963330000000000
+        object frxDBdreNOME_CONTA: TfrxMemoView
+          Left = 3.779530000000000000
+          Width = 219.212740000000000000
+          Height = 18.897650000000000000
+          DataField = 'NOME_CONTA'
+          DataSet = frxDBdre
+          DataSetName = 'frxDBdre'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
-          Frame.Typ = [ftRight]
-          HAlign = haRight
           Memo.UTF8W = (
-            'SUBTOTAL')
+            '[frxDBdre."NOME_CONTA"]')
           ParentFont = False
         end
-        object Line2: TfrxLineView
-          Left = 3.000000000000000000
-          Top = 19.747989999999990000
-          Width = 1133.858267720000000000
-          Color = clBlack
-          Frame.Style = fsDot
-          Frame.Typ = [ftTop]
-        end
-        object Memo4: TfrxMemoView
-          Left = 188.976500000000000000
-          Width = 79.181200000000000000
-          Height = 16.377963330000000000
+      end
+      object MasterData1: TfrxMasterData
+        FillType = ftBrush
+        Height = 18.897650000000000000
+        Top = 226.771800000000000000
+        Width = 718.110700000000000000
+        DataSet = frxDBdre
+        DataSetName = 'frxDBdre'
+        RowCount = 0
+        object frxDBdreTOTAL: TfrxMemoView
+          Left = 75.590600000000000000
+          Width = 102.047310000000000000
+          Height = 15.118120000000000000
+          DataSet = frxDBdre
+          DataSetName = 'frxDBdre'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
           Font.Name = 'Arial'
-          Font.Style = [fsBold]
+          Font.Style = []
           HAlign = haRight
           Memo.UTF8W = (
-            'DINHEIRO')
+            '[frxDBdre."TOTAL"]')
           ParentFont = False
         end
-        object Memo5: TfrxMemoView
-          Left = 291.023810000000000000
-          Width = 79.181200000000000000
-          Height = 16.377963330000000000
+        object frxDBdreDATA: TfrxMemoView
+          Left = 3.779530000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          DataField = 'DATA'
+          DataSet = frxDBdre
+          DataSetName = 'frxDBdre'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
           Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          HAlign = haRight
+          Font.Style = []
           Memo.UTF8W = (
-            'CHEQUE')
+            '[frxDBdre."DATA"]')
           ParentFont = False
         end
-        object Memo6: TfrxMemoView
-          Left = 389.291590000000000000
-          Width = 79.181200000000000000
-          Height = 16.377963330000000000
+        object frxDBdreHISTORICO: TfrxMemoView
+          Left = 211.653680000000000000
+          Width = 457.323130000000000000
+          Height = 18.897650000000000000
+          DataField = 'HISTORICO'
+          DataSet = frxDBdre
+          DataSetName = 'frxDBdre'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
           Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          HAlign = haRight
+          Font.Style = []
           Memo.UTF8W = (
-            'CARTAO')
-          ParentFont = False
-        end
-        object Memo7: TfrxMemoView
-          Left = 498.897960000000000000
-          Width = 79.181200000000000000
-          Height = 16.377963330000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          HAlign = haRight
-          Memo.UTF8W = (
-            'CREDIARIO')
+            '[frxDBdre."HISTORICO"]')
           ParentFont = False
         end
       end
       object GroupFooter1: TfrxGroupFooter
         FillType = ftBrush
-        Height = 21.314780000000000000
-        Top = 249.448980000000000000
-        Width = 755.906000000000000000
-        object Memo3: TfrxMemoView
-          Left = 0.204700000000000000
-          Top = 3.417129999999986000
-          Width = 99.433210000000000000
-          Height = 16.377963330000000000
+        Height = 22.677180000000000000
+        Top = 268.346630000000000000
+        Width = 718.110700000000000000
+        object Memo2: TfrxMemoView
+          Left = 108.526504290000000000
+          Width = 137.142945710000000000
+          Height = 18.897637800000000000
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          HAlign = haRight
           Memo.UTF8W = (
-            'TOTAL')
+            'SubTotal: [SUM(<frxDBdre."TOTAL">)]')
           ParentFont = False
         end
         object Line1: TfrxLineView
-          Left = 2.000000000000000000
-          Top = 0.417129999999986000
-          Width = 1133.858267720000000000
+          Top = 18.897650000000000000
+          Width = 710.551640000000000000
           Color = clBlack
           Frame.Style = fsDot
           Frame.Typ = [ftTop]
         end
-        object SysMemo1: TfrxSysMemoView
-          Left = 71.811070000000000000
-          Top = 3.779529999999994000
-          Width = 94.488250000000000000
-          Height = 18.897650000000000000
-          DisplayFormat.FormatStr = '%2.2n'
-          DisplayFormat.Kind = fkNumeric
+      end
+      object Memo4: TfrxMemoView
+        Top = 14.038254290000000000
+        Width = 711.091572860000000000
+        Height = 21.057381430000000000
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -21
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        HAlign = haCenter
+        Memo.UTF8W = (
+          'DRE Detalhado')
+        ParentFont = False
+      end
+      object PageHeader1: TfrxPageHeader
+        FillType = ftBrush
+        Height = 22.677180000000000000
+        Top = 98.267780000000000000
+        Width = 718.110700000000000000
+        object Memo6: TfrxMemoView
+          Left = 10.798657140000000000
+          Top = 3.239597140000001000
+          Width = 88.548988570000000000
+          Height = 16.197985710000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -13
+          Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
-          HAlign = haRight
           Memo.UTF8W = (
-            '[SUM(<frxDBVendaMes."TOTAL">,MasterData1)]')
+            'Data')
           ParentFont = False
         end
-        object SysMemo2: TfrxSysMemoView
-          Left = 173.858380000000000000
-          Top = 3.779529999999994000
-          Width = 94.488250000000000000
-          Height = 18.897650000000000000
-          DisplayFormat.FormatStr = '%2.2n'
-          DisplayFormat.Kind = fkNumeric
+        object Memo7: TfrxMemoView
+          Left = 238.110390000000000000
+          Width = 326.659378570000000000
+          Height = 16.197985710000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -13
+          Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
-          HAlign = haRight
           Memo.UTF8W = (
-            '[SUM(<frxDBVendaMes."DINHERO">,MasterData1)]')
+            'Hist'#243'rico')
           ParentFont = False
         end
-        object SysMemo3: TfrxSysMemoView
-          Left = 275.905690000000000000
+        object Memo3: TfrxMemoView
+          Left = 109.606370000000000000
           Top = 3.779529999999994000
-          Width = 94.488250000000000000
-          Height = 18.897650000000000000
-          DisplayFormat.FormatStr = '%2.2n'
-          DisplayFormat.Kind = fkNumeric
+          Width = 88.548988570000000000
+          Height = 16.197985710000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -13
+          Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
-          HAlign = haRight
           Memo.UTF8W = (
-            '[SUM(<frxDBVendaMes."CHEQUE">,MasterData1)]')
-          ParentFont = False
-        end
-        object SysMemo4: TfrxSysMemoView
-          Left = 377.953000000000000000
-          Top = 3.779529999999994000
-          Width = 94.488250000000000000
-          Height = 18.897650000000000000
-          DisplayFormat.FormatStr = '%2.2n'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[SUM(<frxDBVendaMes."CARTAO">,MasterData1)]')
-          ParentFont = False
-        end
-        object SysMemo5: TfrxSysMemoView
-          Left = 483.779840000000000000
-          Top = 3.779529999999994000
-          Width = 94.488250000000000000
-          Height = 18.897650000000000000
-          DisplayFormat.FormatStr = '%2.2n'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[SUM(<frxDBVendaMes."CREDIARIO">,MasterData1)]')
+            'Valor')
           ParentFont = False
         end
       end
-    end
-    object DialogPage1: TfrxDialogPage
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clBlack
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      Height = 200.000000000000000000
-      ClientHeight = 161.000000000000000000
-      Left = 424.000000000000000000
-      Top = 149.000000000000000000
-      Width = 300.000000000000000000
-      ClientWidth = 284.000000000000000000
+      object Footer1: TfrxFooter
+        FillType = ftBrush
+        Height = 22.677180000000000000
+        Top = 313.700990000000000000
+        Width = 718.110700000000000000
+        object SysMemo1: TfrxSysMemoView
+          Left = 3.779530000000000000
+          Width = 241.889920000000000000
+          Height = 18.897650000000000000
+          DisplayFormat.FormatStr = '%2.2m'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Total Geral: [SUM(<frxDBdre."TOTAL">,MasterData1)]')
+          ParentFont = False
+        end
+      end
     end
   end
   object frxDBVendaMes: TfrxDBDataset
