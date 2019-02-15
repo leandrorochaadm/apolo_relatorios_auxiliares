@@ -9,6 +9,7 @@ object dm: Tdm
     Properties.Strings = (
       'AutoEncodeStrings=ON'
       'controls_cp=CP_UTF16')
+    Connected = True
     HostName = 'localhost'
     Port = 3050
     Database = 'C:\Apolo\BD\BASE.FDB'
@@ -87,24 +88,24 @@ object dm: Tdm
       'Password=masterkey'
       'Database=C:\Apolo\BD\BASE.FDB'
       'Server=localhost')
+    Connected = True
     LoginPrompt = False
     Left = 590
     Top = 8
   end
   object qrCommon: TFDQuery
+    Active = True
     Connection = conn
     SQL.Strings = (
       
-        'select  (LPad(extract(year from v.data),4,'#39'0'#39')||'#39'.'#39'||LPad(extrac' +
-        't(month from v.data),2,'#39'0'#39')) as dataMes ,'
-      
-        'sum(v.meio_dinheiro) as dinhero, (sum(v.meio_chequeav)+sum(v.mei' +
-        'o_chequeap)) as cheque, (sum(v.meio_cartaocred) + sum(v.meio_car' +
-        'taodeb)) as cartao, sum(v.meio_crediario) as crediario, sum(v.to' +
-        'tal) as total from c000048 v'
-      
-        'where v.situacao=1  and v.data between  '#39'01/12/2018'#39' and '#39'01/02/' +
-        '2019'#39' group by dataMes')
+        'select c.produto, itv.codproduto,sum(itv.total) as venda ,(sum(i' +
+        'tv.total)-(sum(itv.qtde) *c.precocusto )) as lucro'
+      'from c000032 itv'
+      'left join c000025 c on( c.codigo=itv.codproduto)'
+      ''
+      'where itv.data between '#39'01.12.2018'#39' and '#39'31.12.2018'#39
+      'group by itv.codproduto, c.produto, c.precocusto'
+      'order by (sum(itv.total)-(sum(itv.qtde) *c.precocusto )) desc')
     Left = 584
     Top = 88
   end

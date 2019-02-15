@@ -29,6 +29,8 @@ type
     frxVendaMensal: TfrxReport;
     frxDBVendaMes: TfrxDBDataset;
     frxDBFilial: TfrxDBDataset;
+    frxDBlucroProduto: TfrxDBDataset;
+    frxLucroProduto: TfrxReport;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

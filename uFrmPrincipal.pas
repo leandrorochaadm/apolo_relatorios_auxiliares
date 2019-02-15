@@ -6,7 +6,8 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Buttons, {ExeInfo,} ComCtrls, ExtCtrls, StdCtrls, Grids, DBGrids,
   IdBaseComponent, IdComponent, IdTCPConnection, IdTCPClient, IdHTTP, CheckLst,
-  DBCtrls, IdExplicitTLSClientServerBase, IdFTP, frxClass;
+  DBCtrls, IdExplicitTLSClientServerBase, IdFTP, frxClass, System.Actions,
+  Vcl.ActnList;
 
 type
   TfrmPrincipal = class(TForm)
@@ -28,6 +29,9 @@ type
     btnLimparFiltro: TButton;
     Button2: TButton;
     Button3: TButton;
+    ActionList1: TActionList;
+    ParametrosServidor: TAction;
+    Button4: TButton;
     procedure BtnLiberadorClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -64,6 +68,8 @@ type
     procedure VericarDuplicatasPagar;
     procedure Button3Click(Sender: TObject);
     procedure AbreForm(aClasseForm: TComponentClass; aForm: TForm);
+    procedure ParametrosServidorExecute(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
   private
     { Private declarations }
     FnTamanhoTotal: integer;
@@ -145,6 +151,12 @@ end;
 procedure TfrmPrincipal.Button3Click(Sender: TObject);
 begin
 AbreForm(TfrmLiberador, frmLiberador);
+end;
+
+procedure TfrmPrincipal.Button4Click(Sender: TObject);
+begin
+uRelatorio.LucroProduto(dataI.Date, dataF.Date);
+CarregarRelatorio(dmRel.frxLucroProduto);
 end;
 
 procedure TfrmPrincipal.CarregarRelatorio(const pReport: TfrxReport);
@@ -365,7 +377,7 @@ end;
 
 procedure TfrmPrincipal.FormShow(Sender: TObject);
 begin
-  versao := '2.02';
+  versao := '2.04';
 //  ShowMessage(versao);
 
   LimparFiltros; // limpar filtros
@@ -580,6 +592,11 @@ begin
   finally
     FreeAndNil(oArquivoINI);
   end;
+end;
+
+procedure TfrmPrincipal.ParametrosServidorExecute(Sender: TObject);
+begin
+   ShowMessage(dm.conn.Params.Text);
 end;
 
 procedure TfrmPrincipal.Periodo;

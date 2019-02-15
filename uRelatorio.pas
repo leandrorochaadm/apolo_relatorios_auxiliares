@@ -8,6 +8,7 @@ uses
   procedure DreRes(DataI, DataF: TDate);
   procedure DreDet(DataI, DataF: TDate);
   procedure VendaMensal(DataI, DataF: TDate);
+  procedure LucroProduto(DataI, DataF: TDate);
 
 
 implementation
@@ -94,6 +95,26 @@ begin
 'select  (LPad(extract(year from v.data),4,''0'')||''.''||LPad(extract(month from v.data),2,''0'')) as dataMes , '+
 'sum(v.meio_dinheiro) as dinhero, (sum(v.meio_chequeav)+sum(v.meio_chequeap)) as cheque, (sum(v.meio_cartaocred) + sum(v.meio_cartaodeb)) as cartao, sum(v.meio_crediario) as crediario, sum(v.total) as total from c000048 v '+
 'where v.situacao=1  and v.data between  :dataI and :dataF group by dataMes ';
+
+  Params.ParamByName('dataI').AsDate := DataI;
+  Params.ParamByName('dataF').AsDate := DataF;
+  Open;
+  end;
+end;
+
+procedure LucroProduto(DataI, DataF: TDate);
+begin
+ with dm.qrCommon do
+  begin
+  close;
+  sql.Clear;
+  sql.Text :=
+'select c.produto, itv.codproduto,sum(itv.total) as venda ,(sum(itv.total)-(sum(itv.qtde) *c.precocusto )) as lucro '+
+'from c000032 itv '+
+'left join c000025 c on( c.codigo=itv.codproduto) '+
+'where itv.data between :dataI and :dataF '+
+'group by itv.codproduto, c.produto, c.precocusto '+
+'order by (sum(itv.total)-(sum(itv.qtde) *c.precocusto )) desc ';
 
   Params.ParamByName('dataI').AsDate := DataI;
   Params.ParamByName('dataF').AsDate := DataF;
