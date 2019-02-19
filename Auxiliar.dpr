@@ -7,7 +7,8 @@ uses
   uDmRel in 'uDmRel.pas' {dmRel: TDataModule},
   Vcl.Themes,
   Vcl.Styles,
-  uRelatorio in 'uRelatorio.pas';
+  uRelatorio in 'uRelatorio.pas',
+  uFrmPedidoCompra in 'uFrmPedidoCompra.pas' {frmPedidoCompra};
 
 {$R *.res}
 
@@ -18,6 +19,6 @@ begin
   Application.Title := 'Auxiliar Apolo';
   Application.CreateForm(Tdm, dm);
   Application.CreateForm(TdmRel, dmRel);
-  Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.CreateForm(TfrmPedidoCompra, frmPedidoCompra);
   Application.Run;
 end.

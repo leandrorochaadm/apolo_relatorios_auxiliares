@@ -32,6 +32,10 @@ type
     ActionList1: TActionList;
     ParametrosServidor: TAction;
     Button4: TButton;
+    Button5: TButton;
+    Button6: TButton;
+    Button7: TButton;
+    Button8: TButton;
     procedure BtnLiberadorClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -70,6 +74,8 @@ type
     procedure AbreForm(aClasseForm: TComponentClass; aForm: TForm);
     procedure ParametrosServidorExecute(Sender: TObject);
     procedure Button4Click(Sender: TObject);
+    procedure Button5Click(Sender: TObject);
+    procedure Button6Click(Sender: TObject);
   private
     { Private declarations }
     FnTamanhoTotal: integer;
@@ -83,7 +89,8 @@ var
 
 implementation
 
-uses uFrmLiberador, uDM, uDmRel, IdException, IniFiles, ShellAPI, uRelatorio;
+uses uFrmLiberador, uDM, uDmRel, IdException, IniFiles, ShellAPI, uRelatorio,
+  uFrmPedidoCompra;
 {$R *.dfm}
 
 procedure TfrmPrincipal.BtnLiberadorClick(Sender: TObject);
@@ -150,13 +157,25 @@ end;
 
 procedure TfrmPrincipal.Button3Click(Sender: TObject);
 begin
-AbreForm(TfrmLiberador, frmLiberador);
+AbreForm(TfrmPedidoCompra, frmPedidoCompra);
 end;
 
 procedure TfrmPrincipal.Button4Click(Sender: TObject);
 begin
 uRelatorio.LucroProduto(dataI.Date, dataF.Date);
 CarregarRelatorio(dmRel.frxLucroProduto);
+end;
+
+procedure TfrmPrincipal.Button5Click(Sender: TObject);
+begin
+uRelatorio.Roi30;
+CarregarRelatorio(dmRel.frxRoi30);
+end;
+
+procedure TfrmPrincipal.Button6Click(Sender: TObject);
+begin
+uRelatorio.Roi60;
+CarregarRelatorio(dmRel.frxRoi60);
 end;
 
 procedure TfrmPrincipal.CarregarRelatorio(const pReport: TfrxReport);
@@ -377,7 +396,7 @@ end;
 
 procedure TfrmPrincipal.FormShow(Sender: TObject);
 begin
-  versao := '2.04';
+  versao := '2.05';
 //  ShowMessage(versao);
 
   LimparFiltros; // limpar filtros

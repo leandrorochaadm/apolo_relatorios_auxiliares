@@ -31,6 +31,10 @@ type
     frxDBFilial: TfrxDBDataset;
     frxDBlucroProduto: TfrxDBDataset;
     frxLucroProduto: TfrxReport;
+    frxDBroi30: TfrxDBDataset;
+    frxRoi30: TfrxReport;
+    frxDBroi60: TfrxDBDataset;
+    frxRoi60: TfrxReport;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

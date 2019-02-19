@@ -9,6 +9,8 @@ uses
   procedure DreDet(DataI, DataF: TDate);
   procedure VendaMensal(DataI, DataF: TDate);
   procedure LucroProduto(DataI, DataF: TDate);
+  procedure Roi30;
+  procedure Roi60;
 
 
 implementation
@@ -118,6 +120,36 @@ begin
 
   Params.ParamByName('dataI').AsDate := DataI;
   Params.ParamByName('dataF').AsDate := DataF;
+  Open;
+  end;
+end;
+
+procedure Roi30;
+begin
+ with dm.qrCommon do
+  begin
+  close;
+  sql.Clear;
+  sql.Text :=
+'select * from roi30';
+
+//  Params.ParamByName('dataI').AsDate := DataI;
+//  Params.ParamByName('dataF').AsDate := DataF;
+  Open;
+  end;
+end;
+
+procedure Roi60;
+begin
+ with dm.qrCommon do
+  begin
+  close;
+  sql.Clear;
+  sql.Text :=
+'select * from roi60';
+
+//  Params.ParamByName('dataI').AsDate := DataI;
+//  Params.ParamByName('dataF').AsDate := DataF;
   Open;
   end;
 end;

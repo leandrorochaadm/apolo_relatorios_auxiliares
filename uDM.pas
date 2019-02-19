@@ -25,6 +25,22 @@ type
     wdstrngfldPlanoContaCLASSIFICACAO: TWideStringField;
     conn: TFDConnection;
     qrCommon: TFDQuery;
+    qrFornecedores: TFDQuery;
+    dsFornecedores: TDataSource;
+    qrProdForn: TFDQuery;
+    dsProdForn: TDataSource;
+    qrProdUltCompras: TFDQuery;
+    dsProdUltCompras: TDataSource;
+    qrProdFornCODPRODUTO: TStringField;
+    qrProdFornPRODUTO: TStringField;
+    qrProdFornPRECOMEDIO: TFloatField;
+    qrProdFornQTDCOMPRADA: TFloatField;
+    qrSugestao: TFDQuery;
+    dsSugestao: TDataSource;
+    qrSugestaoCODPRODUTO: TStringField;
+    qrSugestaoESTOQUE_ATUAL: TFloatField;
+    qrSugestaoQUANTCOMPRADA: TFloatField;
+    qrSugestaoSUGESTAO: TFloatField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -131,6 +147,7 @@ var
  qrFilial.Active:=true;
  qrPlanoConta.Active:=true;
 
+ qrFornecedores.Active:=True;
  qrCommon.Active:=true;
 
 // web.Connected :=true;
