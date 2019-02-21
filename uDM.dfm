@@ -96,21 +96,19 @@ object dm: Tdm
     Top = 32
   end
   object qrCommon: TFDQuery
-    Active = True
     Connection = conn
     SQL.Strings = (
       'select dataMes, sum(total) as valor, tipo from'
       
         '(select nf.numero, (LPad(extract(year from nf.data),4,'#39'0'#39')||'#39'.'#39'|' +
         '|LPad(extract(month from nf.data),2,'#39'0'#39')) as dataMes, nf.total_n' +
-        'ota as total, '#39'NFE'#39' as tipo from c000061 nf  where nf.situacao=1' +
-        '  and nf.numero <> '#39#39'  and data between '#39'01.11.2018'#39' and '#39'31.12.' +
-        '2018'#39
+        'ota as total  from c000061 nf  where nf.situacao=1  and nf.numer' +
+        'o <> '#39#39'  and data between '#39'01.11.2018'#39' and '#39'31.12.2018'#39
       '  union'
       
         'select v.nfce as numero, (LPad(extract(year from v.data),4,'#39'0'#39')|' +
         '|'#39'.'#39'||LPad(extract(month from v.data),2,'#39'0'#39')) as dataMes,  v.tot' +
-        'al, '#39'NFCE'#39' as tipo from c000048 v'
+        'al  from c000048 v'
       
         'where v.nfce in  (select nfce.codigo from sequencia_nfce nfce wh' +
         'ere nfce.status='#39'ENV'#39')  and data between '#39'01.11.2018'#39' and '#39'31.12' +

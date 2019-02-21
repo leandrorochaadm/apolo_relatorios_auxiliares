@@ -2645,7 +2645,7 @@ object dmRel: TdmRel
     PrintOptions.Printer = 'Padr'#227'o'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 43250.638496331000000000
-    ReportOptions.LastChange = 43517.464509583300000000
+    ReportOptions.LastChange = 43517.715192500000000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -2723,16 +2723,6 @@ object dmRel: TdmRel
           Memo.UTF8W = (
             '[frxDBVendaMes."VALOR"]')
           ParentFont = False
-        end
-        object frxDBVendaMesTIPO: TfrxMemoView
-          Left = 173.858380000000000000
-          Width = 79.370130000000000000
-          Height = 18.897650000000000000
-          DataField = 'TIPO'
-          DataSet = frxDBVendaMes
-          DataSetName = 'frxDBVendaMes'
-          Memo.UTF8W = (
-            '[frxDBVendaMes."TIPO"]')
         end
       end
       object ReportTitle1: TfrxReportTitle
@@ -2927,19 +2917,6 @@ object dmRel: TdmRel
           Color = clBlack
           Frame.Style = fsDot
           Frame.Typ = [ftTop]
-        end
-        object Memo4: TfrxMemoView
-          Left = 173.858380000000000000
-          Width = 79.181200000000000000
-          Height = 16.377963330000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Memo.UTF8W = (
-            'TIPO')
-          ParentFont = False
         end
       end
       object GroupFooter1: TfrxGroupFooter
