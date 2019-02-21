@@ -35,6 +35,8 @@ type
     frxRoi30: TfrxReport;
     frxDBroi60: TfrxDBDataset;
     frxRoi60: TfrxReport;
+    frxDBnotaFiscal: TfrxDBDataset;
+    frxNotaFiscal: TfrxReport;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

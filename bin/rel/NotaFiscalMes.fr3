@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<TfrxReport Version="5.3.14" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="Padrão" PrintOptions.PrintOnSheet="0" ReportOptions.CreateDate="43250,638496331" ReportOptions.Description.Text="" ReportOptions.LastChange="43517,4645095833" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end.">
+  <Datasets>
+    <item DataSet="frxDBFilial" DataSetName="frxDBFilial"/>
+    <item DataSet="frxDBRelatorio" DataSetName="frxDBRelatorio"/>
+    <item DataSet="frxDBVendaMes" DataSetName="frxDBVendaMes"/>
+  </Datasets>
+  <TfrxDataPage Name="Data" Height="1000" Left="0" Top="0" Width="1000"/>
+  <TfrxReportPage Name="Page1" PaperWidth="210" PaperHeight="297" PaperSize="256" LeftMargin="5" RightMargin="5" TopMargin="5" BottomMargin="5" ColumnWidth="0" ColumnPositions.Text="" HGuides.Text="" VGuides.Text="">
+    <TfrxMasterData Name="MasterData1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="22,67718" Left="0" Top="204,09462" Width="755,906" ColumnWidth="0" ColumnGap="0" DataSet="frxDBVendaMes" DataSetName="frxDBVendaMes" RowCount="0">
+      <TfrxMemoView Name="frxDBVendaMesDATAMES" Left="3,77953" Top="0" Width="60,47248" Height="18,89765" DataField="DATAMES" DataSet="frxDBVendaMes" DataSetName="frxDBVendaMes" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[frxDBVendaMes.&#34;DATAMES&#34;]"/>
+      <TfrxMemoView Name="frxDBVendaMesTOTAL" Left="71,81107" Top="0" Width="94,48825" Height="18,89765" DataField="VALOR" DataSet="frxDBVendaMes" DataSetName="frxDBVendaMes" DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[frxDBVendaMes.&#34;VALOR&#34;]"/>
+      <TfrxMemoView Name="frxDBVendaMesTIPO" Left="173,85838" Top="0" Width="79,37013" Height="18,89765" DataField="TIPO" DataSet="frxDBVendaMes" DataSetName="frxDBVendaMes" Text="[frxDBVendaMes.&#34;TIPO&#34;]"/>
+    </TfrxMasterData>
+    <TfrxReportTitle Name="ReportTitle1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="79,57483" Left="0" Top="18,89765" Width="755,906">
+      <TfrxMemoView Name="Memo9" Left="3,77953" Top="0" Width="750,46537" Height="22,67718" Font.Charset="1" Font.Color="0" Font.Height="-19" Font.Name="Arial" Font.Style="1" HAlign="haCenter" ParentFont="False" Text="Notas Fiscais e  Cupons Agrupadas Mensalmente"/>
+      <TfrxMemoView Name="Memo11" Left="597,62526778" Top="21,41733667" Width="157,48041667" Height="14,69817222" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" Frame.Style="fsDot" HAlign="haRight" ParentFont="False" Text="Emissão: [Date]"/>
+      <TfrxMemoView Name="frxDBRelatorioLINHA2" Left="6,1577" Top="24,89765" Width="567,63018" Height="18,89765" DataField="LINHA2" DataSet="frxDBRelatorio" DataSetName="frxDBRelatorio" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="0" HAlign="haCenter" ParentFont="False" Text="[frxDBRelatorio.&#34;LINHA2&#34;]"/>
+      <TfrxMemoView Name="frxDBRelatorioLINHA3" Left="599,76438" Top="37,7953" Width="156,1812" Height="11,33859" DataField="LINHA3" DataSet="frxDBRelatorio" DataSetName="frxDBRelatorio" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[frxDBRelatorio.&#34;LINHA3&#34;]"/>
+      <TfrxMemoView Name="frxDBFilialCNPJ" Left="332,08689" Top="55,34663" Width="200,31509" Height="18,89765" DataField="CNPJ" DataSet="frxDBFilial" DataSetName="frxDBFilial" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" ParentFont="False" Text="[frxDBFilial.&#34;CNPJ&#34;]"/>
+      <TfrxMemoView Name="frxDBFilialFILIAL" Left="4,33859" Top="55,22851" Width="324,63018" Height="18,89765" DataField="FILIAL" DataSet="frxDBFilial" DataSetName="frxDBFilial" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" ParentFont="False" Text="[frxDBFilial.&#34;FILIAL&#34;]"/>
+      <TfrxLineView Name="Line3" Left="2" Top="50,10235" Width="1133,85826772" Height="0" Color="0" Frame.Style="fsDot" Frame.Typ="4"/>
+      <TfrxLineView Name="Line4" Left="3" Top="76,10235" Width="1133,85826772" Height="0" Color="0" Frame.Style="fsDot" Frame.Typ="4"/>
+    </TfrxReportTitle>
+    <TfrxPageFooter Name="PageFooter1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="22,89765" Left="0" Top="332,59864" Width="755,906">
+      <TfrxMemoView Name="Memo10" Left="547,07143" Top="0" Width="207,87415" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Style="fsDot" HAlign="haRight" ParentFont="False" WordWrap="False" Text="Pag: [&#60;Page&#62;] de [TotalPages#]">
+        <Formats>
+          <item/>
+          <item/>
+        </Formats>
+      </TfrxMemoView>
+    </TfrxPageFooter>
+    <TfrxGroupHeader Name="GroupHeader1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="20,67718" Left="0" Top="158,74026" Width="755,906" Condition="frxDBFilial.&#34;FILIAL&#34;">
+      <TfrxMemoView Name="Memo1" Left="5,54329" Top="0,590496669999993" Width="74,13389" Height="16,37796333" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" HAlign="haRight" ParentFont="False" Text="ANO/MÊS"/>
+      <TfrxMemoView Name="Memo2" Left="83,11812" Top="0,850339999999989" Width="79,1812" Height="16,37796333" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" HAlign="haRight" ParentFont="False" Text="SUBTOTAL"/>
+      <TfrxLineView Name="Line2" Left="3" Top="19,74799" Width="1133,85826772" Height="0" Color="0" Frame.Style="fsDot" Frame.Typ="4"/>
+      <TfrxMemoView Name="Memo4" Left="173,85838" Top="0" Width="79,1812" Height="16,37796333" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" ParentFont="False" Text="TIPO"/>
+    </TfrxGroupHeader>
+    <TfrxGroupFooter Name="GroupFooter1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="21,31478" Left="0" Top="249,44898" Width="755,906">
+      <TfrxMemoView Name="Memo3" Left="0,2047" Top="3,41712999999999" Width="99,43321" Height="16,37796333" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" ParentFont="False" Text="TOTAL"/>
+      <TfrxLineView Name="Line1" Left="2" Top="0,417129999999986" Width="1133,85826772" Height="0" Color="0" Frame.Style="fsDot" Frame.Typ="4"/>
+      <TfrxSysMemoView Name="SysMemo1" Left="71,81107" Top="3,77952999999999" Width="94,48825" Height="18,89765" DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" HAlign="haRight" ParentFont="False" Text="[SUM(&#60;frxDBVendaMes.&#34;VALOR&#34;&#62;,MasterData1)]"/>
+    </TfrxGroupFooter>
+  </TfrxReportPage>
+  <TfrxDialogPage Name="DialogPage1" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Tahoma" Font.Style="0" Height="200" ClientHeight="161" Left="424" Top="149" Width="300" ClientWidth="284"/>
+</TfrxReport>

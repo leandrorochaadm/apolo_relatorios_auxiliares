@@ -3,7 +3,7 @@ object frmPrincipal: TfrmPrincipal
   Top = 0
   BorderStyle = bsSizeToolWin
   Caption = 'Relat'#243'rios Auxiliares'
-  ClientHeight = 498
+  ClientHeight = 524
   ClientWidth = 350
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -21,22 +21,22 @@ object frmPrincipal: TfrmPrincipal
     Left = 0
     Top = 0
     Width = 350
-    Height = 498
+    Height = 524
     Align = alClient
     TabOrder = 0
-    ExplicitHeight = 420
+    ExplicitHeight = 498
     object pcAtendimento: TPageControl
       Left = 1
       Top = 1
       Width = 348
-      Height = 496
+      Height = 522
       ActivePage = tabRel
       Align = alClient
       TabOrder = 0
-      ExplicitHeight = 418
+      ExplicitHeight = 496
       object tabRel: TTabSheet
         Caption = 'Relat'#243'rios'
-        ExplicitHeight = 390
+        ExplicitHeight = 468
         object lblDataI: TLabel
           Left = 15
           Top = 24
@@ -129,7 +129,7 @@ object frmPrincipal: TfrmPrincipal
         end
         object btnLimparFiltro: TButton
           Left = 80
-          Top = 440
+          Top = 472
           Width = 200
           Height = 25
           Caption = 'Limpar Filtros'
@@ -147,7 +147,7 @@ object frmPrincipal: TfrmPrincipal
         end
         object Button3: TButton
           Left = 80
-          Top = 409
+          Top = 441
           Width = 200
           Height = 25
           Caption = 'Pedido de compra'
@@ -156,7 +156,7 @@ object frmPrincipal: TfrmPrincipal
         end
         object Button4: TButton
           Left = 80
-          Top = 254
+          Top = 286
           Width = 200
           Height = 25
           Caption = 'Lucro por Produto'
@@ -165,7 +165,7 @@ object frmPrincipal: TfrmPrincipal
         end
         object Button5: TButton
           Left = 80
-          Top = 285
+          Top = 317
           Width = 200
           Height = 25
           Caption = 'ROI por Produto 30 dias'
@@ -174,7 +174,7 @@ object frmPrincipal: TfrmPrincipal
         end
         object Button6: TButton
           Left = 80
-          Top = 316
+          Top = 348
           Width = 200
           Height = 25
           Caption = 'ROI por Produto 31-60 dias'
@@ -183,7 +183,7 @@ object frmPrincipal: TfrmPrincipal
         end
         object Button7: TButton
           Left = 80
-          Top = 347
+          Top = 379
           Width = 200
           Height = 25
           Caption = 'Lucro por Produto'
@@ -193,13 +193,22 @@ object frmPrincipal: TfrmPrincipal
         end
         object Button8: TButton
           Left = 80
-          Top = 378
+          Top = 410
           Width = 200
           Height = 25
           Caption = 'Lucro por Produto'
           TabOrder = 14
           Visible = False
           OnClick = Button4Click
+        end
+        object Button9: TButton
+          Left = 80
+          Top = 254
+          Width = 200
+          Height = 25
+          Caption = 'Notas Fiscais Mensais'
+          TabOrder = 15
+          OnClick = Button9Click
         end
       end
     end

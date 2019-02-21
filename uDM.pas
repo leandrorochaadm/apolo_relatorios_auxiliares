@@ -31,16 +31,28 @@ type
     dsProdForn: TDataSource;
     qrProdUltCompras: TFDQuery;
     dsProdUltCompras: TDataSource;
-    qrProdFornCODPRODUTO: TStringField;
-    qrProdFornPRODUTO: TStringField;
-    qrProdFornPRECOMEDIO: TFloatField;
-    qrProdFornQTDCOMPRADA: TFloatField;
     qrSugestao: TFDQuery;
     dsSugestao: TDataSource;
     qrSugestaoCODPRODUTO: TStringField;
     qrSugestaoESTOQUE_ATUAL: TFloatField;
     qrSugestaoQUANTCOMPRADA: TFloatField;
     qrSugestaoSUGESTAO: TFloatField;
+    qrProdFornCODPRODUTO: TStringField;
+    qrProdFornPRODUTO: TStringField;
+    qrProdFornESTOQUE_ATUAL: TFloatField;
+    qrProdFornPRECOCUSTO: TFloatField;
+    qrProdFornPRECOVENDA: TFloatField;
+    qrProdFornCODFORNECEDOR: TStringField;
+    qrCompra: TFDQuery;
+    qrCompraItem: TFDQuery;
+    qrCompraCODIGO: TStringField;
+    qrCompraNUMERO: TStringField;
+    qrCompraDATA: TSQLTimeStampField;
+    qrCompraCODFORNECEDOR: TStringField;
+    dsCompra: TDataSource;
+    dsCompraItem: TDataSource;
+    qrOrigem: TFDQuery;
+    qrDestino: TFDQuery;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -149,6 +161,8 @@ var
 
  qrFornecedores.Active:=True;
  qrCommon.Active:=true;
+
+ qrCompra.Active:=true;
 
 // web.Connected :=true;
    end;

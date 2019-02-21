@@ -8,7 +8,8 @@ uses
   Vcl.Themes,
   Vcl.Styles,
   uRelatorio in 'uRelatorio.pas',
-  uFrmPedidoCompra in 'uFrmPedidoCompra.pas' {frmPedidoCompra};
+  uFrmPedidoCompra in 'uFrmPedidoCompra.pas' {frmPedidoCompra},
+  uFrmCompra in 'uFrmCompra.pas' {Form1};
 
 {$R *.res}
 
@@ -19,6 +20,6 @@ begin
   Application.Title := 'Auxiliar Apolo';
   Application.CreateForm(Tdm, dm);
   Application.CreateForm(TdmRel, dmRel);
-  Application.CreateForm(TfrmPedidoCompra, frmPedidoCompra);
+  Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.Run;
 end.

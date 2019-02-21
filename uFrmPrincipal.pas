@@ -36,6 +36,7 @@ type
     Button6: TButton;
     Button7: TButton;
     Button8: TButton;
+    Button9: TButton;
     procedure BtnLiberadorClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -76,6 +77,7 @@ type
     procedure Button4Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure Button6Click(Sender: TObject);
+    procedure Button9Click(Sender: TObject);
   private
     { Private declarations }
     FnTamanhoTotal: integer;
@@ -176,6 +178,12 @@ procedure TfrmPrincipal.Button6Click(Sender: TObject);
 begin
 uRelatorio.Roi60;
 CarregarRelatorio(dmRel.frxRoi60);
+end;
+
+procedure TfrmPrincipal.Button9Click(Sender: TObject);
+begin
+uRelatorio.NotasFiscalSaida(dataI.Date, dataF.Date);
+CarregarRelatorio(dmRel.frxNotaFiscal);
 end;
 
 procedure TfrmPrincipal.CarregarRelatorio(const pReport: TfrxReport);
@@ -396,7 +404,7 @@ end;
 
 procedure TfrmPrincipal.FormShow(Sender: TObject);
 begin
-  versao := '2.05';
+  versao := '2.06';
 //  ShowMessage(versao);
 
   LimparFiltros; // limpar filtros

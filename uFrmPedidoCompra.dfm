@@ -19,23 +19,24 @@ object frmPedidoCompra: TfrmPedidoCompra
     Left = 0
     Top = 0
     Width = 1008
-    Height = 57
+    Height = 41
     Align = alTop
     TabOrder = 0
     object Label1: TLabel
       Left = 8
-      Top = 24
+      Top = 14
       Width = 55
       Height = 13
       Caption = 'Fornecedor'
     end
     object DBLCfornecedor: TDBLookupComboBox
       Left = 69
-      Top = 16
-      Width = 324
+      Top = 8
+      Width = 924
       Height = 21
+      DropDownRows = 15
       KeyField = 'CODIGO'
-      ListField = 'FANTASIA'
+      ListField = 'FANTASIA;NOME'
       ListSource = dm.dsFornecedores
       TabOrder = 0
       OnClick = DBLCfornecedorExit
@@ -45,7 +46,7 @@ object frmPedidoCompra: TfrmPedidoCompra
   end
   object Panel2: TPanel
     Left = 0
-    Top = 57
+    Top = 41
     Width = 1008
     Height = 375
     Align = alTop
@@ -64,48 +65,22 @@ object frmPedidoCompra: TfrmPedidoCompra
       TitleFont.Name = 'Tahoma'
       TitleFont.Style = []
       OnCellClick = DBGrid1CellClick
+      OnKeyDown = DBGrid1KeyDown
+      OnKeyPress = DBGrid1KeyPress
+      OnKeyUp = DBGrid1KeyUp
       OnMouseWheel = DBGrid1MouseWheel
-      Columns = <
-        item
-          Expanded = False
-          FieldName = 'CODPRODUTO'
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'PRODUTO'
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'PRECOMEDIO'
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'QTDCOMPRADA'
-          Visible = True
-        end>
     end
   end
   object Panel3: TPanel
     Left = 0
-    Top = 432
+    Top = 416
     Width = 1008
-    Height = 297
+    Height = 313
     Align = alClient
     TabOrder = 2
-    object Label2: TLabel
-      Left = 168
-      Top = 72
-      Width = 85
-      Height = 13
-      Caption = 'ESTOQUE_ATUAL'
-      FocusControl = DBEdit1
-    end
     object Label3: TLabel
-      Left = 168
-      Top = 112
+      Left = 8
+      Top = 0
       Width = 92
       Height = 13
       Caption = 'QUANTCOMPRADA'
@@ -113,38 +88,42 @@ object frmPedidoCompra: TfrmPedidoCompra
     end
     object Label4: TLabel
       Left = 168
-      Top = 152
+      Top = 0
       Width = 53
       Height = 13
       Caption = 'SUGESTAO'
       FocusControl = DBEdit3
     end
-    object DBEdit1: TDBEdit
-      Left = 168
-      Top = 88
-      Width = 134
-      Height = 21
-      DataField = 'ESTOQUE_ATUAL'
-      DataSource = dm.dsSugestao
-      TabOrder = 0
-    end
     object DBEdit2: TDBEdit
-      Left = 168
-      Top = 128
+      Left = 8
+      Top = 16
       Width = 134
       Height = 21
+      TabStop = False
       DataField = 'QUANTCOMPRADA'
       DataSource = dm.dsSugestao
-      TabOrder = 1
+      ReadOnly = True
+      TabOrder = 0
     end
     object DBEdit3: TDBEdit
       Left = 168
-      Top = 168
+      Top = 19
       Width = 134
       Height = 21
+      TabStop = False
       DataField = 'SUGESTAO'
       DataSource = dm.dsSugestao
+      ReadOnly = True
+      TabOrder = 1
+    end
+    object btnAdd: TButton
+      Left = 308
+      Top = 5
+      Width = 133
+      Height = 36
+      Caption = 'Add'
       TabOrder = 2
+      OnClick = btnAddClick
     end
   end
 end

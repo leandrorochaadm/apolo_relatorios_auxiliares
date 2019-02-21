@@ -21,6 +21,7 @@ object dm: Tdm
   end
   object qrFilial: TZQuery
     Connection = con
+    Active = True
     SQL.Strings = (
       'select filial, cnpj from c000004')
     Params = <>
@@ -87,16 +88,33 @@ object dm: Tdm
       'User_Name=sysdba'
       'Password=masterkey'
       'Database=C:\Apolo\BD\BASE.FDB'
-      'Server=localhost')
+      'Server=localhost'
+      'SQLDialect=3')
     Connected = True
     LoginPrompt = False
     Left = 254
     Top = 32
   end
   object qrCommon: TFDQuery
+    Active = True
     Connection = conn
     SQL.Strings = (
-      'select * from roi30')
+      'select dataMes, sum(total) as valor, tipo from'
+      
+        '(select nf.numero, (LPad(extract(year from nf.data),4,'#39'0'#39')||'#39'.'#39'|' +
+        '|LPad(extract(month from nf.data),2,'#39'0'#39')) as dataMes, nf.total_n' +
+        'ota as total, '#39'NFE'#39' as tipo from c000061 nf  where nf.situacao=1' +
+        '  and nf.numero <> '#39#39'  and data between '#39'01.11.2018'#39' and '#39'31.12.' +
+        '2018'#39
+      '  union'
+      
+        'select v.nfce as numero, (LPad(extract(year from v.data),4,'#39'0'#39')|' +
+        '|'#39'.'#39'||LPad(extract(month from v.data),2,'#39'0'#39')) as dataMes,  v.tot' +
+        'al, '#39'NFCE'#39' as tipo from c000048 v'
+      
+        'where v.nfce in  (select nfce.codigo from sequencia_nfce nfce wh' +
+        'ere nfce.status='#39'ENV'#39')  and data between '#39'01.11.2018'#39' and '#39'31.12' +
+        '.2018'#39' ) group by dataMes, tipo')
     Left = 256
     Top = 96
   end
@@ -104,8 +122,8 @@ object dm: Tdm
     Connection = conn
     SQL.Strings = (
       
-        'select forn.codigo, forn.nome, forn.fantasia from c000009 forn -' +
-        '-where forn.')
+        'select forn.codigo, forn.nome, forn.fantasia from c000009 forn o' +
+        'rder by forn.fantasia asc')
     Left = 504
     Top = 89
   end
@@ -117,17 +135,7 @@ object dm: Tdm
   object qrProdForn: TFDQuery
     Connection = conn
     SQL.Strings = (
-      
-        'select itv.codproduto, prod.produto, (sum(itv.total) / sum(itv.q' +
-        'tde)) as precomedio, sum(itv.qtde) as qtdcomprada --, (sum(itv.q' +
-        'tde)-est.estoque_atual) as su'
-      'from c000032 itv'
-      'left join c000025 prod on (prod.codigo= itv.codproduto)'
-      'left join c000100 est on (est.codproduto=itv.codproduto)'
-      'where itv.movimento=1'
-      'and itv.codcliente = :fornecedor'
-      'and itv.data < cast('#39'today'#39' as date)-35'
-      'group by itv.codproduto, produto')
+      'select * from prodforn where codfornecedor = :fornecedor')
     Left = 424
     Top = 88
     ParamData = <
@@ -141,30 +149,32 @@ object dm: Tdm
     object qrProdFornCODPRODUTO: TStringField
       FieldName = 'CODPRODUTO'
       Origin = 'CODPRODUTO'
-      Size = 6
+      Size = 10
     end
     object qrProdFornPRODUTO: TStringField
-      AutoGenerateValue = arDefault
       FieldName = 'PRODUTO'
       Origin = 'PRODUTO'
-      ProviderFlags = []
-      ReadOnly = True
       Size = 60
     end
-    object qrProdFornPRECOMEDIO: TFloatField
-      AutoGenerateValue = arDefault
-      FieldName = 'PRECOMEDIO'
-      Origin = 'PRECOMEDIO'
-      ProviderFlags = []
-      ReadOnly = True
+    object qrProdFornESTOQUE_ATUAL: TFloatField
+      FieldName = 'ESTOQUE_ATUAL'
+      Origin = 'ESTOQUE_ATUAL'
+      DisplayFormat = '0.000'
+    end
+    object qrProdFornPRECOCUSTO: TFloatField
+      FieldName = 'PRECOCUSTO'
+      Origin = 'PRECOCUSTO'
       DisplayFormat = '0.00'
     end
-    object qrProdFornQTDCOMPRADA: TFloatField
-      AutoGenerateValue = arDefault
-      FieldName = 'QTDCOMPRADA'
-      Origin = 'QTDCOMPRADA'
-      ProviderFlags = []
-      ReadOnly = True
+    object qrProdFornPRECOVENDA: TFloatField
+      FieldName = 'PRECOVENDA'
+      Origin = 'PRECOVENDA'
+      DisplayFormat = '0.00'
+    end
+    object qrProdFornCODFORNECEDOR: TStringField
+      FieldName = 'CODFORNECEDOR'
+      Origin = 'CODFORNECEDOR'
+      Size = 6
     end
   end
   object dsProdForn: TDataSource
@@ -173,7 +183,6 @@ object dm: Tdm
     Top = 152
   end
   object qrProdUltCompras: TFDQuery
-    Active = True
     IndexFieldNames = 'CODPRODUTO'
     MasterSource = dsProdForn
     MasterFields = 'CODPRODUTO'
@@ -190,14 +199,14 @@ object dm: Tdm
         's date)-90'
       'order by itv.data desc')
     Left = 344
-    Top = 96
+    Top = 88
     ParamData = <
       item
         Name = 'CODPRODUTO'
         DataType = ftString
         ParamType = ptInput
-        Size = 6
-        Value = '000004'
+        Size = 10
+        Value = Null
       end>
   end
   object dsProdUltCompras: TDataSource
@@ -206,7 +215,6 @@ object dm: Tdm
     Top = 152
   end
   object qrSugestao: TFDQuery
-    Active = True
     Connection = conn
     SQL.Strings = (
       
@@ -252,5 +260,68 @@ object dm: Tdm
     DataSet = qrSugestao
     Left = 584
     Top = 152
+  end
+  object qrCompra: TFDQuery
+    Active = True
+    Connection = conn
+    SQL.Strings = (
+      'select * from c000037')
+    Left = 656
+    Top = 9
+    object qrCompraCODIGO: TStringField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+      Size = 6
+    end
+    object qrCompraNUMERO: TStringField
+      FieldName = 'NUMERO'
+      Origin = 'NUMERO'
+      Size = 6
+    end
+    object qrCompraDATA: TSQLTimeStampField
+      FieldName = 'DATA'
+      Origin = '"DATA"'
+    end
+    object qrCompraCODFORNECEDOR: TStringField
+      FieldName = 'CODFORNECEDOR'
+      Origin = 'CODFORNECEDOR'
+      Size = 6
+    end
+  end
+  object qrCompraItem: TFDQuery
+    Active = True
+    Connection = conn
+    SQL.Strings = (
+      'select * from c000038')
+    Left = 720
+    Top = 9
+  end
+  object dsCompra: TDataSource
+    DataSet = qrCompra
+    Left = 664
+    Top = 64
+  end
+  object dsCompraItem: TDataSource
+    DataSet = qrCompraItem
+    Left = 736
+    Top = 64
+  end
+  object qrOrigem: TFDQuery
+    Active = True
+    Connection = conn
+    SQL.Strings = (
+      'select * from l000003')
+    Left = 664
+    Top = 144
+  end
+  object qrDestino: TFDQuery
+    Active = True
+    Connection = conn
+    SQL.Strings = (
+      'select * from l000003')
+    Left = 736
+    Top = 144
   end
 end

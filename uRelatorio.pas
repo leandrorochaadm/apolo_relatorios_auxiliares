@@ -11,6 +11,7 @@ uses
   procedure LucroProduto(DataI, DataF: TDate);
   procedure Roi30;
   procedure Roi60;
+  procedure NotasFiscalSaida(DataI, DataF: TDate);
 
 
 implementation
@@ -150,6 +151,26 @@ begin
 
 //  Params.ParamByName('dataI').AsDate := DataI;
 //  Params.ParamByName('dataF').AsDate := DataF;
+  Open;
+  end;
+end;
+
+procedure NotasFiscalSaida(DataI, DataF: TDate);
+begin
+ with dm.qrCommon do
+  begin
+  close;
+  sql.Clear;
+  sql.Text :=
+
+'select dataMes, sum(total) as valor, tipo from '+
+'(select nf.numero, (LPad(extract(year from nf.data),4,''0'')||''.''||LPad(extract(month from nf.data),2,''0'')) as dataMes, nf.total_nota as total, ''NFE'' as tipo from c000061 nf  where nf.situacao=1  and nf.numero <> ''  and data between :dataI and :dataF '+
+'  union '+
+'select v.nfce as numero, (LPad(extract(year from v.data),4,''0'')||''.''||LPad(extract(month from v.data),2,''0'')) as dataMes,  v.total, ''NFCE'' as tipo from c000048 v '+
+'where v.nfce in  (select nfce.codigo from sequencia_nfce nfce where nfce.status=''ENV'')  and data between :dataI and :dataF ) group by dataMes, tipo ';
+
+  Params.ParamByName('dataI').AsDate := DataI;
+  Params.ParamByName('dataF').AsDate := DataF;
   Open;
   end;
 end;

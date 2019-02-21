@@ -16,7 +16,10 @@
     <Transaction>2019/01/16 14:20:22.000.891,=C:\projetos\atendimento_apolo\Unit1.pas</Transaction>
     <Transaction>2019/01/16 14:22:29.000.032,C:\projetos\atendimento_apolo\Unit1.pas=C:\projetos\atendimento_apolo\uRelatorio.pas</Transaction>
     <Transaction>2019/02/18 18:56:33.000.659,=C:\projetos\atendimento_apolo\Unit1.pas</Transaction>
-    <Transaction>2019/02/18 18:56:55.000.972,C:\projetos\atendimento_apolo\Unit1.pas=C:\projetos\atendimento_apolo\uFrmPedidoCompra.pas</Transaction>
     <Transaction>2019/02/18 18:56:55.000.972,C:\projetos\atendimento_apolo\Unit1.dfm=C:\projetos\atendimento_apolo\uFrmPedidoCompra.dfm</Transaction>
+    <Transaction>2019/02/18 18:56:55.000.972,C:\projetos\atendimento_apolo\Unit1.pas=C:\projetos\atendimento_apolo\uFrmPedidoCompra.pas</Transaction>
+    <Transaction>2019/02/20 19:40:55.000.135,=C:\projetos\atendimento_apolo\Unit1.pas</Transaction>
+    <Transaction>2019/02/20 20:12:34.000.635,C:\projetos\atendimento_apolo\Unit1.dfm=C:\projetos\atendimento_apolo\uFrmCompra.dfm</Transaction>
+    <Transaction>2019/02/20 20:12:34.000.635,C:\projetos\atendimento_apolo\Unit1.pas=C:\projetos\atendimento_apolo\uFrmCompra.pas</Transaction>
   </Transactions>
 </BorlandProject>
