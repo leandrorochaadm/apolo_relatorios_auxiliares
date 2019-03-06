@@ -24,7 +24,6 @@ object frmPrincipal: TfrmPrincipal
     Height = 524
     Align = alClient
     TabOrder = 0
-    ExplicitHeight = 498
     object pcAtendimento: TPageControl
       Left = 1
       Top = 1
@@ -33,10 +32,8 @@ object frmPrincipal: TfrmPrincipal
       ActivePage = tabRel
       Align = alClient
       TabOrder = 0
-      ExplicitHeight = 496
       object tabRel: TTabSheet
         Caption = 'Relat'#243'rios'
-        ExplicitHeight = 468
         object lblDataI: TLabel
           Left = 15
           Top = 24
@@ -152,6 +149,7 @@ object frmPrincipal: TfrmPrincipal
           Height = 25
           Caption = 'Pedido de compra'
           TabOrder = 9
+          Visible = False
           OnClick = Button3Click
         end
         object Button4: TButton
@@ -161,6 +159,7 @@ object frmPrincipal: TfrmPrincipal
           Height = 25
           Caption = 'Lucro por Produto'
           TabOrder = 10
+          Visible = False
           OnClick = Button4Click
         end
         object Button5: TButton
@@ -170,6 +169,7 @@ object frmPrincipal: TfrmPrincipal
           Height = 25
           Caption = 'ROI por Produto 30 dias'
           TabOrder = 11
+          Visible = False
           OnClick = Button5Click
         end
         object Button6: TButton
@@ -179,6 +179,7 @@ object frmPrincipal: TfrmPrincipal
           Height = 25
           Caption = 'ROI por Produto 31-60 dias'
           TabOrder = 12
+          Visible = False
           OnClick = Button6Click
         end
         object Button7: TButton

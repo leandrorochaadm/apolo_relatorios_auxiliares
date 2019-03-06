@@ -9,10 +9,9 @@ object dm: Tdm
     Properties.Strings = (
       'AutoEncodeStrings=ON'
       'controls_cp=CP_UTF16')
-    Connected = True
-    HostName = 'localhost'
+    HostName = ''
     Port = 3050
-    Database = 'C:\Apolo\BD\BASE.FDB'
+    Database = ''
     User = 'SYSDBA'
     Password = 'masterkey'
     Protocol = 'firebirdd-2.5'
@@ -21,7 +20,6 @@ object dm: Tdm
   end
   object qrFilial: TZQuery
     Connection = con
-    Active = True
     SQL.Strings = (
       'select filial, cnpj from c000004')
     Params = <>
@@ -98,21 +96,7 @@ object dm: Tdm
   object qrCommon: TFDQuery
     Connection = conn
     SQL.Strings = (
-      'select dataMes, sum(total) as valor, tipo from'
-      
-        '(select nf.numero, (LPad(extract(year from nf.data),4,'#39'0'#39')||'#39'.'#39'|' +
-        '|LPad(extract(month from nf.data),2,'#39'0'#39')) as dataMes, nf.total_n' +
-        'ota as total  from c000061 nf  where nf.situacao=1  and nf.numer' +
-        'o <> '#39#39'  and data between '#39'01.11.2018'#39' and '#39'31.12.2018'#39
-      '  union'
-      
-        'select v.nfce as numero, (LPad(extract(year from v.data),4,'#39'0'#39')|' +
-        '|'#39'.'#39'||LPad(extract(month from v.data),2,'#39'0'#39')) as dataMes,  v.tot' +
-        'al  from c000048 v'
-      
-        'where v.nfce in  (select nfce.codigo from sequencia_nfce nfce wh' +
-        'ere nfce.status='#39'ENV'#39')  and data between '#39'01.11.2018'#39' and '#39'31.12' +
-        '.2018'#39' ) group by dataMes, tipo')
+      'select * from l000003')
     Left = 256
     Top = 96
   end

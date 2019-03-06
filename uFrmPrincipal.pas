@@ -404,7 +404,7 @@ end;
 
 procedure TfrmPrincipal.FormShow(Sender: TObject);
 begin
-  versao := '2.06';
+  versao := '2.07';
 //  ShowMessage(versao);
 
   LimparFiltros; // limpar filtros
@@ -623,7 +623,9 @@ end;
 
 procedure TfrmPrincipal.ParametrosServidorExecute(Sender: TObject);
 begin
-   ShowMessage(dm.conn.Params.Text);
+
+    ShowMessage('Server: '+dm.con.HostName);
+    ShowMessage(dm.conn.Params.Text);
 end;
 
 procedure TfrmPrincipal.Periodo;
