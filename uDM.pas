@@ -80,7 +80,10 @@ var
   con.Connected := False;
   conn.Connected := False;
   //path := ParamStr(0);
-  path := 'C:\Apolo\SERVER\';
+
+   if  FileExists('C:\Atron\gestor\bd\BASE.FDB')
+   then path := 'C:\Atron\gestor\'
+   else path := 'C:\Apolo\SERVER\';
 
     begin
       ArquivoINI := TIniFile.Create(path+'Configuracao.ini');
@@ -91,7 +94,7 @@ var
           Add('DriverID=FB');
           Add('port=3050');
           Add('Server='+ ArquivoINI.ReadString('Banco de Dados', '999-002','localhost'));
-          Add('Database='+ ArquivoINI.ReadString('Banco de Dados', '999-001','C:\APOLO\bd\BASE.FDB'));
+          Add('Database='+ ArquivoINI.ReadString('Banco de Dados', '999-001',''));
           Add('User_Name=SYSDBA');
           Add('Password=masterkey');
         end;
@@ -102,7 +105,7 @@ var
       end;
 
       con.HostName := ArquivoINI.ReadString('Banco de Dados', '999-002','localhost');
-      con.Database := ArquivoINI.ReadString('Banco de Dados', '999-001','C:\APOLO\bd\BASE.FDB');
+      con.Database := ArquivoINI.ReadString('Banco de Dados', '999-001','');
       con.Port:=3050;
       con.User:='SYSDBA';
       con.Password:='masterkey';

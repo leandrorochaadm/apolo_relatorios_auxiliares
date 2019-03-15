@@ -404,7 +404,7 @@ end;
 
 procedure TfrmPrincipal.FormShow(Sender: TObject);
 begin
-  versao := '2.07';
+  versao := '2.08';
 //  ShowMessage(versao);
 
   LimparFiltros; // limpar filtros

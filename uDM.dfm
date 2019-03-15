@@ -85,10 +85,8 @@ object dm: Tdm
       'Port=3050'
       'User_Name=sysdba'
       'Password=masterkey'
-      'Database=C:\Apolo\BD\BASE.FDB'
       'Server=localhost'
       'SQLDialect=3')
-    Connected = True
     LoginPrompt = False
     Left = 254
     Top = 32
@@ -244,7 +242,6 @@ object dm: Tdm
     Top = 152
   end
   object qrCompra: TFDQuery
-    Active = True
     Connection = conn
     SQL.Strings = (
       'select * from c000037')
@@ -273,7 +270,6 @@ object dm: Tdm
     end
   end
   object qrCompraItem: TFDQuery
-    Active = True
     Connection = conn
     SQL.Strings = (
       'select * from c000038')
@@ -291,7 +287,6 @@ object dm: Tdm
     Top = 64
   end
   object qrOrigem: TFDQuery
-    Active = True
     Connection = conn
     SQL.Strings = (
       'select * from l000003')
@@ -299,7 +294,6 @@ object dm: Tdm
     Top = 144
   end
   object qrDestino: TFDQuery
-    Active = True
     Connection = conn
     SQL.Strings = (
       'select * from l000003')
