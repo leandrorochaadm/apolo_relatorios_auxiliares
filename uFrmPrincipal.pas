@@ -404,7 +404,7 @@ end;
 
 procedure TfrmPrincipal.FormShow(Sender: TObject);
 begin
-  versao := '2.08';
+  versao := '2.8.1';
 //  ShowMessage(versao);
 
   LimparFiltros; // limpar filtros
@@ -419,7 +419,8 @@ begin
 
  //add na versao 1.7.5
  //novo plano de contas com
- converterPlanoConta;
+ //desativação pra MB malhas na versão 2.8.1
+  // converterPlanoConta;
 
   // desabilita qrweb
   dm.web.Connected := False;

@@ -90,8 +90,8 @@ object frmPrincipal: TfrmPrincipal
           Top = 18
           Width = 200
           Height = 21
-          Date = 43265.711674386580000000
-          Time = 43265.711674386580000000
+          Date = 43265.000000000000000000
+          Time = 0.711674386577215000
           TabOrder = 0
         end
         object dataF: TDateTimePicker
@@ -99,8 +99,8 @@ object frmPrincipal: TfrmPrincipal
           Top = 45
           Width = 200
           Height = 21
-          Date = 43265.711714571760000000
-          Time = 43265.711714571760000000
+          Date = 43265.000000000000000000
+          Time = 0.711714571756601800
           TabOrder = 2
         end
         object btnDreRes: TButton
