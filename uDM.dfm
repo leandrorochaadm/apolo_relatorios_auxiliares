@@ -5,13 +5,15 @@ object dm: Tdm
   Width = 913
   object con: TZConnection
     ControlsCodePage = cCP_UTF16
+    AutoEncodeStrings = True
     Catalog = ''
     Properties.Strings = (
       'AutoEncodeStrings=ON'
       'controls_cp=CP_UTF16')
+    Connected = True
     HostName = ''
     Port = 3050
-    Database = ''
+    Database = 'C:\apolo\BD\BASE.FDB'
     User = 'SYSDBA'
     Password = 'masterkey'
     Protocol = 'firebirdd-2.5'
@@ -36,6 +38,7 @@ object dm: Tdm
   end
   object web: TZConnection
     ControlsCodePage = cCP_UTF16
+    AutoEncodeStrings = True
     Catalog = ''
     HostName = '192.185.223.44'
     Port = 3306

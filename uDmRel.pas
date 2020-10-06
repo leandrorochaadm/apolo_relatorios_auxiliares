@@ -37,6 +37,9 @@ type
     frxRoi60: TfrxReport;
     frxDBnotaFiscal: TfrxDBDataset;
     frxNotaFiscal: TfrxReport;
+    frxDBDataset1: TfrxDBDataset;
+    frxComissao: TfrxReport;
+    qrComissao: TZQuery;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

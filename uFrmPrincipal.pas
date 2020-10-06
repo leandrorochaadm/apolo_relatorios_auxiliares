@@ -159,7 +159,8 @@ end;
 
 procedure TfrmPrincipal.Button3Click(Sender: TObject);
 begin
-AbreForm(TfrmPedidoCompra, frmPedidoCompra);
+//AbreForm(TfrmPedidoCompra, frmPedidoCompra);
+uRelatorio
 end;
 
 procedure TfrmPrincipal.Button4Click(Sender: TObject);
