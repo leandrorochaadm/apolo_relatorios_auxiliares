@@ -3,7 +3,7 @@ object frmPrincipal: TfrmPrincipal
   Top = 0
   BorderStyle = bsSizeToolWin
   Caption = 'Relat'#243'rios Auxiliares'
-  ClientHeight = 524
+  ClientHeight = 528
   ClientWidth = 350
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -13,6 +13,7 @@ object frmPrincipal: TfrmPrincipal
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  Visible = True
   OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
@@ -21,14 +22,14 @@ object frmPrincipal: TfrmPrincipal
     Left = 0
     Top = 0
     Width = 350
-    Height = 524
+    Height = 528
     Align = alClient
     TabOrder = 0
     object pcAtendimento: TPageControl
       Left = 1
       Top = 1
       Width = 348
-      Height = 522
+      Height = 526
       ActivePage = tabRel
       Align = alClient
       TabOrder = 0
@@ -80,9 +81,8 @@ object frmPrincipal: TfrmPrincipal
           Top = 99
           Width = 200
           Height = 25
-          Caption = 'Produto Pre'#231'o Custo'
+          Caption = 'Comiss'#227'o'
           TabOrder = 5
-          Visible = False
           OnClick = Button1Click
         end
         object dataI: TDateTimePicker

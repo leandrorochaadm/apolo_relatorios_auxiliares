@@ -114,39 +114,11 @@ end;
 procedure TfrmPrincipal.Button1Click(Sender: TObject);
 begin
 
-//  DmRel.qrRelProdCusto.Close;
-//  DmRel.qrRelProdCusto.SQL.Clear;
-//DmRel.qrRelProdCusto.SQL.Add(' SELECT F.codigo,F.referencia_fornecedor AS cod_forn, PRODUTO as Descricao, F.localicazao, J.fantasia as nome_forn, ');
-//DmRel.qrRelProdCusto.SQL.Add(' f.precocusto as preco_compra, c.custo_margem_0 as preco_custo, c.lucro as lucro_liq, f.precovenda ');
-// DmRel.qrRelProdCusto.SQL.Add(' FROM C000025 F ');
-// DmRel.qrRelProdCusto.SQL.Add(' LEFT JOIN C000009 J ON (F.codfornecedor=J.codigo) ');
-// DmRel.qrRelProdCusto.SQL.Add(' left join c000026 c on (c.codproduto =f.codigo) ');
-//
-//DmRel.qrRelProdCusto.SQL.Add('  WHERE F.data_ultimacompra is not null and F.data_ultimacompra between :dataI and :dataF ');
-//
-//  DmRel.qrRelProdCusto.Open;
+  uRelatorio.Comissao(dataI.Date, dataF.Date);
+  CarregarRelatorio(dmRel.frxComissao);
 
-//ShowMessage(DateToStr(dataF.Date));
-
-  with DmRel.qrRelProdCusto , SQL do
-  begin
-    Close;
-    Params.ParamByName('dataI').AsDate := dataI.Date;
-    Params.ParamByName('dataF').AsDate := dataF.Date;
-    Open;
-  end;
-
-  Periodo;
-  versaoRelatorio;
-
-//  with uDmRel.DmRel.frxRepProdCusto do
-//  begin
-//    LoadFromFile(ExtractFilePath(ParamStr(0)) + 'rel\PrecCusto.fr3');
-//    PrepareReport(True);
-//    ShowReport;
-//  end;
-
-
+//uRelatorio.DreRes(dataI.Date, dataF.Date);
+//CarregarRelatorio(dmRel.frxDreRes);
 
 end;
 
@@ -160,7 +132,7 @@ end;
 procedure TfrmPrincipal.Button3Click(Sender: TObject);
 begin
 //AbreForm(TfrmPedidoCompra, frmPedidoCompra);
-uRelatorio
+//uRelatorio
 end;
 
 procedure TfrmPrincipal.Button4Click(Sender: TObject);
@@ -405,7 +377,7 @@ end;
 
 procedure TfrmPrincipal.FormShow(Sender: TObject);
 begin
-  versao := '2.8.1';
+  versao := '2.8.2';
 //  ShowMessage(versao);
 
   LimparFiltros; // limpar filtros
@@ -413,7 +385,7 @@ begin
   verificarBaixarCartao;
 
   //correção pra Sotelli v2.00 15/01/19
-  VericarDuplicatasPagar;
+  //VericarDuplicatasPagar;
 
  //nao esta desativado pq trocou de servido
 // if testarInternet = True then AtualizarVersao;
@@ -683,7 +655,7 @@ begin
 
  //add na versao 1.7.5
  //novo plano de contas com
- converterPlanoConta;
+ //converterPlanoConta;
 
 end;
 

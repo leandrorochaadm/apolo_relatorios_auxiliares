@@ -1,25 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>2018/05/29 11:53:34.137.pas,C:\pessoal\Documents\Delphi\projetos\liberador\uDM.pas=C:\Users\Leandro\Documents\RAD Studio\Projects\Unit2.pas</Transaction>
-    <Transaction>2018/05/29 11:53:34.137.dfm,C:\pessoal\Documents\Delphi\projetos\liberador\uDM.dfm=C:\Users\Leandro\Documents\RAD Studio\Projects\Unit2.dfm</Transaction>
-    <Transaction>2018/05/29 11:53:58.060.dfm,C:\pessoal\Documents\Delphi\projetos\liberador\uFrmPrincipal.dfm=C:\Users\Leandro\Documents\RAD Studio\Projects\Unit1.dfm</Transaction>
-    <Transaction>2018/05/29 11:53:58.060.pas,C:\pessoal\Documents\Delphi\projetos\liberador\uFrmPrincipal.pas=C:\Users\Leandro\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2018/05/29 11:54:03.389.dproj,C:\pessoal\Documents\Delphi\projetos\liberador\Liberador.dproj=C:\Users\Leandro\Documents\RAD Studio\Projects\Project1.dproj</Transaction>
-    <Transaction>2018/05/29 12:01:19.968.dfm,C:\pessoal\Documents\Delphi\projetos\liberador\uFrmLiberador.dfm=C:\pessoal\Documents\Delphi\projetos\liberador\Unit1.dfm</Transaction>
-    <Transaction>2018/05/29 12:01:19.968.pas,C:\pessoal\Documents\Delphi\projetos\liberador\uFrmLiberador.pas=C:\pessoal\Documents\Delphi\projetos\liberador\Unit1.pas</Transaction>
-    <Transaction>2018/05/30 15:57:10.920.pas,C:\pessoal\Documents\Delphi\projetos\liberador\uDmRel.pas=C:\pessoal\Documents\Delphi\projetos\liberador\Unit1.pas</Transaction>
-    <Transaction>2018/05/30 15:57:10.920.dfm,C:\pessoal\Documents\Delphi\projetos\liberador\uDmRel.dfm=C:\pessoal\Documents\Delphi\projetos\liberador\Unit1.dfm</Transaction>
-    <Transaction>2018/05/30 16:09:03.405.dproj,C:\pessoal\Documents\Delphi\projetos\liberador\Atendimento.dproj=C:\pessoal\Documents\Delphi\projetos\liberador\Liberador.dproj</Transaction>
-    <Transaction>2018/07/09 15:51:42.470.dproj,C:\Users\Leandro\Documents\Delphi\projetos\atendimento\Auxiliar.dproj=C:\Users\Leandro\Documents\Delphi\projetos\atendimento\Atendimento.dproj</Transaction>
+    <Transaction>2018/05/29 11:53:34.137.dfm,C:\Users\Leandro\Documents\RAD Studio\Projects\Unit2.dfm=C:\pessoal\Documents\Delphi\projetos\liberador\uDM.dfm</Transaction>
+    <Transaction>2018/05/29 11:53:34.137.pas,C:\Users\Leandro\Documents\RAD Studio\Projects\Unit2.pas=C:\pessoal\Documents\Delphi\projetos\liberador\uDM.pas</Transaction>
+    <Transaction>2018/05/29 11:53:58.060.dfm,C:\Users\Leandro\Documents\RAD Studio\Projects\Unit1.dfm=C:\pessoal\Documents\Delphi\projetos\liberador\uFrmPrincipal.dfm</Transaction>
+    <Transaction>2018/05/29 11:53:58.060.pas,C:\Users\Leandro\Documents\RAD Studio\Projects\Unit1.pas=C:\pessoal\Documents\Delphi\projetos\liberador\uFrmPrincipal.pas</Transaction>
+    <Transaction>2018/05/29 11:54:03.389.dproj,C:\Users\Leandro\Documents\RAD Studio\Projects\Project1.dproj=C:\pessoal\Documents\Delphi\projetos\liberador\Liberador.dproj</Transaction>
+    <Transaction>2018/05/29 12:01:19.968.pas,C:\pessoal\Documents\Delphi\projetos\liberador\Unit1.pas=C:\pessoal\Documents\Delphi\projetos\liberador\uFrmLiberador.pas</Transaction>
+    <Transaction>2018/05/29 12:01:19.968.dfm,C:\pessoal\Documents\Delphi\projetos\liberador\Unit1.dfm=C:\pessoal\Documents\Delphi\projetos\liberador\uFrmLiberador.dfm</Transaction>
+    <Transaction>2018/05/30 15:57:10.920.dfm,C:\pessoal\Documents\Delphi\projetos\liberador\Unit1.dfm=C:\pessoal\Documents\Delphi\projetos\liberador\uDmRel.dfm</Transaction>
+    <Transaction>2018/05/30 15:57:10.920.pas,C:\pessoal\Documents\Delphi\projetos\liberador\Unit1.pas=C:\pessoal\Documents\Delphi\projetos\liberador\uDmRel.pas</Transaction>
+    <Transaction>2018/05/30 16:09:03.405.dproj,C:\pessoal\Documents\Delphi\projetos\liberador\Liberador.dproj=C:\pessoal\Documents\Delphi\projetos\liberador\Atendimento.dproj</Transaction>
+    <Transaction>2018/07/09 15:51:42.470.dproj,C:\Users\Leandro\Documents\Delphi\projetos\atendimento\Atendimento.dproj=C:\Users\Leandro\Documents\Delphi\projetos\atendimento\Auxiliar.dproj</Transaction>
     <Transaction>2019/01/09 16:24:29.000.734,C:\projetos\atendimento_apolo\uFrmLiberador.pas=</Transaction>
     <Transaction>2019/01/16 14:20:22.000.891,=C:\projetos\atendimento_apolo\Unit1.pas</Transaction>
-    <Transaction>2019/01/16 14:22:29.000.032,C:\projetos\atendimento_apolo\Unit1.pas=C:\projetos\atendimento_apolo\uRelatorio.pas</Transaction>
+    <Transaction>2019/01/16 14:22:29.000.032,C:\projetos\atendimento_apolo\uRelatorio.pas=C:\projetos\atendimento_apolo\Unit1.pas</Transaction>
     <Transaction>2019/02/18 18:56:33.000.659,=C:\projetos\atendimento_apolo\Unit1.pas</Transaction>
-    <Transaction>2019/02/18 18:56:55.000.972,C:\projetos\atendimento_apolo\Unit1.dfm=C:\projetos\atendimento_apolo\uFrmPedidoCompra.dfm</Transaction>
-    <Transaction>2019/02/18 18:56:55.000.972,C:\projetos\atendimento_apolo\Unit1.pas=C:\projetos\atendimento_apolo\uFrmPedidoCompra.pas</Transaction>
+    <Transaction>2019/02/18 18:56:55.000.972,C:\projetos\atendimento_apolo\uFrmPedidoCompra.pas=C:\projetos\atendimento_apolo\Unit1.pas</Transaction>
+    <Transaction>2019/02/18 18:56:55.000.972,C:\projetos\atendimento_apolo\uFrmPedidoCompra.dfm=C:\projetos\atendimento_apolo\Unit1.dfm</Transaction>
     <Transaction>2019/02/20 19:40:55.000.135,=C:\projetos\atendimento_apolo\Unit1.pas</Transaction>
-    <Transaction>2019/02/20 20:12:34.000.635,C:\projetos\atendimento_apolo\Unit1.pas=C:\projetos\atendimento_apolo\uFrmCompra.pas</Transaction>
-    <Transaction>2019/02/20 20:12:34.000.635,C:\projetos\atendimento_apolo\Unit1.dfm=C:\projetos\atendimento_apolo\uFrmCompra.dfm</Transaction>
+    <Transaction>2019/02/20 20:12:34.000.635,C:\projetos\atendimento_apolo\uFrmCompra.dfm=C:\projetos\atendimento_apolo\Unit1.dfm</Transaction>
+    <Transaction>2019/02/20 20:12:34.000.635,C:\projetos\atendimento_apolo\uFrmCompra.pas=C:\projetos\atendimento_apolo\Unit1.pas</Transaction>
   </Transactions>
 </BorlandProject>
