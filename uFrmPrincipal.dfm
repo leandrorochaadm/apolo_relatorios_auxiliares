@@ -3,7 +3,7 @@ object frmPrincipal: TfrmPrincipal
   Top = 0
   BorderStyle = bsSizeToolWin
   Caption = 'Relat'#243'rios Auxiliares'
-  ClientHeight = 528
+  ClientHeight = 380
   ClientWidth = 350
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -22,19 +22,22 @@ object frmPrincipal: TfrmPrincipal
     Left = 0
     Top = 0
     Width = 350
-    Height = 528
+    Height = 380
     Align = alClient
     TabOrder = 0
+    ExplicitHeight = 528
     object pcAtendimento: TPageControl
       Left = 1
       Top = 1
       Width = 348
-      Height = 526
+      Height = 378
       ActivePage = tabRel
       Align = alClient
       TabOrder = 0
+      ExplicitHeight = 526
       object tabRel: TTabSheet
         Caption = 'Relat'#243'rios'
+        ExplicitHeight = 498
         object lblDataI: TLabel
           Left = 15
           Top = 24
@@ -125,7 +128,7 @@ object frmPrincipal: TfrmPrincipal
         end
         object btnLimparFiltro: TButton
           Left = 80
-          Top = 472
+          Top = 317
           Width = 200
           Height = 25
           Caption = 'Limpar Filtros'
@@ -141,63 +144,13 @@ object frmPrincipal: TfrmPrincipal
           TabOrder = 8
           OnClick = Button2Click
         end
-        object Button3: TButton
-          Left = 80
-          Top = 441
-          Width = 200
-          Height = 25
-          Caption = 'Pedido de compra'
-          TabOrder = 9
-          Visible = False
-          OnClick = Button3Click
-        end
         object Button4: TButton
           Left = 80
           Top = 286
           Width = 200
           Height = 25
           Caption = 'Lucro por Produto'
-          TabOrder = 10
-          Visible = False
-          OnClick = Button4Click
-        end
-        object Button5: TButton
-          Left = 80
-          Top = 317
-          Width = 200
-          Height = 25
-          Caption = 'ROI por Produto 30 dias'
-          TabOrder = 11
-          Visible = False
-          OnClick = Button5Click
-        end
-        object Button6: TButton
-          Left = 80
-          Top = 348
-          Width = 200
-          Height = 25
-          Caption = 'ROI por Produto 31-60 dias'
-          TabOrder = 12
-          Visible = False
-          OnClick = Button6Click
-        end
-        object Button7: TButton
-          Left = 80
-          Top = 379
-          Width = 200
-          Height = 25
-          Caption = 'Lucro por Produto'
-          TabOrder = 13
-          Visible = False
-          OnClick = Button4Click
-        end
-        object Button8: TButton
-          Left = 80
-          Top = 410
-          Width = 200
-          Height = 25
-          Caption = 'Lucro por Produto'
-          TabOrder = 14
+          TabOrder = 9
           Visible = False
           OnClick = Button4Click
         end
@@ -207,7 +160,7 @@ object frmPrincipal: TfrmPrincipal
           Width = 200
           Height = 25
           Caption = 'Notas Fiscais Mensais'
-          TabOrder = 15
+          TabOrder = 10
           OnClick = Button9Click
         end
       end

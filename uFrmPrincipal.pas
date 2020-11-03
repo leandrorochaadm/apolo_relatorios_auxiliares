@@ -28,14 +28,9 @@ type
     dblkcbbPlanoConta: TDBLookupComboBox;
     btnLimparFiltro: TButton;
     Button2: TButton;
-    Button3: TButton;
     ActionList1: TActionList;
     ParametrosServidor: TAction;
     Button4: TButton;
-    Button5: TButton;
-    Button6: TButton;
-    Button7: TButton;
-    Button8: TButton;
     Button9: TButton;
     procedure BtnLiberadorClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
