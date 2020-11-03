@@ -377,7 +377,7 @@ end;
 
 procedure TfrmPrincipal.FormShow(Sender: TObject);
 begin
-  versao := '2.8.2';
+  versao := '2.8.3';
 //  ShowMessage(versao);
 
   LimparFiltros; // limpar filtros
@@ -461,28 +461,9 @@ end;
 procedure TfrmPrincipal.ImprimirClick(Sender: TObject);
 begin
 
-  with DmRel.qrVendaCartaoSnfce, SQL do
-  begin
-    Close;
-    Clear;
-    Add('select c000048.codigo,  c000048.data, c000007.nome, c000048.total from c000048 '
-        + 'left join c000007 on (c000007.codigo = c000048.codcliente) ' +
-        'where (c000048.meio_cartaocred >0 or c000048.meio_cartaodeb>0) and c000048.nfce is null '
-        + 'and c000048.data between ' +
+  uRelatorio.VendaRecebimentoResumo(dataI.Date, dataF.Date);
+  CarregarRelatorio(dmRel.frxVendaRecebimentoResumido);
 
-        QuotedStr(FormatDateTime('dd.mm.YYYY', dataI.Date))
-        + ' and ' + QuotedStr(FormatDateTime('dd.mm.YYYY', dataF.Date)));
-    Open;
-  end;
-
-  Periodo;
-
-//  with uDmRel.DmRel.frxRepVendaCartaoSnfce do
-//  begin
-//    LoadFromFile(ExtractFilePath(ParamStr(0)) + 'rel\VendaCartaoSnfce.fr3');
-//    PrepareReport(True);
-//    ShowReport;
-//  end;
 end;
 
 procedure TfrmPrincipal.LimparFiltros;

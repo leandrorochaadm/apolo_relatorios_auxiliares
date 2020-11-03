@@ -71,9 +71,8 @@ object frmPrincipal: TfrmPrincipal
           Top = 130
           Width = 200
           Height = 25
-          Caption = 'Vendas Cart'#227'o s/ Cupom'
+          Caption = 'Vendas recebidas resumida'
           TabOrder = 4
-          Visible = False
           OnClick = ImprimirClick
         end
         object Button1: TButton
@@ -81,7 +80,7 @@ object frmPrincipal: TfrmPrincipal
           Top = 99
           Width = 200
           Height = 25
-          Caption = 'Comiss'#227'o'
+          Caption = 'Vendas recebidas detalhada'
           TabOrder = 5
           OnClick = Button1Click
         end

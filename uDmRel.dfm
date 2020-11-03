@@ -260,7 +260,7 @@ object dmRel: TdmRel
     Top = 80
   end
   object frxDreRes: TfrxReport
-    Version = '6.3.1'
+    Version = '6.5.4'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -657,7 +657,7 @@ object dmRel: TdmRel
     Top = 288
   end
   object frxDreDet: TfrxReport
-    Version = '6.3.1'
+    Version = '6.5.4'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1048,7 +1048,7 @@ object dmRel: TdmRel
     Top = 288
   end
   object frxVendaMensal: TfrxReport
-    Version = '6.3.1'
+    Version = '6.5.4'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1676,7 +1676,7 @@ object dmRel: TdmRel
     Top = 288
   end
   object frxLucroProduto: TfrxReport
-    Version = '6.3.1'
+    Version = '6.5.4'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -2102,7 +2102,7 @@ object dmRel: TdmRel
     Top = 288
   end
   object frxRoi30: TfrxReport
-    Version = '6.3.1'
+    Version = '6.5.4'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -2505,7 +2505,7 @@ object dmRel: TdmRel
     Top = 288
   end
   object frxRoi60: TfrxReport
-    Version = '6.3.1'
+    Version = '6.5.4'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -2909,7 +2909,7 @@ object dmRel: TdmRel
     Top = 288
   end
   object frxNotaFiscal: TfrxReport
-    Version = '6.3.1'
+    Version = '6.5.4'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -3299,7 +3299,7 @@ object dmRel: TdmRel
     Top = 120
   end
   object frxComissao: TfrxReport
-    Version = '6.3.1'
+    Version = '6.5.4'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -3307,7 +3307,7 @@ object dmRel: TdmRel
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 39181.615094942100000000
-    ReportOptions.LastChange = 44110.700114189800000000
+    ReportOptions.LastChange = 44138.747801469910000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -3397,7 +3397,7 @@ object dmRel: TdmRel
           Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
-            'Comiss'#227'o por Vendedor')
+            'Vendas recebidas por vendedor detalhada')
           ParentFont = False
         end
         object Memo5: TfrxMemoView
@@ -3945,12 +3945,15 @@ object dmRel: TdmRel
   end
   object qrComissao: TZQuery
     Connection = dm.con
+    Active = True
     SQL.Strings = (
       
-        'select vd.codigo as codvenda, vend.codigo as codvendedor, vend.n' +
-        'ome as nomevendedor,  vd.data as datavenda, vd.total, vp.valor_p' +
-        'ago as valoraprazo, ct.valor as valorcartao, vd.meio_dinheiro as' +
-        ' valordinheiro  from c000008 vend'
+        'select vend.codigo as codvendedor, vend.nome as nomevendedor, su' +
+        'm(vd.total - vd.desconto) as total, sum(vp.valor_pago) as valora' +
+        'prazorecebida, sum(vp.valor_original-vp.valor_pago) as valorapra' +
+        'zoareceber, sum(ct.valor) as valorcartaorecebido, sum(vd.meio_ca' +
+        'rtaocred+vd.meio_cartaodeb-ct.valor) as cartaocredito_areceber, ' +
+        'sum(vd.meio_dinheiro) as valordinheiro  from c000008 vend'
       'left join c000048 vd on (vd.codvendedor = vend.codigo)'
       'left join c000124 ct on (ct.cod_venda=vd.codigo)'
       'left join c000049 vp on (vd.codigo=vp.codvenda)'
@@ -3959,15 +3962,511 @@ object dmRel: TdmRel
         ' ((ct.data_baixa between '#39'01.09.2020'#39' and '#39'30.09.2020'#39')  or (vp.' +
         'data_pagamento between '#39'01.09.2020'#39' and '#39'30.09.2020'#39' ) or (vd.da' +
         'ta between '#39'01.09.2020'#39' and '#39'30.09.2020'#39')   )'
-      'and (vp.valor_pago >0 or ct.valor >0 or vd.meio_dinheiro >0  )'
       ''
-      
-        'group by codvenda, codvendedor,  nomevendedor, datavenda, vd.tot' +
-        'al, valoraprazo, valorcartao, valordinheiro'
-      'order by vend.codigo, vd.data'
-      '')
+      'group by  codvendedor, nomevendedor'
+      'order by nomevendedor')
     Params = <>
     Left = 424
     Top = 16
+  end
+  object frxDBVendaRecebimentoResumido: TfrxDBDataset
+    UserName = 'frxDBcomissao'
+    CloseDataSource = False
+    DataSet = dm.qrCommon
+    BCDToCurrency = False
+    Left = 544
+    Top = 120
+  end
+  object frxVendaRecebimentoResumido: TfrxReport
+    Version = '6.5.4'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 39181.615094942100000000
+    ReportOptions.LastChange = 44138.747281828710000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      ''
+      'begin'
+      ''
+      'end.')
+    Left = 544
+    Top = 176
+    Datasets = <
+      item
+        DataSet = frxDBVendaRecebimentoResumido
+        DataSetName = 'frxDBcomissao'
+      end
+      item
+        DataSet = frxDBRelatorio
+        DataSetName = 'frxDBRelatorio'
+      end>
+    Variables = <>
+    Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 215.900000000000000000
+      PaperHeight = 279.400000000000000000
+      PaperSize = 1
+      LeftMargin = 10.000000000000000000
+      RightMargin = 10.000000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
+      Frame.Style = fsDash
+      Frame.Typ = []
+      MirrorMode = []
+      object PageHeader1: TfrxPageHeader
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 56.692913385826800000
+        Top = 18.897650000000000000
+        Width = 740.409927000000000000
+        object Memo2: TfrxMemoView
+          AllowVectorExport = True
+          Left = 623.622450000000000000
+          Top = 38.574830000000000000
+          Width = 113.385900000000000000
+          Height = 15.118120000000000000
+          DisplayFormat.DecimalSeparator = ','
+          DisplayFormat.FormatStr = '000#'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -9
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'P'#225'gina: [Page]')
+          ParentFont = False
+        end
+        object Memo1: TfrxMemoView
+          AllowVectorExport = True
+          Left = 3.779530000000000000
+          Top = 3.779530000000000000
+          Width = 733.228820000000000000
+          Height = 18.897650000000000000
+          DataSetName = 'fxrelatorio'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Vendas recebidas por vendedor resumida')
+          ParentFont = False
+        end
+        object Memo5: TfrxMemoView
+          AllowVectorExport = True
+          Left = 623.622450000000000000
+          Top = 22.677180000000000000
+          Width = 113.385900000000000000
+          Height = 15.118120000000000000
+          DisplayFormat.DecimalSeparator = ','
+          DisplayFormat.FormatStr = 'dd/mm/yyyy'
+          DisplayFormat.Kind = fkDateTime
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -9
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Emiss'#227'o: [Date]')
+          ParentFont = False
+        end
+        object frxDBRelatorioLINHA2: TfrxMemoView
+          AllowVectorExport = True
+          Left = 211.653680000000000000
+          Top = 22.677180000000000000
+          Width = 302.362400000000000000
+          Height = 18.897650000000000000
+          DataField = 'LINHA2'
+          DataSet = frxDBRelatorio
+          DataSetName = 'frxDBRelatorio'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[frxDBRelatorio."LINHA2"]')
+          ParentFont = False
+        end
+        object frxDBRelatorioLINHA3: TfrxMemoView
+          AllowVectorExport = True
+          Left = 623.622450000000000000
+          Top = 3.779530000000000000
+          Width = 113.385900000000000000
+          Height = 18.897650000000000000
+          DataField = 'LINHA3'
+          DataSet = frxDBRelatorio
+          DataSetName = 'frxDBRelatorio'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -9
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[frxDBRelatorio."LINHA3"]')
+          ParentFont = False
+        end
+        object Memo18: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 1137.638530000000000000
+          Top = 241.889920000000000000
+          Width = 181.417440000000000000
+          Height = 18.897650000000000000
+          DataField = 'NOMEVENDEDOR'
+          DataSet = frxDBVendaRecebimentoResumido
+          DataSetName = 'frxDBcomissao'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[frxDBcomissao."NOMEVENDEDOR"]')
+          ParentFont = False
+        end
+      end
+      object MasterData1: TfrxMasterData
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 30.236240000000000000
+        Top = 181.417440000000000000
+        Width = 740.409927000000000000
+        DataSet = frxDBVendaRecebimentoResumido
+        DataSetName = 'frxDBcomissao'
+        RowCount = 0
+        object frxDBcomissaoVALORAPRAZO: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 268.346630000000000000
+          Top = 3.779530000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          DataSet = frxDBVendaRecebimentoResumido
+          DataSetName = 'frxDBcomissao'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[frxDBcomissao."VALORAPRAZORECEBIDA"]')
+          ParentFont = False
+        end
+        object frxDBcomissaoVALORCARTAO: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 359.055350000000000000
+          Top = 3.779530000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          DataSet = frxDBVendaRecebimentoResumido
+          DataSetName = 'frxDBcomissao'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[frxDBcomissao."VALORCARTAORECEBIDO"]')
+          ParentFont = False
+        end
+        object frxDBcomissaoVALORDINHEIRO: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 457.323130000000000000
+          Top = 3.779530000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          DataSet = frxDBVendaRecebimentoResumido
+          DataSetName = 'frxDBcomissao'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[frxDBcomissao."VALORDINHEIRO"]')
+          ParentFont = False
+        end
+        object Line1: TfrxLineView
+          AllowVectorExport = True
+          Left = 3.779530000000000000
+          Top = 26.456710000000000000
+          Width = 548.031496062992000000
+          Color = clBlack
+          Frame.Typ = []
+          Diagonal = True
+        end
+      end
+      object GroupHeader1: TfrxGroupHeader
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 22.677180000000000000
+        Top = 136.063080000000000000
+        Width = 740.409927000000000000
+        Condition = 'frxDBcomissao."CODVENDEDOR"'
+        object Shape1: TfrxShapeView
+          Align = baClient
+          AllowVectorExport = True
+          Width = 740.409927000000000000
+          Height = 22.677180000000000000
+          Fill.BackColor = clHighlightText
+          Frame.Color = clNone
+          Frame.Typ = []
+        end
+        object frxDBcomissaoCODVENDEDOR: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 3.779530000000000000
+          Width = 49.133890000000000000
+          Height = 18.897650000000000000
+          DataField = 'CODVENDEDOR'
+          DataSet = frxDBVendaRecebimentoResumido
+          DataSetName = 'frxDBcomissao'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[frxDBcomissao."CODVENDEDOR"]')
+          ParentFont = False
+        end
+        object Memo4: TfrxMemoView
+          AllowVectorExport = True
+          Left = 264.567100000000000000
+          Width = 83.149660000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'A Prazo')
+          ParentFont = False
+        end
+        object Memo6: TfrxMemoView
+          AllowVectorExport = True
+          Left = 355.275820000000000000
+          Width = 83.149660000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Cart'#227'o')
+          ParentFont = False
+        end
+        object Memo7: TfrxMemoView
+          AllowVectorExport = True
+          Left = 453.543600000000000000
+          Width = 83.149660000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'A Vista')
+          ParentFont = False
+        end
+        object frxDBcomissaoNOMEVENDEDOR: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 56.692950000000000000
+          Width = 181.417440000000000000
+          Height = 18.897650000000000000
+          DataField = 'NOMEVENDEDOR'
+          DataSet = frxDBVendaRecebimentoResumido
+          DataSetName = 'frxDBcomissao'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[frxDBcomissao."NOMEVENDEDOR"]')
+          ParentFont = False
+        end
+      end
+      object Footer1: TfrxFooter
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 56.692950000000000000
+        Top = 234.330860000000000000
+        Width = 740.409927000000000000
+        object Memo8: TfrxMemoView
+          AllowVectorExport = True
+          Left = 58.682176320000000000
+          Top = 20.687953680000000000
+          Width = 200.712935260000000000
+          Height = 19.494417890000000000
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Total de todos os vendedores:')
+          ParentFont = False
+        end
+        object Memo10: TfrxMemoView
+          AllowVectorExport = True
+          Left = 268.346630000000000000
+          Top = 3.779530000000000000
+          Width = 83.149660000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'A Prazo')
+          ParentFont = False
+        end
+        object Memo14: TfrxMemoView
+          AllowVectorExport = True
+          Left = 275.308922110000000000
+          Top = 22.677180000000000000
+          Width = 77.778748950000000000
+          Height = 19.892263160000000000
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[SUM(<frxDBcomissao."VALORAPRAZORECEBIDA">)]')
+          ParentFont = False
+        end
+        object Memo15: TfrxMemoView
+          AllowVectorExport = True
+          Left = 362.834880000000000000
+          Top = 22.677180000000000000
+          Width = 81.558278950000000000
+          Height = 19.892263160000000000
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[SUM(<frxDBcomissao."VALORCARTAORECEBIDO">)]')
+          ParentFont = False
+        end
+        object Memo11: TfrxMemoView
+          AllowVectorExport = True
+          Left = 359.055350000000000000
+          Top = 3.779530000000000000
+          Width = 83.149660000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Cart'#227'o')
+          ParentFont = False
+        end
+        object Memo12: TfrxMemoView
+          AllowVectorExport = True
+          Left = 457.323130000000000000
+          Top = 3.779530000000000000
+          Width = 83.149660000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'A Vista')
+          ParentFont = False
+        end
+        object Memo16: TfrxMemoView
+          AllowVectorExport = True
+          Left = 457.323130000000000000
+          Top = 22.677180000000000000
+          Width = 85.337808950000000000
+          Height = 19.892263160000000000
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[SUM(<frxDBcomissao."VALORDINHEIRO">)]')
+          ParentFont = False
+        end
+      end
+    end
   end
 end

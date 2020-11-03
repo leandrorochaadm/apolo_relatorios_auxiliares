@@ -40,6 +40,8 @@ type
     frxDBComissao: TfrxDBDataset;
     frxComissao: TfrxReport;
     qrComissao: TZQuery;
+    frxDBVendaRecebimentoResumido: TfrxDBDataset;
+    frxVendaRecebimentoResumido: TfrxReport;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

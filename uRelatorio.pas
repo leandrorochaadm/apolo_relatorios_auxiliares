@@ -13,6 +13,7 @@ uses
   procedure Roi60;
   procedure NotasFiscalSaida(DataI, DataF: TDate);
   procedure Comissao(DataI, DataF: TDate);
+  procedure VendaRecebimentoResumo(DataI, DataF: TDate);
 
 
 implementation
@@ -202,5 +203,37 @@ begin
   Open;
   end;
 end;
+
+procedure VendaRecebimentoResumo(DataI, DataF: TDate);
+begin
+ with dm.qrCommon do
+  begin
+  close;
+  sql.Clear;
+  sql.Text :=
+'select vend.codigo as codvendedor, vend.nome as nomevendedor, '+
+'sum(vd.total - vd.desconto) as total, sum(vp.valor_pago) as valoraprazorecebida, '+
+'sum(vp.valor_original-vp.valor_pago) as valoraprazoareceber, '+
+'sum(ct.valor) as valorcartaorecebido, '+
+'sum(vd.meio_cartaocred+vd.meio_cartaodeb-ct.valor) as cartaocredito_areceber, '+
+'sum(vd.meio_dinheiro) as valordinheiro  from c000008 vend '+
+'left join c000048 vd on (vd.codvendedor = vend.codigo) '+
+'left join c000124 ct on (ct.cod_venda=vd.codigo)       '+
+'left join c000049 vp on (vd.codigo=vp.codvenda)        '+
+'where                                                  '+
+'((ct.data_baixa between :dataI and :dataF)  or (vp.data_pagamento between :dataI and :dataF ) or (vd.data between :dataI and :dataF)   ) '+
+'group by  codvendedor, nomevendedor '+
+'order by nomevendedor ';
+
+
+
+// Params.ParamByName('dataI').AsDate := DataI;
+// Params.ParamByName('dataF').AsDate := DataF;
+ ParamByName('dataI').AsDate := DataI;
+ ParamByName('dataF').AsDate := DataF;
+  Open;
+  end;
+end;
+
 
 end.
