@@ -32,6 +32,9 @@ type
     ParametrosServidor: TAction;
     Button4: TButton;
     Button9: TButton;
+    ActionList2: TActionList;
+    actLiberador: TAction;
+    actLimparFiltro: TAction;
     procedure BtnLiberadorClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -73,6 +76,8 @@ type
     procedure Button5Click(Sender: TObject);
     procedure Button6Click(Sender: TObject);
     procedure Button9Click(Sender: TObject);
+    procedure actLiberadorExecute(Sender: TObject);
+    procedure actLimparFiltroExecute(Sender: TObject);
   private
     { Private declarations }
     FnTamanhoTotal: integer;
@@ -255,6 +260,16 @@ begin
   finally
     FreeAndNil(aForm);
   end;
+end;
+
+procedure TfrmPrincipal.actLimparFiltroExecute(Sender: TObject);
+begin
+btnLimparFiltroClick(self);
+end;
+
+procedure TfrmPrincipal.actLiberadorExecute(Sender: TObject);
+begin
+     BtnLiberadorClick(self);
 end;
 
 procedure TfrmPrincipal.atualizarContasCaixa(movimento, conta: Integer);

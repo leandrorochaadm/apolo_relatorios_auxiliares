@@ -209,4 +209,18 @@ object frmPrincipal: TfrmPrincipal
       OnExecute = ParametrosServidorExecute
     end
   end
+  object ActionList2: TActionList
+    Left = 16
+    Top = 120
+    object actLiberador: TAction
+      Caption = 'Liberador'
+      ShortCut = 49228
+      OnExecute = actLiberadorExecute
+    end
+    object actLimparFiltro: TAction
+      Caption = 'Limpar Filtro'
+      ShortCut = 27
+      OnExecute = actLimparFiltroExecute
+    end
+  end
 end
