@@ -3972,7 +3972,7 @@ object dmRel: TdmRel
   object frxDBVendaRecebimentoResumido: TfrxDBDataset
     UserName = 'frxDBcomissao'
     CloseDataSource = False
-    DataSet = dm.qrCommon
+    DataSet = qrComissao
     BCDToCurrency = False
     Left = 544
     Top = 120
@@ -3986,7 +3986,7 @@ object dmRel: TdmRel
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 39181.615094942100000000
-    ReportOptions.LastChange = 44138.747281828710000000
+    ReportOptions.LastChange = 44138.747281828700000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -4225,10 +4225,31 @@ object dmRel: TdmRel
           AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 26.456710000000000000
-          Width = 548.031496062992000000
+          Width = 661.417396060000000000
           Color = clBlack
           Frame.Typ = []
           Diagonal = True
+        end
+        object Memo19: TfrxMemoView
+          AllowVectorExport = True
+          Left = 559.370440000000000000
+          Top = 3.779530000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            
+              '[<frxDBcomissao."VALORAPRAZORECEBIDA">+<frxDBcomissao."VALORCART' +
+              'AORECEBIDO">+<frxDBcomissao."VALORDINHEIRO">]')
+          ParentFont = False
         end
       end
       object GroupHeader1: TfrxGroupHeader
@@ -4331,6 +4352,22 @@ object dmRel: TdmRel
           Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBcomissao."NOMEVENDEDOR"]')
+          ParentFont = False
+        end
+        object Memo17: TfrxMemoView
+          AllowVectorExport = True
+          Left = 570.709030000000000000
+          Width = 83.149660000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Total')
           ParentFont = False
         end
       end
@@ -4464,6 +4501,44 @@ object dmRel: TdmRel
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBcomissao."VALORDINHEIRO">)]')
+          ParentFont = False
+        end
+        object Memo20: TfrxMemoView
+          AllowVectorExport = True
+          Left = 563.149970000000000000
+          Top = 22.677180000000000000
+          Width = 92.896868950000000000
+          Height = 19.892263160000000000
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            
+              '[SUM(<frxDBcomissao."VALORDINHEIRO">)+SUM(<frxDBcomissao."VALORA' +
+              'PRAZORECEBIDA">)+SUM(<frxDBcomissao."VALORCARTAORECEBIDO">)]')
+          ParentFont = False
+        end
+        object Memo21: TfrxMemoView
+          AllowVectorExport = True
+          Left = 570.709030000000000000
+          Top = 3.779530000000000000
+          Width = 83.149660000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Total Geral')
           ParentFont = False
         end
       end

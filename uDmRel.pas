@@ -65,6 +65,9 @@ qrVendaCartaoSnfce.Active:=true;
 qrDreDet.Active:=true;
 qrDreRes.Active:=true;
 
+frxVendaRecebimentoResumido.DataSets := dm.qrCommon;
+frxComissao.DataSets := dm.qrCommon;
+
 
 end;
 
