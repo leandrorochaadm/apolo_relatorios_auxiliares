@@ -25,7 +25,6 @@ object frmPrincipal: TfrmPrincipal
     Height = 380
     Align = alClient
     TabOrder = 0
-    ExplicitHeight = 528
     object pcAtendimento: TPageControl
       Left = 1
       Top = 1
@@ -34,10 +33,10 @@ object frmPrincipal: TfrmPrincipal
       ActivePage = tabRel
       Align = alClient
       TabOrder = 0
-      ExplicitHeight = 526
       object tabRel: TTabSheet
         Caption = 'Relat'#243'rios'
-        ExplicitHeight = 498
+        ExplicitLeft = 8
+        ExplicitTop = 28
         object lblDataI: TLabel
           Left = 15
           Top = 24
@@ -140,7 +139,7 @@ object frmPrincipal: TfrmPrincipal
           Top = 223
           Width = 200
           Height = 25
-          Caption = 'Vendas Mensais'
+          Caption = 'Comiss'#227'o Resumida'
           TabOrder = 8
           OnClick = Button2Click
         end
@@ -159,7 +158,7 @@ object frmPrincipal: TfrmPrincipal
           Top = 254
           Width = 200
           Height = 25
-          Caption = 'Notas Fiscais Mensais'
+          Caption = 'Comiss'#227'o Detalhada'
           TabOrder = 10
           OnClick = Button9Click
         end

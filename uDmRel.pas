@@ -42,6 +42,10 @@ type
     qrComissao: TZQuery;
     frxDBVendaRecebimentoResumido: TfrxDBDataset;
     frxVendaRecebimentoResumido: TfrxReport;
+    frxDBComissaoTodosVendedoreses: TfrxDBDataset;
+    frxComissaoTodosVendedoreses: TfrxReport;
+    frxComissaoTodosVendedoresDetalhado: TfrxReport;
+    frxDBComissaoTodosVendedoresDetalhado: TfrxDBDataset;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -65,8 +69,10 @@ qrVendaCartaoSnfce.Active:=true;
 qrDreDet.Active:=true;
 qrDreRes.Active:=true;
 
-frxVendaRecebimentoResumido.DataSets := dm.qrCommon;
-frxComissao.DataSets := dm.qrCommon;
+frxDBVendaRecebimentoResumido.DataSet := dm.qrCommon;
+frxDBComissao.DataSet := dm.qrCommon;
+frxDBComissaoTodosVendedoreses.DataSet := dm.qrCommon;
+frxDBComissaoTodosVendedoresDetalhado.DataSet := dm.qrCommon;
 
 
 end;

@@ -125,8 +125,11 @@ end;
 procedure TfrmPrincipal.Button2Click(Sender: TObject);
 begin
 
-  uRelatorio.VendaMensal(dataI.Date, dataF.Date);
-  CarregarRelatorio(dmRel.frxVendaMensal);
+//  uRelatorio.VendaMensal(dataI.Date, dataF.Date);
+//  CarregarRelatorio(dmRel.frxVendaMensal);
+
+  uRelatorio.ComissaoTodosVendedores(dataI.Date, dataF.Date);
+  CarregarRelatorio(dmRel.frxComissaoTodosVendedoreses);
 end;
 
 procedure TfrmPrincipal.Button3Click(Sender: TObject);
@@ -155,8 +158,11 @@ end;
 
 procedure TfrmPrincipal.Button9Click(Sender: TObject);
 begin
-uRelatorio.NotasFiscalSaida(dataI.Date, dataF.Date);
-CarregarRelatorio(dmRel.frxNotaFiscal);
+//uRelatorio.NotasFiscalSaida(dataI.Date, dataF.Date);
+//CarregarRelatorio(dmRel.frxNotaFiscal);
+
+  uRelatorio.ComissaoTodosVendedoresDetalhadado(dataI.Date, dataF.Date);
+  CarregarRelatorio(dmRel.frxComissaoTodosVendedoresDetalhado);
 end;
 
 procedure TfrmPrincipal.CarregarRelatorio(const pReport: TfrxReport);
@@ -387,7 +393,7 @@ end;
 
 procedure TfrmPrincipal.FormShow(Sender: TObject);
 begin
-  versao := '2.8.3';
+  versao := '2.9.0';
 //  ShowMessage(versao);
 
   LimparFiltros; // limpar filtros
