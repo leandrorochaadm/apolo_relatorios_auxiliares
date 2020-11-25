@@ -3948,7 +3948,9 @@ object dmRel: TdmRel
     Active = True
     SQL.Strings = (
       'select'
-      '    cod_funcionario, fun.nome,'
+      
+        '    cod_funcionario, fun.nome,data_os, codnota, sum(valor_venda)' +
+        ' as venda_total,'
       '    sum(comissao_) as comissao_total'
       'from ('
       '      /* select dos produtos vendidos pelo funcionario */'
@@ -3956,17 +3958,19 @@ object dmRel: TdmRel
       '    it.data as data_os,'
       '    IT.codvendedor as cod_funcionario,'
       '    substring(IT.codnota from 1 for 6) as codnota,'
+      '    it.total as valor_venda,'
       '    sum(case'
       
         '    when((os.meio_dinheiro>0) or (os.meio_chequeav>0) or (os.mei' +
-        'o_cartaodeb>0)) then it.total *0.025'
+        'o_cartaodeb>0)) then it.total *(ve.comissao/100)'
       
         '    when((os.meio_crediario>0) or (os.meio_chequeap>0) or (os.me' +
-        'io_cartaocred>0)) then it.total *0.015'
+        'io_cartaocred>0)) then it.total *(ve.comissao_aprazo/100)'
       '    else 0'
       '    end'
       '    ) as comissao_'
       '    from C000032 IT'
+      '    inner join c000008 VE on(IT.codvendedor = VE.codigo)'
       '    inner join C000025 PR on(IT.codproduto = PR.codigo)'
       
         '    inner join c000051 OS on (substring(IT.codnota from 1 for 6)' +
@@ -3980,10 +3984,10 @@ object dmRel: TdmRel
       
         '    left join c000124 ct on (substring(IT.codnota from 1 for 6) ' +
         '= substring(ct.cod_venda from 1 for 6))'
-      '    where'
+      '    where pr.sem_comissao = '#39'0'#39' and'
       
-        '    /*recebido crediario*/   (vp.situacao =2 and vp.data_pagamen' +
-        'to between '#39'01-01-20'#39' and '#39'01-01-21'#39') or'
+        '    /*recebido crediario*/  (vp.situacao =2 and vp.data_pagament' +
+        'o between '#39'01-01-20'#39' and '#39'01-01-21'#39') or'
       
         '   /*recebido cheque*/   ((ch.situacao = 2 and ch.data_baixa bet' +
         'ween '#39'01-01-20'#39' and '#39'01-01-21'#39') )  or'
@@ -3994,20 +3998,21 @@ object dmRel: TdmRel
         '    /*avista*/ (((os.meio_dinheiro>0) or (os.meio_chequeav>0) or' +
         ' (os.meio_cartaodeb>0)) and it.data between '#39'01-01-20'#39' and '#39'01-0' +
         '1-21'#39')'
-      '    group by 1,2,3'
+      '    group by 1,2,3,4'
       'UNION ALL'
       '    /* select dos servi'#231'os feito pelo funcionario */'
       '  select'
       '    si.data as data_os,'
       '    SI.codtecnico as funcionario,'
       '    substring(SI.codos from 1 for 6) as codnota,'
+      '    SI.valor as valor_venda,'
       '    sum(case'
       
         '    when((os.meio_dinheiro>0) or (os.meio_chequeav>0) or (os.mei' +
-        'o_cartaodeb>0)) then si.valor *0.1'
+        'o_cartaodeb>0)) then si.valor *(SE.comissao/100)'
       
         '    when((os.meio_crediario>0) or (os.meio_chequeap>0) or (os.me' +
-        'io_cartaocred>0)) then si.valor *0.1'
+        'io_cartaocred>0)) then si.valor *(SE.comissao_aprazo/100)'
       '    else 0'
       '    end'
       '    ) as comissao_'
@@ -4037,13 +4042,13 @@ object dmRel: TdmRel
         '   /*avista*/ (((os.meio_dinheiro>0) or (os.meio_chequeav>0) or ' +
         '(os.meio_cartaodeb>0)) and si.data between '#39'01-01-20'#39' and '#39'01-01' +
         '-21'#39')'
-      '    group by 1,2,3'
+      '    group by 1,2,3,4'
       ') itens'
       'left join c000051 os on (os.codigo = itens.codnota)'
       'left join c000008 fun on (cod_funcionario = fun.codigo)'
       'where os.st = 4'
-      'group by 1,2'
-      'order by nome')
+      'group by 1,2,3,4'
+      'order by nome, data_os')
     Params = <>
     Left = 424
     Top = 16
@@ -4640,7 +4645,7 @@ object dmRel: TdmRel
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 39181.615094942100000000
-    ReportOptions.LastChange = 44159.669226516200000000
+    ReportOptions.LastChange = 44159.843185682870000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -4716,7 +4721,7 @@ object dmRel: TdmRel
           Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
-            'Comiss'#227'o das O.S. de todos os vendedores')
+            'Comiss'#227'o das O.S. recebidas por vendedor')
           ParentFont = False
         end
         object Memo5: TfrxMemoView
@@ -4815,7 +4820,7 @@ object dmRel: TdmRel
           AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 22.677180000000000000
-          Width = 351.495936060000000000
+          Width = 449.763716060000000000
           Color = clBlack
           Frame.Style = fsDot
           Frame.Typ = []
@@ -4857,17 +4862,38 @@ object dmRel: TdmRel
             '[frxDBComissaoTodosVendedoreses."COD_FUNCIONARIO"]')
           ParentFont = False
         end
+        object Memo10: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 374.173470000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          DataField = 'VENDA_TOTAL'
+          DataSet = frxDBComissaoTodosVendedoreses
+          DataSetName = 'frxDBComissaoTodosVendedoreses'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[frxDBComissaoTodosVendedoreses."VENDA_TOTAL"]')
+          ParentFont = False
+        end
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
         Frame.Typ = []
-        Height = 56.692950000000000000
+        Height = 26.456710000000000000
         Top = 234.330860000000000000
         Width = 740.409927000000000000
         object Memo8: TfrxMemoView
           AllowVectorExport = True
           Left = 1.989226320000000000
-          Top = -1.989226320000000000
           Width = 261.185415260000000000
           Height = 19.494417890000000000
           DisplayFormat.FormatStr = '%2.2n'
@@ -4886,6 +4912,7 @@ object dmRel: TdmRel
         object Memo14: TfrxMemoView
           AllowVectorExport = True
           Left = 263.970332110000000000
+          Top = 1.989226320000000000
           Width = 85.337808950000000000
           Height = 19.892263160000000000
           DisplayFormat.FormatStr = '%2.2n'
@@ -4901,6 +4928,27 @@ object dmRel: TdmRel
             
               '[SUM(<frxDBComissaoTodosVendedoreses."COMISSAO_TOTAL">,MasterDat' +
               'a1)]')
+          ParentFont = False
+        end
+        object Memo11: TfrxMemoView
+          AllowVectorExport = True
+          Left = 370.393940000000000000
+          Top = 1.989226320000000000
+          Width = 85.337808950000000000
+          Height = 19.892263160000000000
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            
+              '[SUM(<frxDBComissaoTodosVendedoreses."VENDA_TOTAL">,MasterData1)' +
+              ']')
           ParentFont = False
         end
       end
@@ -4959,10 +5007,26 @@ object dmRel: TdmRel
         object Line2: TfrxLineView
           AllowVectorExport = True
           Top = 18.897650000000000000
-          Width = 347.716406060000000000
+          Width = 453.543246060000000000
           Color = clBlack
           Frame.Typ = []
           Diagonal = True
+        end
+        object Memo9: TfrxMemoView
+          AllowVectorExport = True
+          Left = 370.393940000000000000
+          Width = 83.149660000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Venda')
+          ParentFont = False
         end
       end
     end
@@ -4976,7 +5040,7 @@ object dmRel: TdmRel
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 39181.615094942100000000
-    ReportOptions.LastChange = 44159.582624953700000000
+    ReportOptions.LastChange = 44159.839246631900000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
@@ -5189,6 +5253,27 @@ object dmRel: TdmRel
             '[frxComissaoTodosVendedoresDetalhado."DATA_OS"]')
           ParentFont = False
         end
+        object Memo17: TfrxMemoView
+          AllowVectorExport = True
+          Left = 498.897960000000000000
+          Width = 83.149660000000000000
+          Height = 15.118120000000000000
+          DataField = 'VENDA_TOTAL'
+          DataSet = frxDBComissaoTodosVendedoresDetalhado
+          DataSetName = 'frxComissaoTodosVendedoresDetalhado'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[frxComissaoTodosVendedoresDetalhado."VENDA_TOTAL"]')
+          ParentFont = False
+        end
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
@@ -5241,6 +5326,27 @@ object dmRel: TdmRel
             
               '[SUM(<frxComissaoTodosVendedoresDetalhado."COMISSAO_TOTAL">,Mast' +
               'erData1)]')
+          ParentFont = False
+        end
+        object SysMemo5: TfrxSysMemoView
+          AllowVectorExport = True
+          Left = 498.897960000000000000
+          Top = 7.559060000000000000
+          Width = 83.149660000000000000
+          Height = 15.118120000000000000
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            
+              '[SUM(<frxComissaoTodosVendedoresDetalhado."VENDA_TOTAL">,MasterD' +
+              'ata1)]')
           ParentFont = False
         end
       end
@@ -5333,6 +5439,23 @@ object dmRel: TdmRel
             'Cod O.S.')
           ParentFont = False
         end
+        object Memo18: TfrxMemoView
+          AllowVectorExport = True
+          Left = 498.897960000000000000
+          Top = 11.338590000000000000
+          Width = 83.149660000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Venda')
+          ParentFont = False
+        end
       end
       object ColumnHeader1: TfrxColumnHeader
         FillType = ftBrush
@@ -5372,6 +5495,23 @@ object dmRel: TdmRel
           HAlign = haRight
           Memo.UTF8W = (
             'Cod O.S.')
+          ParentFont = False
+        end
+        object Memo19: TfrxMemoView
+          AllowVectorExport = True
+          Left = 498.897960000000000000
+          Top = 3.779530000000000000
+          Width = 83.149660000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Venda')
           ParentFont = False
         end
       end
@@ -5417,6 +5557,27 @@ object dmRel: TdmRel
           HAlign = haRight
           Memo.UTF8W = (
             'Total do(a) [frxComissaoTodosVendedoresDetalhado."NOME"]:')
+          ParentFont = False
+        end
+        object SysMemo4: TfrxSysMemoView
+          AllowVectorExport = True
+          Left = 498.897960000000000000
+          Top = 3.779530000000000000
+          Width = 83.149660000000000000
+          Height = 15.118120000000000000
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            
+              '[SUM(<frxComissaoTodosVendedoresDetalhado."VENDA_TOTAL">,MasterD' +
+              'ata1)]')
           ParentFont = False
         end
       end

@@ -246,7 +246,7 @@ begin
   sql.Text :=
 
 ' select '+
-    ' cod_funcionario, fun.nome, '+
+    ' cod_funcionario, fun.nome, sum(valor_venda) as venda_total, '+
     ' sum(comissao_) as comissao_total '+
 ' from ( '+
       ' /* select dos produtos vendidos pelo funcionario */ '+
@@ -254,33 +254,37 @@ begin
     ' it.data as data_os, '+
     ' IT.codvendedor as cod_funcionario, '+
     ' substring(IT.codnota from 1 for 6) as codnota, '+
+    ' it.total as valor_venda, '+
     ' sum(case '+
-    ' when((os.meio_dinheiro>0) or (os.meio_chequeav>0) or (os.meio_cartaodeb>0)) then it.total *0.025 '+
-    ' when((os.meio_crediario>0) or (os.meio_chequeap>0) or (os.meio_cartaocred>0)) then it.total *0.015 '+
+    ' when((os.meio_dinheiro>0) or (os.meio_chequeav>0) or (os.meio_cartaodeb>0)) then it.total *(ve.comissao/100) '+
+    ' when((os.meio_crediario>0) or (os.meio_chequeap>0) or (os.meio_cartaocred>0)) then it.total *(ve.comissao_aprazo/100) '+
     ' else 0 '+
     ' end '+
     ' ) as comissao_ '+
     ' from C000032 IT '+
+    ' inner join c000008 VE on(IT.codvendedor = VE.codigo) '+
     ' inner join C000025 PR on(IT.codproduto = PR.codigo) '+
     ' inner join c000051 OS on (substring(IT.codnota from 1 for 6) = os.codigo) '+
     ' left join c000049 vp on (substring(IT.codnota from 1 for 6) = substring(vp.codvenda from 1 for 6)) '+
     ' left join c000040 ch on (substring(IT.codnota from 1 for 6) = substring(ch.codvenda from 1 for 6)) '+
     ' left join c000124 ct on (substring(IT.codnota from 1 for 6) = substring(ct.cod_venda from 1 for 6)) '+
     ' where '+
+    ' pr.sem_comissao =''0'' and '+
     ' /*recebido crediario*/   (vp.situacao =2 and vp.data_pagamento between :datai and :dataf) or '+
    ' /*recebido cheque*/   ((ch.situacao = 2 and ch.data_baixa between :datai and :dataf) )  or '+
    ' /*recebido cartao*/   (ct.situacao = ''BAIXADO'' and ct.data_baixa between :datai and :dataf ) or '+
     ' /*avista*/ (((os.meio_dinheiro>0) or (os.meio_chequeav>0) or (os.meio_cartaodeb>0)) and it.data between :datai and :dataf) '+
-    ' group by 1,2,3 '+
+    ' group by 1,2,3,4 '+
 ' UNION ALL '+
     ' /* select dos serviços feito pelo funcionario */ '+
   ' select '+
     ' si.data as data_os, '+
     ' SI.codtecnico as funcionario, '+
     ' substring(SI.codos from 1 for 6) as codnota, '+
+    ' SI.valor as valor_venda, '+
     ' sum(case '+
-    ' when((os.meio_dinheiro>0) or (os.meio_chequeav>0) or (os.meio_cartaodeb>0)) then si.valor *0.1 '+
-    ' when((os.meio_crediario>0) or (os.meio_chequeap>0) or (os.meio_cartaocred>0)) then si.valor *0.1 '+
+    ' when((os.meio_dinheiro>0) or (os.meio_chequeav>0) or (os.meio_cartaodeb>0)) then si.valor *(SE.comissao/100) '+
+    ' when((os.meio_crediario>0) or (os.meio_chequeap>0) or (os.meio_cartaocred>0)) then si.valor *(SE.comissao_aprazo/100) '+
     ' else 0 '+
     ' end '+
     ' ) as comissao_ '+
@@ -295,14 +299,13 @@ begin
    ' /*recebido cheque*/   ((ch.situacao = 2 and ch.data_baixa between :datai and :dataf) )  or '+
    ' /*recebido cartao*/   (ct.situacao = ''BAIXADO'' and ct.data_baixa between :datai and :dataf ) or '+
    ' /*avista*/ (((os.meio_dinheiro>0) or (os.meio_chequeav>0) or (os.meio_cartaodeb>0)) and si.data between :datai and :dataf) '+
-    ' group by 1,2,3 '+
+    ' group by 1,2,3,4 '+
 ' ) itens '+
 ' left join c000051 os on (os.codigo = itens.codnota) '+
 ' left join c000008 fun on (cod_funcionario = fun.codigo) '+
 ' where os.st = 4 '+
 ' group by 1,2 '+
 ' order by nome ';
-
 
  ParamByName('dataI').AsDate := DataI;
  ParamByName('dataF').AsDate := DataF;
@@ -319,7 +322,7 @@ begin
   sql.Text :=
 
 ' select '+
-    ' cod_funcionario, fun.nome, codnota, data_os, '+
+    ' cod_funcionario, fun.nome, codnota, data_os, sum(valor_venda) as venda_total, '+
     ' sum(comissao_) as comissao_total '+
 ' from ( '+
       ' /* select dos produtos vendidos pelo funcionario */ '+
@@ -327,33 +330,37 @@ begin
     ' it.data as data_os, '+
     ' IT.codvendedor as cod_funcionario, '+
     ' substring(IT.codnota from 1 for 6) as codnota, '+
+    ' it.total as valor_venda, '+
     ' sum(case '+
-    ' when((os.meio_dinheiro>0) or (os.meio_chequeav>0) or (os.meio_cartaodeb>0)) then it.total *0.025 '+
-    ' when((os.meio_crediario>0) or (os.meio_chequeap>0) or (os.meio_cartaocred>0)) then it.total *0.015 '+
+    ' when((os.meio_dinheiro>0) or (os.meio_chequeav>0) or (os.meio_cartaodeb>0)) then it.total *(ve.comissao/100) '+
+    ' when((os.meio_crediario>0) or (os.meio_chequeap>0) or (os.meio_cartaocred>0)) then it.total *(ve.comissao_aprazo/100) '+
     ' else 0 '+
     ' end '+
     ' ) as comissao_ '+
     ' from C000032 IT '+
+    ' inner join c000008 VE on(IT.codvendedor = VE.codigo) '+
     ' inner join C000025 PR on(IT.codproduto = PR.codigo) '+
     ' inner join c000051 OS on (substring(IT.codnota from 1 for 6) = os.codigo) '+
     ' left join c000049 vp on (substring(IT.codnota from 1 for 6) = substring(vp.codvenda from 1 for 6)) '+
     ' left join c000040 ch on (substring(IT.codnota from 1 for 6) = substring(ch.codvenda from 1 for 6)) '+
     ' left join c000124 ct on (substring(IT.codnota from 1 for 6) = substring(ct.cod_venda from 1 for 6)) '+
     ' where '+
+    ' pr.sem_comissao =''0'' and '+
     ' /*recebido crediario*/   (vp.situacao =2 and vp.data_pagamento between :datai and :dataf) or '+
    ' /*recebido cheque*/   ((ch.situacao = 2 and ch.data_baixa between :datai and :dataf) )  or '+
    ' /*recebido cartao*/   (ct.situacao = ''BAIXADO'' and ct.data_baixa between :datai and :dataf ) or '+
     ' /*avista*/ (((os.meio_dinheiro>0) or (os.meio_chequeav>0) or (os.meio_cartaodeb>0)) and it.data between :datai and :dataf) '+
-    ' group by 1,2,3 '+
+    ' group by 1,2,3,4 '+
 ' UNION ALL '+
     ' /* select dos serviços feito pelo funcionario */ '+
   ' select '+
     ' si.data as data_os, '+
     ' SI.codtecnico as funcionario, '+
     ' substring(SI.codos from 1 for 6) as codnota, '+
+    ' SI.valor as valor_venda, '+
     ' sum(case '+
-    ' when((os.meio_dinheiro>0) or (os.meio_chequeav>0) or (os.meio_cartaodeb>0)) then si.valor *0.1 '+
-    ' when((os.meio_crediario>0) or (os.meio_chequeap>0) or (os.meio_cartaocred>0)) then si.valor *0.1 '+
+    ' when((os.meio_dinheiro>0) or (os.meio_chequeav>0) or (os.meio_cartaodeb>0)) then si.valor *(SE.comissao/100) '+
+    ' when((os.meio_crediario>0) or (os.meio_chequeap>0) or (os.meio_cartaocred>0)) then si.valor *(SE.comissao_aprazo/100) '+
     ' else 0 '+
     ' end '+
     ' ) as comissao_ '+
@@ -368,7 +375,7 @@ begin
    ' /*recebido cheque*/   ((ch.situacao = 2 and ch.data_baixa between :datai and :dataf) )  or '+
    ' /*recebido cartao*/   (ct.situacao = ''BAIXADO'' and ct.data_baixa between :datai and :dataf ) or '+
    ' /*avista*/ (((os.meio_dinheiro>0) or (os.meio_chequeav>0) or (os.meio_cartaodeb>0)) and si.data between :datai and :dataf) '+
-    ' group by 1,2,3 '+
+    ' group by 1,2,3,4 '+
 ' ) itens '+
 ' left join c000051 os on (os.codigo = itens.codnota) '+
 ' left join c000008 fun on (cod_funcionario = fun.codigo) '+

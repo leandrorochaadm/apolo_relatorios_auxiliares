@@ -393,7 +393,7 @@ end;
 
 procedure TfrmPrincipal.FormShow(Sender: TObject);
 begin
-  versao := '2.9.0';
+  versao := '2.9.1';
 //  ShowMessage(versao);
 
   LimparFiltros; // limpar filtros
